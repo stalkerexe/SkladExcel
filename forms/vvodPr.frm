@@ -1,4 +1,4 @@
-﻿VERSION 5.00
+VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} vvodPr 
    Caption         =   "Приход"
    ClientHeight    =   2670
@@ -214,8 +214,7 @@ End Sub
 Private Sub load_spr()
         On Error Resume Next
 
-        Call load_zkz_all
-        comb_psv.List = zkz
+        Call refresh_psv_source
         
         Call load_mjj_all
         comb_Mj.List = mj
@@ -223,6 +222,12 @@ Private Sub load_spr()
         Call load_doc_all
         comb_osn.List = doc
         
+End Sub
+
+Public Sub refresh_psv_source()
+        On Error Resume Next
+        Call load_zkz_all
+        comb_psv.List = zkz
 End Sub
 
 Private Sub combo()
@@ -316,5 +321,3 @@ Private Sub ico_Click()
 On Error Resume Next
 add_psv.Show
 End Sub
-
-
