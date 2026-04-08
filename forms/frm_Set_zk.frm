@@ -1,11 +1,11 @@
-VERSION 5.00
+п»їVERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} frm_Set_zk 
-   Caption         =   "Настройки формата"
+   Caption         =   "РќР°СЃС‚СЂРѕР№РєРё С„РѕСЂРјР°С‚Р°"
    ClientHeight    =   2685
    ClientLeft      =   45
    ClientTop       =   390
    ClientWidth     =   4080
-   OleObjectBlob   =   "frm_Set_zk.frx":0000
+   OleObjectBlob   =   "frm_Set_zk.frm.frx":0000
    ShowModal       =   0   'False
    StartUpPosition =   1  'CenterOwner
 End
@@ -54,10 +54,10 @@ Private Sub setting_m()
 
     iMsh = ThisWorkbook.Sheets("setting").Range("o26").Value
 
-    Sheets("Отложено_приход").Select
+    Sheets("РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ").Select
     ActiveWindow.Zoom = iMsh
 
-    Sheets("Отложено_расход").Select
+    Sheets("РћС‚Р»РѕР¶РµРЅРѕ_СЂР°СЃС…РѕРґ").Select
     ActiveWindow.Zoom = iMsh
 
 End Sub

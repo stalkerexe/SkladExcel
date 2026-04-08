@@ -1,11 +1,11 @@
-VERSION 5.00
+п»їVERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} add_zkz 
-   Caption         =   "Новый заказчик"
+   Caption         =   "РќРѕРІС‹Р№ Р·Р°РєР°Р·С‡РёРє"
    ClientHeight    =   2775
    ClientLeft      =   45
    ClientTop       =   330
    ClientWidth     =   7725
-   OleObjectBlob   =   "add_zkz.frx":0000
+   OleObjectBlob   =   "add_zkz.frm.frx":0000
    ShowModal       =   0   'False
    StartUpPosition =   1  'CenterOwner
 End
@@ -20,7 +20,7 @@ Attribute VB_Exposed = False
 Private Sub OK_Click()
 On Error Resume Next
 If TextBox1.Text = "" Then
-MsgBox "Введите данные заказчика!", 64, "Данные"
+MsgBox "Р’РІРµРґРёС‚Рµ РґР°РЅРЅС‹Рµ Р·Р°РєР°Р·С‡РёРєР°!", 64, "Р”Р°РЅРЅС‹Рµ"
 TextBox1.SetFocus
 Exit Sub
 End If

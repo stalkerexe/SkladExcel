@@ -1,11 +1,11 @@
-VERSION 5.00
+п»їVERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} frm_msg 
-   Caption         =   "Демо-версия"
+   Caption         =   "Р”РµРјРѕ-РІРµСЂСЃРёСЏ"
    ClientHeight    =   1710
    ClientLeft      =   45
    ClientTop       =   390
    ClientWidth     =   6345
-   OleObjectBlob   =   "frm_msg.frx":0000
+   OleObjectBlob   =   "frm_msg.frm.frx":0000
    StartUpPosition =   1  'CenterOwner
 End
 Attribute VB_Name = "frm_msg"

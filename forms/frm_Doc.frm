@@ -1,11 +1,11 @@
-VERSION 5.00
+п»їVERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} frm_Doc 
-   Caption         =   "Документ"
+   Caption         =   "Р”РѕРєСѓРјРµРЅС‚"
    ClientHeight    =   1230
    ClientLeft      =   45
    ClientTop       =   390
    ClientWidth     =   6030
-   OleObjectBlob   =   "frm_Doc.frx":0000
+   OleObjectBlob   =   "frm_Doc.frm.frx":0000
    ShowModal       =   0   'False
    StartUpPosition =   1  'CenterOwner
 End
@@ -20,7 +20,7 @@ Private Sub OK_Click()
 End Sub
 
 Private Sub ent_doc()
-        sheetNm = "Отложено_приход"
+        sheetNm = "РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ"
         cm = pzkOsn
         Sheets(sheetNm).Select
         sFiles = "zkz_prihod.xlsx"
@@ -35,7 +35,7 @@ Private Sub dann()
             sDoc = .tb_doc.Text
             sDocN = "'" & .tb_docN.Text
             sDocDt = .tb_dt1.Text
-            sOsn = sDoc & " № " & sDocN & " от " & sDocDt
+            sOsn = sDoc & " в„– " & sDocN & " РѕС‚ " & sDocDt
             iRow = .tb_row.Value
         End With
 End Sub

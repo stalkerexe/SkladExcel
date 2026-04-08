@@ -1,11 +1,11 @@
-VERSION 5.00
+ÔªøVERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} frm_Find 
-   Caption         =   "œÓËÒÍ"
+   Caption         =   "–ü–æ–∏—Å–∫"
    ClientHeight    =   720
    ClientLeft      =   45
    ClientTop       =   330
    ClientWidth     =   6345
-   OleObjectBlob   =   "frm_Find.frx":0000
+   OleObjectBlob   =   "frm_Find.frm.frx":0000
    ShowModal       =   0   'False
    StartUpPosition =   1  'CenterOwner
 End
@@ -155,7 +155,7 @@ End If
 End Sub
 Private Sub load_sk__()
 On Error Resume Next
-With ThisWorkbook.Sheets("—ÍÎ‡‰")
+With ThisWorkbook.Sheets("–°–∫–ª–∞–¥")
 r7 = .Cells(Rows.Count, skNm).End(xlUp).Row + 2
 gr = .Range(.Cells(5, skGr), .Cells(r7, skGr)).Value
 cod = .Range(.Cells(5, skCod), .Cells(r7, skCod)).Value

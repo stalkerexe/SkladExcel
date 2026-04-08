@@ -1,11 +1,11 @@
-VERSION 5.00
+п»їVERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} frm_Comm 
-   Caption         =   "Примечание"
+   Caption         =   "РџСЂРёРјРµС‡Р°РЅРёРµ"
    ClientHeight    =   2640
    ClientLeft      =   45
    ClientTop       =   390
    ClientWidth     =   5415
-   OleObjectBlob   =   "frm_Comm.frx":0000
+   OleObjectBlob   =   "frm_Comm.frm.frx":0000
    ShowModal       =   0   'False
    StartUpPosition =   1  'CenterOwner
 End
@@ -29,7 +29,7 @@ Private Sub ent_comm()
         iOperation = tb_sheet.Text
 
         If iOperation = "pr" Then
-            sheetNm = "Отложено_приход"
+            sheetNm = "РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ"
             cm = pzkComm
             cmNm = pzkNm
             Sheets(sheetNm).Select
@@ -37,7 +37,7 @@ Private Sub ent_comm()
         End If
         
         If iOperation = "rs" Then
-            sheetNm = "Отложено_расход"
+            sheetNm = "РћС‚Р»РѕР¶РµРЅРѕ_СЂР°СЃС…РѕРґ"
             cm = zkComm
             cmNm = zkNm
             Sheets(sheetNm).Select
@@ -106,7 +106,7 @@ Private Sub UserForm_Initialize()
 On Error Resume Next
 Me.StartUpPosition = 0
 Me.Top = 200
-If ThisWorkbook.ActiveSheet.Name = "Отложено_приход" Then
+If ThisWorkbook.ActiveSheet.Name = "РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ" Then
 Me.Left = Cells(2, pzkComm).Left
 Else
 Me.Left = Cells(2, zkComm).Left

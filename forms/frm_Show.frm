@@ -1,11 +1,11 @@
-VERSION 5.00
+п»їVERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} frm_Show 
-   Caption         =   "Корзина"
+   Caption         =   "РљРѕСЂР·РёРЅР°"
    ClientHeight    =   5280
    ClientLeft      =   45
    ClientTop       =   390
    ClientWidth     =   10470
-   OleObjectBlob   =   "frm_Show.frx":0000
+   OleObjectBlob   =   "frm_Show.frm.frx":0000
    ShowModal       =   0   'False
    StartUpPosition =   1  'CenterOwner
 End
@@ -18,33 +18,33 @@ Attribute VB_Exposed = False
 Dim r As Long
 Private Sub OK_Click()
 On Error Resume Next
-With ThisWorkbook.Sheets("корзина")
+With ThisWorkbook.Sheets("РєРѕСЂР·РёРЅР°")
 r = .Cells(Rows.Count, zvNm).End(xlUp).Row
 iCol = Application.CountIf(Range(.Cells(rwZv, zvNm), .Cells(r + 3, zvNm)), "<>")
 End With
 If iCol = 0 Then
-MsgBox "   В корзине нет товара!   ", 64, "Оформить заказ"
+MsgBox "   Р’ РєРѕСЂР·РёРЅРµ РЅРµС‚ С‚РѕРІР°СЂР°!   ", 64, "РћС„РѕСЂРјРёС‚СЊ Р·Р°РєР°Р·"
 Exit Sub
 End If
-If MsgBox("   Оформить накладную?   ", vbOKCancel + vbQuestion, "Оформить заказ") = vbCancel Then Exit Sub
-Call оформить_заказ
+If MsgBox("   РћС„РѕСЂРјРёС‚СЊ РЅР°РєР»Р°РґРЅСѓСЋ?   ", vbOKCancel + vbQuestion, "РћС„РѕСЂРјРёС‚СЊ Р·Р°РєР°Р·") = vbCancel Then Exit Sub
+Call РѕС„РѕСЂРјРёС‚СЊ_Р·Р°РєР°Р·
 End Sub
 Private Sub OK_pr_Click()
 On Error Resume Next
-With ThisWorkbook.Sheets("корзина")
+With ThisWorkbook.Sheets("РєРѕСЂР·РёРЅР°")
 r = .Cells(Rows.Count, zvNm).End(xlUp).Row
 iCol = Application.CountIf(Range(.Cells(rwZv, zvNm), .Cells(r + 3, zvNm)), "<>")
 End With
 If iCol = 0 Then
-MsgBox "   В корзине нет товара!   ", 64, "Оформить заказ"
+MsgBox "   Р’ РєРѕСЂР·РёРЅРµ РЅРµС‚ С‚РѕРІР°СЂР°!   ", 64, "РћС„РѕСЂРјРёС‚СЊ Р·Р°РєР°Р·"
 Exit Sub
 End If
-If MsgBox("   Оформить накладную?   ", vbOKCancel + vbQuestion, "Приход") = vbCancel Then Exit Sub
-Call оформить_заказ_pr
+If MsgBox("   РћС„РѕСЂРјРёС‚СЊ РЅР°РєР»Р°РґРЅСѓСЋ?   ", vbOKCancel + vbQuestion, "РџСЂРёС…РѕРґ") = vbCancel Then Exit Sub
+Call РѕС„РѕСЂРјРёС‚СЊ_Р·Р°РєР°Р·_pr
 End Sub
 Private Sub CB_clear_Click()
 On Error Resume Next
-If MsgBox("Очистить корзину?", vbOKCancel + vbQuestion, "Очистить") = vbCancel Then Exit Sub
+If MsgBox("РћС‡РёСЃС‚РёС‚СЊ РєРѕСЂР·РёРЅСѓ?", vbOKCancel + vbQuestion, "РћС‡РёСЃС‚РёС‚СЊ") = vbCancel Then Exit Sub
 Call controls_all_delete
 Call clear_box
 Call clear_color
@@ -65,7 +65,7 @@ frm_Show.ScrollBar1.Width = 0
 End Sub
 Private Sub clear_zv()
 On Error Resume Next
-With ThisWorkbook.Sheets("Расход")
+With ThisWorkbook.Sheets("Р Р°СЃС…РѕРґ")
 r = .UsedRange.Rows.Count + .UsedRange.Row - 1
 .Range(.Cells(rwZv, 2), .Cells(r + 44, 2)).EntireRow.Delete
 .Cells(rwzvSm, zvSm) = ""
@@ -99,14 +99,14 @@ iRow = nom_Cnr + rwZv - 1
 ico_del.Visible = False
 SpinButton.Visible = False
 Call del_poz_box
-Call добавить_контролы
+Call РґРѕР±Р°РІРёС‚СЊ_РєРѕРЅС‚СЂРѕР»С‹
 Call clear_color
 End Sub
 Private Sub SpinButton_SpinDown()
 On Error Resume Next
 nom_Cnr = Val(tb_nom.Value)
 iRow = nom_Cnr + rwZv - 1
-With ThisWorkbook.Sheets("корзина")
+With ThisWorkbook.Sheets("РєРѕСЂР·РёРЅР°")
 .Cells(iRow, zvCol) = .Cells(iRow, zvCol) - 1
 If .Cells(iRow, zvCol) <= 0 Then .Cells(iRow, zvCol) = 0
 sCol = .Cells(iRow, zvCol)
@@ -117,7 +117,7 @@ Private Sub SpinButton_SpinUp()
 On Error Resume Next
 nom_Cnr = Val(tb_nom.Value)
 iRow = nom_Cnr + rwZv - 1
-With ThisWorkbook.Sheets("корзина")
+With ThisWorkbook.Sheets("РєРѕСЂР·РёРЅР°")
 .Cells(iRow, zvCol) = .Cells(iRow, zvCol) + 1
 sCol = .Cells(iRow, zvCol)
 Controls("nCol" & nom_Cnr).Value = sCol

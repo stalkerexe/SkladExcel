@@ -1,11 +1,11 @@
-VERSION 5.00
+ï»¿VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} vvodPr 
-   Caption         =   "Ïðèõîä"
+   Caption         =   "ÐŸÑ€Ð¸Ñ…Ð¾Ð´"
    ClientHeight    =   2670
    ClientLeft      =   45
    ClientTop       =   330
    ClientWidth     =   10605
-   OleObjectBlob   =   "vvodPr.frx":0000
+   OleObjectBlob   =   "vvodPr.frm.frx":0000
    ShowModal       =   0   'False
    StartUpPosition =   1  'CenterOwner
 End
@@ -145,7 +145,7 @@ Private Sub OK_Click()
         On Error Resume Next
         
         ThisWorkbook.Activate
-        Sheets("Ïðèõîä").Select
+        Sheets("ÐŸÑ€Ð¸Ñ…Ð¾Ð´").Select
         
         Cells(rwPr_zkz, 4).Value = tb_psv.Text
         Cells(rwPr_mj, 4).Value = tb_mj.Text
@@ -155,7 +155,7 @@ Private Sub OK_Click()
         Cells(1, prDocN).Value = "'" & tb_docN.Text
         Cells(1, prDocDt).Value = tb_dt2.Text
         
-        Cells(rwPr_doc, 4).Value = tb_doc.Text & " ¹ " & tb_docN.Text & " îò " & tb_dt2.Text
+        Cells(rwPr_doc, 4).Value = tb_doc.Text & " â„– " & tb_docN.Text & " Ð¾Ñ‚ " & tb_dt2.Text
         
         Unload Me
 End Sub
@@ -184,7 +184,7 @@ Private Sub forma()
             Me.Left = .Left
         End With
         
-        With ThisWorkbook.Sheets("Ïðèõîä")
+        With ThisWorkbook.Sheets("ÐŸÑ€Ð¸Ñ…Ð¾Ð´")
             tb_psv.Text = .Cells(rwPr_zkz, 4).Value
             tb_mj.Text = .Cells(rwPr_mj, 4).Value
             tb_dt1.Text = .Cells(rwPr_dt, 4).Value

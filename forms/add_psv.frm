@@ -1,11 +1,11 @@
-VERSION 5.00
+п»їVERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} add_psv 
-   Caption         =   "Новый поставщик"
+   Caption         =   "РќРѕРІС‹Р№ РїРѕСЃС‚Р°РІС‰РёРє"
    ClientHeight    =   2610
    ClientLeft      =   45
    ClientTop       =   330
    ClientWidth     =   7815
-   OleObjectBlob   =   "add_psv.frx":0000
+   OleObjectBlob   =   "add_psv.frm.frx":0000
    ShowModal       =   0   'False
    StartUpPosition =   1  'CenterOwner
 End
@@ -17,7 +17,7 @@ Attribute VB_Exposed = False
 
 Private Sub OK_Click()
         If tb_psv.Text = "" Then
-        MsgBox "Введите данные поставщика!", 64, "Данные"
+        MsgBox "Р’РІРµРґРёС‚Рµ РґР°РЅРЅС‹Рµ РїРѕСЃС‚Р°РІС‰РёРєР°!", 64, "Р”Р°РЅРЅС‹Рµ"
         tb_psv.SetFocus
         Exit Sub
         End If

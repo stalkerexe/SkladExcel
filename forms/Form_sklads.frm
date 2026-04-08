@@ -1,11 +1,11 @@
-VERSION 5.00
+п»їVERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} Form_sklads 
-   Caption         =   "Склады"
+   Caption         =   "РЎРєР»Р°РґС‹"
    ClientHeight    =   5295
    ClientLeft      =   45
    ClientTop       =   330
    ClientWidth     =   6750
-   OleObjectBlob   =   "Form_sklads.frx":0000
+   OleObjectBlob   =   "Form_sklads.frm.frx":0000
    ShowModal       =   0   'False
    StartUpPosition =   1  'CenterOwner
 End
@@ -19,24 +19,24 @@ Attribute VB_Exposed = False
 Private Sub CommandButton1_Click()
 On Error Resume Next
 If ListBox1.ListIndex = -1 Then
-MsgBox "Выберите склад!", 64, "Склад"
+MsgBox "Р’С‹Р±РµСЂРёС‚Рµ СЃРєР»Р°Рґ!", 64, "РЎРєР»Р°Рґ"
 Exit Sub
 End If
 Call open_sklad
 End Sub
 Private Sub CommandButton2_Click()
-Call добавить_склад
+Call РґРѕР±Р°РІРёС‚СЊ_СЃРєР»Р°Рґ
 End Sub
 Private Sub CommandButton3_Click()
 If ListBox1.ListIndex = -1 Then
-MsgBox "Выберите склад!", 64, ""
+MsgBox "Р’С‹Р±РµСЂРёС‚Рµ СЃРєР»Р°Рґ!", 64, ""
 Exit Sub
 End If
 Call rename_sk
 End Sub
 Private Sub CommandButton4_Click()
 If ListBox1.ListIndex = -1 Then
-MsgBox "Выберите склад!", 64, "Склад"
+MsgBox "Р’С‹Р±РµСЂРёС‚Рµ СЃРєР»Р°Рґ!", 64, "РЎРєР»Р°Рґ"
 Exit Sub
 End If
 Call delete_sk
@@ -45,7 +45,7 @@ End Sub
 Private Sub CommandButton5_Click()
 On Error Resume Next
 If ListBox1.ListIndex = -1 Then
-MsgBox "Выберите склад!", 64, "Склад"
+MsgBox "Р’С‹Р±РµСЂРёС‚Рµ СЃРєР»Р°Рґ!", 64, "РЎРєР»Р°Рґ"
 Exit Sub
 End If
 sSk = Me.ListBox1.Value
@@ -66,25 +66,25 @@ With Application.CommandBars.Add(Name:="MyContextMenu_ListBox", Position:=msoBar
 With .Controls.Add(Type:=msoControlButton)
 .Style = msoButtonIconAndCaption
 .FaceId = 9255
-.Caption = "Открыть склад"
+.Caption = "РћС‚РєСЂС‹С‚СЊ СЃРєР»Р°Рґ"
 .OnAction = "open_sklad"
 End With
 With .Controls.Add(Type:=msoControlButton)
 .Style = msoButtonIconAndCaption
 .FaceId = 137
-.Caption = "Добавить склад"
-.OnAction = "добавить_склад"
+.Caption = "Р”РѕР±Р°РІРёС‚СЊ СЃРєР»Р°Рґ"
+.OnAction = "РґРѕР±Р°РІРёС‚СЊ_СЃРєР»Р°Рґ"
 End With
 With .Controls.Add(Type:=msoControlButton)
 .Style = msoButtonIconAndCaption
 .FaceId = 162
-.Caption = "Переименовать склад"
+.Caption = "РџРµСЂРµРёРјРµРЅРѕРІР°С‚СЊ СЃРєР»Р°Рґ"
 .OnAction = "rename_sk"
 End With
 With .Controls.Add(Type:=msoControlButton)
 .Style = msoButtonIconAndCaption
 .FaceId = 923
-.Caption = "Удалить склад"
+.Caption = "РЈРґР°Р»РёС‚СЊ СЃРєР»Р°Рґ"
 .OnAction = "delete_sk"
 End With
 End With

@@ -1,11 +1,11 @@
-VERSION 5.00
+п»їVERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} frm_Oplata 
-   Caption         =   "Способ оплаты"
+   Caption         =   "РЎРїРѕСЃРѕР± РѕРїР»Р°С‚С‹"
    ClientHeight    =   3135
    ClientLeft      =   30
    ClientTop       =   390
    ClientWidth     =   3540
-   OleObjectBlob   =   "frm_Oplata.frx":0000
+   OleObjectBlob   =   "frm_Oplata.frm.frx":0000
    ShowModal       =   0   'False
    StartUpPosition =   1  'CenterOwner
 End
@@ -20,7 +20,7 @@ Attribute VB_Exposed = False
 Private Sub OK_Click()
 
         Call check_
-        If iCol = 0 Then MsgBox "Выберите способ оплаты!!", 64, "Способ оплаты": Exit Sub
+        If iCol = 0 Then MsgBox "Р’С‹Р±РµСЂРёС‚Рµ СЃРїРѕСЃРѕР± РѕРїР»Р°С‚С‹!!", 64, "РЎРїРѕСЃРѕР± РѕРїР»Р°С‚С‹": Exit Sub
 
         Call do_ok
 
@@ -31,7 +31,7 @@ End Sub
 Private Sub do_ok()
 
         ThisWorkbook.Activate
-        Sheets("Расход").Select
+        Sheets("Р Р°СЃС…РѕРґ").Select
         
         iOpl = ListBox1.Value
         
@@ -73,10 +73,10 @@ End Sub
 
 Private Sub load_spr()
         On Error Resume Next
-        ListBox1.AddItem "Наличный"
-        ListBox1.AddItem "Безналичный"
-        ListBox1.AddItem "Картой"
-        ListBox1.AddItem "Перевод"
+        ListBox1.AddItem "РќР°Р»РёС‡РЅС‹Р№"
+        ListBox1.AddItem "Р‘РµР·РЅР°Р»РёС‡РЅС‹Р№"
+        ListBox1.AddItem "РљР°СЂС‚РѕР№"
+        ListBox1.AddItem "РџРµСЂРµРІРѕРґ"
 End Sub
 
 Private Sub NO_Click()

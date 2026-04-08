@@ -1,11 +1,11 @@
-VERSION 5.00
+п»їVERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} Form_SelectDate 
-   Caption         =   "Выбор даты"
+   Caption         =   "Р’С‹Р±РѕСЂ РґР°С‚С‹"
    ClientHeight    =   3105
    ClientLeft      =   45
    ClientTop       =   390
    ClientWidth     =   3255
-   OleObjectBlob   =   "Form_SelectDate.frx":0000
+   OleObjectBlob   =   "Form_SelectDate.frm.frx":0000
    ShowModal       =   0   'False
    StartUpPosition =   1  'CenterOwner
 End
@@ -26,27 +26,27 @@ Dim MyCountDay
 Dim l_start
 
 Private Sub ComboBox_Month_Click()
-TextBox_Дата.SetFocus
+TextBox_Р”Р°С‚Р°.SetFocus
 End Sub
 
-Private Sub Image_Вперед_День_Click()
+Private Sub Image_Р’РїРµСЂРµРґ_Р”РµРЅСЊ_Click()
 On Error Resume Next
 dt_1 = dt_1 + 1
-Set_TextBox_Дата (dt_1)
+Set_TextBox_Р”Р°С‚Р° (dt_1)
 Set_TextBox_Year (dt_1)
 mozno = True
-Set_Mоnth (dt_1)
+Set_MРѕnth (dt_1)
 mozno = False
 End Sub
 
 
-Private Sub Image_Назад_День_Click()
+Private Sub Image_РќР°Р·Р°Рґ_Р”РµРЅСЊ_Click()
 On Error Resume Next
 dt_1 = dt_1 - 1
-Set_TextBox_Дата (dt_1)
+Set_TextBox_Р”Р°С‚Р° (dt_1)
 Set_TextBox_Year (dt_1)
 mozno = True
-Set_Mоnth (dt_1)
+Set_MРѕnth (dt_1)
 mozno = False
 End Sub
 
@@ -67,25 +67,25 @@ End With
 dt_2 = dt_1
 
 With ComboBox_Month
-    .AddItem "Январь"
-    .AddItem "Февраль"
-    .AddItem "Март"
-    .AddItem "Апрель"
-    .AddItem "Май"
-    .AddItem "Июнь"
-    .AddItem "Июль"
-    .AddItem "Август"
-    .AddItem "Сентябрь"
-    .AddItem "Октябрь"
-    .AddItem "Ноябрь"
-    .AddItem "Декабрь"
+    .AddItem "РЇРЅРІР°СЂСЊ"
+    .AddItem "Р¤РµРІСЂР°Р»СЊ"
+    .AddItem "РњР°СЂС‚"
+    .AddItem "РђРїСЂРµР»СЊ"
+    .AddItem "РњР°Р№"
+    .AddItem "РСЋРЅСЊ"
+    .AddItem "РСЋР»СЊ"
+    .AddItem "РђРІРіСѓСЃС‚"
+    .AddItem "РЎРµРЅС‚СЏР±СЂСЊ"
+    .AddItem "РћРєС‚СЏР±СЂСЊ"
+    .AddItem "РќРѕСЏР±СЂСЊ"
+    .AddItem "Р”РµРєР°Р±СЂСЊ"
 End With
 
-Set_TextBox_Дата (dt_1)
+Set_TextBox_Р”Р°С‚Р° (dt_1)
 Set_TextBox_Year (dt_1)
 
 mozno = True
-Set_Mоnth (dt_1)
+Set_MРѕnth (dt_1)
 mozno = False
 
 
@@ -161,12 +161,12 @@ Private Sub UserForm_QueryClose(Cancel As Integer, CloseMode As Integer)
 On Error Resume Next
 If CloseMode = 0 Then dt_1 = dt_2
 End Sub
-Private Sub Set_TextBox_Дата(MyDate As Date)
+Private Sub Set_TextBox_Р”Р°С‚Р°(MyDate As Date)
 End Sub
 Private Sub Set_TextBox_Year(MyDate As Date)
 TextBox_Year.Value = Format(MyDate, "yyyy")
 End Sub
-Private Sub Set_Mоnth(MyDate As Date)
+Private Sub Set_MРѕnth(MyDate As Date)
 On Error Resume Next
 Dim i As Integer
 Dim j As Integer
@@ -191,45 +191,45 @@ End If
 l_start = l_start + 1
 Next j, i
 End Sub
-Private Sub Cmd_Текущий_День_Click()
+Private Sub Cmd_РўРµРєСѓС‰РёР№_Р”РµРЅСЊ_Click()
 On Error Resume Next
 dt_1 = VBA.Now
-Set_TextBox_Дата (dt_1)
+Set_TextBox_Р”Р°С‚Р° (dt_1)
 Set_TextBox_Year (dt_1)
 mozno = True
-Set_Mоnth (dt_1)
+Set_MРѕnth (dt_1)
 mozno = False
 End Sub
-Private Sub Cmd_Назад_День_Click()
+Private Sub Cmd_РќР°Р·Р°Рґ_Р”РµРЅСЊ_Click()
 On Error Resume Next
 dt_1 = dt_1 - 1
-Set_TextBox_Дата (dt_1)
+Set_TextBox_Р”Р°С‚Р° (dt_1)
 Set_TextBox_Year (dt_1)
 mozno = True
-Set_Mоnth (dt_1)
+Set_MРѕnth (dt_1)
 mozno = False
 End Sub
-Private Sub Cmd_Вперед_День_Click()
+Private Sub Cmd_Р’РїРµСЂРµРґ_Р”РµРЅСЊ_Click()
 On Error Resume Next
 dt_1 = dt_1 + 1
-Set_TextBox_Дата (dt_1)
+Set_TextBox_Р”Р°С‚Р° (dt_1)
 Set_TextBox_Year (dt_1)
 mozno = True
-Set_Mоnth (dt_1)
+Set_MРѕnth (dt_1)
 mozno = False
 End Sub
 
-Private Sub Set_Дата(iRow As Integer, jCol As Integer)
+Private Sub Set_Р”Р°С‚Р°(iRow As Integer, jCol As Integer)
 On Error Resume Next
 If Me.Controls("Cell_" & iRow & "_" & jCol).Caption = "" Then Exit Sub
 MyYear = VBA.Year(dt_1)
 MyMonth = Month(dt_1)
 MyDay = CInt(Me.Controls("Cell_" & iRow & "_" & jCol).Caption)
 dt_1 = DateSerial(MyYear, MyMonth, MyDay)
-Set_TextBox_Дата (dt_1)
+Set_TextBox_Р”Р°С‚Р° (dt_1)
 Set_TextBox_Year (dt_1)
 mozno = True
-Set_Mоnth (dt_1)
+Set_MРѕnth (dt_1)
 mozno = False
 
 With iForm
@@ -248,10 +248,10 @@ MyDay = Day(dt_1)
 MyCountDay = Day(DateSerial(MyYear, MyMonth + 1, 1) - 1)
 If MyDay > MyCountDay Then MyDay = MyCountDay
 dt_1 = DateSerial(MyYear, MyMonth, MyDay)
-Set_TextBox_Дата (dt_1)
+Set_TextBox_Р”Р°С‚Р° (dt_1)
 Set_TextBox_Year (dt_1)
 mozno = True
-Set_Mоnth (dt_1)
+Set_MРѕnth (dt_1)
 mozno = False
 End Sub
 Private Sub SpinButton_Year_SpinDown()
@@ -262,10 +262,10 @@ MyDay = Day(dt_1)
 MyCountDay = Day(DateSerial(MyYear, MyMonth + 1, 1) - 1)
 If MyDay > MyCountDay Then MyDay = MyCountDay
 dt_1 = DateSerial(MyYear, MyMonth, MyDay)
-Set_TextBox_Дата (dt_1)
+Set_TextBox_Р”Р°С‚Р° (dt_1)
 Set_TextBox_Year (dt_1)
 mozno = True
-Set_Mоnth (dt_1)
+Set_MРѕnth (dt_1)
 mozno = False
 End Sub
 Private Sub SpinButton_Year_SpinUp()
@@ -276,179 +276,179 @@ MyDay = Day(dt_1)
 MyCountDay = Day(DateSerial(MyYear, MyMonth + 1, 1) - 1)
 If MyDay > MyCountDay Then MyDay = MyCountDay
 dt_1 = DateSerial(MyYear, MyMonth, MyDay)
-Set_TextBox_Дата (dt_1)
+Set_TextBox_Р”Р°С‚Р° (dt_1)
 Set_TextBox_Year (dt_1)
 mozno = True
-Set_Mоnth (dt_1)
+Set_MРѕnth (dt_1)
 mozno = False
 End Sub
 Private Sub Cell_1_1_Click()
 Set_On_Off 1, 1
-Set_Дата 1, 1
+Set_Р”Р°С‚Р° 1, 1
 End Sub
 Private Sub Cell_1_2_Click()
 Set_On_Off 1, 2
-Set_Дата 1, 2
+Set_Р”Р°С‚Р° 1, 2
 End Sub
 Private Sub Cell_1_3_Click()
 Set_On_Off 1, 3
-Set_Дата 1, 3
+Set_Р”Р°С‚Р° 1, 3
 End Sub
 Private Sub Cell_1_4_Click()
 Set_On_Off 1, 4
-Set_Дата 1, 4
+Set_Р”Р°С‚Р° 1, 4
 End Sub
 Private Sub Cell_1_5_Click()
 Set_On_Off 1, 5
-Set_Дата 1, 5
+Set_Р”Р°С‚Р° 1, 5
 End Sub
 Private Sub Cell_1_6_Click()
 Set_On_Off 1, 6
-Set_Дата 1, 6
+Set_Р”Р°С‚Р° 1, 6
 End Sub
 Private Sub Cell_1_7_Click()
 Set_On_Off 1, 7
-Set_Дата 1, 7
+Set_Р”Р°С‚Р° 1, 7
 End Sub
 Private Sub Cell_2_1_Click()
 Set_On_Off 2, 1
-Set_Дата 2, 1
+Set_Р”Р°С‚Р° 2, 1
 End Sub
 Private Sub Cell_2_2_Click()
 Set_On_Off 2, 2
-Set_Дата 2, 2
+Set_Р”Р°С‚Р° 2, 2
 End Sub
 Private Sub Cell_2_3_Click()
 Set_On_Off 2, 3
-Set_Дата 2, 3
+Set_Р”Р°С‚Р° 2, 3
 End Sub
 Private Sub Cell_2_4_Click()
 Set_On_Off 2, 4
-Set_Дата 2, 4
+Set_Р”Р°С‚Р° 2, 4
 End Sub
 Private Sub Cell_2_5_Click()
 Set_On_Off 2, 5
-Set_Дата 2, 5
+Set_Р”Р°С‚Р° 2, 5
 End Sub
 Private Sub Cell_2_6_Click()
 Set_On_Off 2, 6
-Set_Дата 2, 6
+Set_Р”Р°С‚Р° 2, 6
 End Sub
 Private Sub Cell_2_7_Click()
 Set_On_Off 2, 7
-Set_Дата 2, 7
+Set_Р”Р°С‚Р° 2, 7
 End Sub
 Private Sub Cell_3_1_Click()
 Set_On_Off 3, 1
-Set_Дата 3, 1
+Set_Р”Р°С‚Р° 3, 1
 End Sub
 Private Sub Cell_3_2_Click()
 Set_On_Off 3, 2
-Set_Дата 3, 2
+Set_Р”Р°С‚Р° 3, 2
 End Sub
 Private Sub Cell_3_3_Click()
 Set_On_Off 3, 3
-Set_Дата 3, 3
+Set_Р”Р°С‚Р° 3, 3
 End Sub
 Private Sub Cell_3_4_Click()
 Set_On_Off 3, 4
-Set_Дата 3, 4
+Set_Р”Р°С‚Р° 3, 4
 End Sub
 Private Sub Cell_3_5_Click()
 Set_On_Off 3, 5
-Set_Дата 3, 5
+Set_Р”Р°С‚Р° 3, 5
 End Sub
 Private Sub Cell_3_6_Click()
 Set_On_Off 3, 6
-Set_Дата 3, 6
+Set_Р”Р°С‚Р° 3, 6
 End Sub
 Private Sub Cell_3_7_Click()
 Set_On_Off 3, 7
-Set_Дата 3, 7
+Set_Р”Р°С‚Р° 3, 7
 End Sub
 Private Sub Cell_4_1_Click()
 Set_On_Off 4, 1
-Set_Дата 4, 1
+Set_Р”Р°С‚Р° 4, 1
 End Sub
 Private Sub Cell_4_2_Click()
 Set_On_Off 4, 2
-Set_Дата 4, 2
+Set_Р”Р°С‚Р° 4, 2
 End Sub
 Private Sub Cell_4_3_Click()
 Set_On_Off 4, 3
-Set_Дата 4, 3
+Set_Р”Р°С‚Р° 4, 3
 End Sub
 Private Sub Cell_4_4_Click()
 Set_On_Off 4, 4
-Set_Дата 4, 4
+Set_Р”Р°С‚Р° 4, 4
 End Sub
 Private Sub Cell_4_5_Click()
 Set_On_Off 4, 5
-Set_Дата 4, 5
+Set_Р”Р°С‚Р° 4, 5
 End Sub
 Private Sub Cell_4_6_Click()
 Set_On_Off 4, 6
-Set_Дата 4, 6
+Set_Р”Р°С‚Р° 4, 6
 End Sub
 Private Sub Cell_4_7_Click()
 Set_On_Off 4, 7
-Set_Дата 4, 7
+Set_Р”Р°С‚Р° 4, 7
 End Sub
 Private Sub Cell_5_1_Click()
 Set_On_Off 5, 1
-Set_Дата 5, 1
+Set_Р”Р°С‚Р° 5, 1
 End Sub
 Private Sub Cell_5_2_Click()
 Set_On_Off 5, 2
-Set_Дата 5, 2
+Set_Р”Р°С‚Р° 5, 2
 End Sub
 Private Sub Cell_5_3_Click()
 Set_On_Off 5, 3
-Set_Дата 5, 3
+Set_Р”Р°С‚Р° 5, 3
 End Sub
 Private Sub Cell_5_4_Click()
 Set_On_Off 5, 4
-Set_Дата 5, 4
+Set_Р”Р°С‚Р° 5, 4
 End Sub
 Private Sub Cell_5_5_Click()
 Set_On_Off 5, 5
-Set_Дата 5, 5
+Set_Р”Р°С‚Р° 5, 5
 End Sub
 Private Sub Cell_5_6_Click()
 Set_On_Off 5, 6
-Set_Дата 5, 6
+Set_Р”Р°С‚Р° 5, 6
 End Sub
 Private Sub Cell_5_7_Click()
 Set_On_Off 5, 7
-Set_Дата 5, 7
+Set_Р”Р°С‚Р° 5, 7
 End Sub
 Private Sub Cell_6_1_Click()
 Set_On_Off 6, 1
-Set_Дата 6, 1
+Set_Р”Р°С‚Р° 6, 1
 End Sub
 Private Sub Cell_6_2_Click()
 Set_On_Off 6, 2
-Set_Дата 6, 2
+Set_Р”Р°С‚Р° 6, 2
 End Sub
 Private Sub Cell_6_3_Click()
 Set_On_Off 6, 3
-Set_Дата 6, 3
+Set_Р”Р°С‚Р° 6, 3
 End Sub
 Private Sub Cell_6_4_Click()
 Set_On_Off 6, 4
-Set_Дата 6, 4
+Set_Р”Р°С‚Р° 6, 4
 End Sub
 Private Sub Cell_6_5_Click()
 Set_On_Off 6, 5
-Set_Дата 6, 5
+Set_Р”Р°С‚Р° 6, 5
 End Sub
 Private Sub Cell_6_6_Click()
 Set_On_Off 6, 6
-Set_Дата 6, 6
+Set_Р”Р°С‚Р° 6, 6
 End Sub
 Private Sub Cell_6_7_Click()
 Set_On_Off 6, 7
-Set_Дата 6, 7
+Set_Р”Р°С‚Р° 6, 7
 End Sub
 Private Sub Set_On_Off(iRow As Integer, jCol As Integer)
 Dim i As Integer

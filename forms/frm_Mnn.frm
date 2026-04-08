@@ -1,10 +1,10 @@
-VERSION 5.00
+п»їVERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} frm_Mnn 
    ClientHeight    =   960
    ClientLeft      =   30
    ClientTop       =   390
    ClientWidth     =   2760
-   OleObjectBlob   =   "frm_Mnn.frx":0000
+   OleObjectBlob   =   "frm_Mnn.frm.frx":0000
    ShowModal       =   0   'False
    StartUpPosition =   1  'CenterOwner
 End
@@ -21,7 +21,7 @@ Private Sub UserForm_Initialize()
         
         Call forma
         Call arr_this_sheets
-        Call добавить_контролы_mnn
+        Call РґРѕР±Р°РІРёС‚СЊ_РєРѕРЅС‚СЂРѕР»С‹_mnn
         
         For i = 2 To iCol
             Controls("nNm" & i).Top = Controls("nNm" & i - 1).Top + Controls("nNm" & i - 1).Height + 1

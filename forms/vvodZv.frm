@@ -1,10 +1,10 @@
-VERSION 5.00
+п»їVERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} vvodZv 
    ClientHeight    =   2355
    ClientLeft      =   45
    ClientTop       =   330
    ClientWidth     =   9795.001
-   OleObjectBlob   =   "vvodZv.frx":0000
+   OleObjectBlob   =   "vvodZv.frm.frx":0000
    ShowModal       =   0   'False
    StartUpPosition =   1  'CenterOwner
 End
@@ -162,7 +162,7 @@ End Sub
 Private Sub OK_Click()
         On Error Resume Next
         ThisWorkbook.Activate
-        Sheets("Расход").Select
+        Sheets("Р Р°СЃС…РѕРґ").Select
         
         Cells(rwZv_zkz, 4).Value = Me.tb_Zkz.Text
         Cells(rwZv_adr, 4).Value = Me.tb_adr.Text
@@ -187,7 +187,7 @@ End Sub
 Private Sub load_dann()
     On Error Resume Next
 
-        With ThisWorkbook.Sheets("Расход")
+        With ThisWorkbook.Sheets("Р Р°СЃС…РѕРґ")
             tb_Zkz.Text = .Cells(rwZv_zkz, 4).Value
             tb_adr.Text = .Cells(rwZv_adr, 4).Value
             tb_tlf.Text = .Cells(rwZv_tlf, 4).Value
@@ -254,24 +254,24 @@ ReDim zkz(1 To 5, 1 To 1)
 ReDim adr(1 To 5, 1 To 1)
 ReDim tlf(1 To 5, 1 To 1)
 
-zkz(1, 1) = "ООО «ЕФТ ГРУПП»"
-adr(1, 1) = "г.Москва, ул.Российская 17"
+zkz(1, 1) = "РћРћРћ В«Р•Р¤Рў Р“Р РЈРџРџВ»"
+adr(1, 1) = "Рі.РњРѕСЃРєРІР°, СѓР».Р РѕСЃСЃРёР№СЃРєР°СЏ 17"
 tlf(1, 1) = "890473748"
 
-zkz(2, 1) = "ИП СеверМет г.Уфа"
-adr(2, 1) = "г.Уфа, ул.Гагарина 26"
+zkz(2, 1) = "РРџ РЎРµРІРµСЂРњРµС‚ Рі.РЈС„Р°"
+adr(2, 1) = "Рі.РЈС„Р°, СѓР».Р“Р°РіР°СЂРёРЅР° 26"
 tlf(2, 1) = "890473748"
 
-zkz(3, 1) = "ООО ТК «ТЕХНОРЕСУРС»"
-adr(3, 1) = "г.Москва, ул.Лесная 57"
+zkz(3, 1) = "РћРћРћ РўРљ В«РўР•РҐРќРћР Р•РЎРЈР РЎВ»"
+adr(3, 1) = "Рі.РњРѕСЃРєРІР°, СѓР».Р›РµСЃРЅР°СЏ 57"
 tlf(3, 1) = "890473748"
 
-zkz(4, 1) = "ООО ГК «АЛЬФА-СПК-ДЖИТЕЙЧ»"
-adr(4, 1) = "г.Оренбург, ул.Ухтомского 12"
+zkz(4, 1) = "РћРћРћ Р“Рљ В«РђР›Р¬Р¤Рђ-РЎРџРљ-Р”Р–РРўР•Р™Р§В»"
+adr(4, 1) = "Рі.РћСЂРµРЅР±СѓСЂРі, СѓР».РЈС…С‚РѕРјСЃРєРѕРіРѕ 12"
 tlf(4, 1) = "890473748"
 
-zkz(5, 1) = "ИП Левникова Ю.П."
-adr(5, 1) = "г.Пермь, ул.Северная 45"
+zkz(5, 1) = "РРџ Р›РµРІРЅРёРєРѕРІР° Р®.Рџ."
+adr(5, 1) = "Рі.РџРµСЂРјСЊ, СѓР».РЎРµРІРµСЂРЅР°СЏ 45"
 tlf(5, 1) = "890473748"
 
 comb_zkz.List = zkz

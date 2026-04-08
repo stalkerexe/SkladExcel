@@ -1,11 +1,11 @@
-VERSION 5.00
+ï»¿VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} frm_print 
-   Caption         =   "Ïå÷àòü"
+   Caption         =   "ÐŸÐµÑ‡Ð°Ñ‚ÑŒ"
    ClientHeight    =   3735
    ClientLeft      =   45
    ClientTop       =   330
    ClientWidth     =   4455
-   OleObjectBlob   =   "frm_print.frx":0000
+   OleObjectBlob   =   "frm_print.frm.frx":0000
    ShowModal       =   0   'False
    StartUpPosition =   1  'CenterOwner
 End
@@ -38,7 +38,7 @@ End Sub
 
 Private Sub prnt_sk()
 On Error Resume Next
-With ThisWorkbook.Sheets("Ñêëàä")
+With ThisWorkbook.Sheets("Ð¡ÐºÐ»Ð°Ð´")
 r7 = .Cells(Rows.Count, skNm).End(xlUp).Row
 With .PageSetup
 .PrintTitleRows = "$3:$5"
