@@ -20,43 +20,37 @@ Private Const n = 6
 Private Sub cm_1_Click()
         On Error Resume Next
         Unload Me: DoEvents
-        frm_Demo_spr.Show
-        frm_Demo_spr.MultiPage1.Value = 1
+        open_dict_supplier
 End Sub
 
 Private Sub cm_2_Click()
         On Error Resume Next
         Unload Me: DoEvents
-        frm_Demo_spr.Show
-        frm_Demo_spr.MultiPage1.Value = 0
+        open_dict_counterparty
 End Sub
 
 Private Sub cm_3_Click()
         On Error Resume Next
         Unload Me: DoEvents
-        frm_Demo_spr.Show
-        frm_Demo_spr.MultiPage1.Value = 3
+        open_dict_manager
 End Sub
 
 Private Sub cm_4_Click()
         On Error Resume Next
         Unload Me: DoEvents
-        frm_Demo_spr.Show
-        frm_Demo_spr.MultiPage1.Value = 6
+        open_dict_units
 End Sub
 
 Private Sub cm_5_Click()
         On Error Resume Next
         Unload Me: DoEvents
-        frm_Demo_spr.Show
-        frm_Demo_spr.MultiPage1.Value = 5
+        open_dict_doc_types
 End Sub
 
 Private Sub cm_6_Click()
         On Error Resume Next
         Unload Me: DoEvents
-        frm_Demo_spr.Show
-        frm_Demo_spr.MultiPage1.Value = 2
+        open_dict_warehouse
 End Sub
 
 
