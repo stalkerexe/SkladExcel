@@ -1,4 +1,4 @@
-﻿VERSION 5.00
+VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} vvodZv 
    ClientHeight    =   2355
    ClientLeft      =   45
@@ -244,36 +244,13 @@ Private Sub load_spr()
         Call load_mjj_all
         comb_Mj.List = mj
         
-        Call load_zkz
-        
+        Call refresh_zkz_source
+
 End Sub
 
-Private Sub load_zkz()
+Public Sub refresh_zkz_source()
 On Error Resume Next
-ReDim zkz(1 To 5, 1 To 1)
-ReDim adr(1 To 5, 1 To 1)
-ReDim tlf(1 To 5, 1 To 1)
-
-zkz(1, 1) = "ООО «ЕФТ ГРУПП»"
-adr(1, 1) = "г.Москва, ул.Российская 17"
-tlf(1, 1) = "890473748"
-
-zkz(2, 1) = "ИП СеверМет г.Уфа"
-adr(2, 1) = "г.Уфа, ул.Гагарина 26"
-tlf(2, 1) = "890473748"
-
-zkz(3, 1) = "ООО ТК «ТЕХНОРЕСУРС»"
-adr(3, 1) = "г.Москва, ул.Лесная 57"
-tlf(3, 1) = "890473748"
-
-zkz(4, 1) = "ООО ГК «АЛЬФА-СПК-ДЖИТЕЙЧ»"
-adr(4, 1) = "г.Оренбург, ул.Ухтомского 12"
-tlf(4, 1) = "890473748"
-
-zkz(5, 1) = "ИП Левникова Ю.П."
-adr(5, 1) = "г.Пермь, ул.Северная 45"
-tlf(5, 1) = "890473748"
-
+Call load_zkz_contacts_all
 comb_zkz.List = zkz
 
 End Sub
@@ -322,4 +299,3 @@ End Sub
 Private Sub NO_Click()
 Unload Me
 End Sub
-
