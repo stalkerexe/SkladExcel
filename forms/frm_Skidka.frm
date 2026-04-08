@@ -1,11 +1,11 @@
-п»їVERSION 5.00
+VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} frm_Skidka 
-   Caption         =   "РЎРєРёРґРєР°"
+   Caption         =   "Скидка"
    ClientHeight    =   1200
    ClientLeft      =   30
    ClientTop       =   390
    ClientWidth     =   4065
-   OleObjectBlob   =   "frm_Skidka.frm.frx":0000
+   OleObjectBlob   =   "frm_Skidka.frx":0000
    ShowModal       =   0   'False
    StartUpPosition =   1  'CenterOwner
 End
@@ -25,7 +25,7 @@ Private Sub OK_Click()
 
         If Me.tb_nm.Value = "" Then Me.tb_nm.Value = 0
 '        If Me.tb_nm.Value = "" Then
-'            MsgBox "Р’РІРµРґРёС‚Рµ РїСЂРѕС†РµРЅС‚ СЃРєРёРґРєРё!!", 64, "РЎРєРёРґРєР°"
+'            MsgBox "Введите процент скидки!!", 64, "Скидка"
 '            tb_nm.SetFocus
 '            DoEvents
 '            Exit Sub
@@ -40,13 +40,13 @@ Private Sub do_ok()
         On Error Resume Next
 
         ThisWorkbook.Activate
-        Sheets("Р Р°СЃС…РѕРґ").Select
+        Sheets("Расход").Select
         
         iSkid = CDbl(tb_nm.Value)
         
         Call arr_zv
 
-        With ThisWorkbook.Sheets("Р Р°СЃС…РѕРґ")
+        With ThisWorkbook.Sheets("Расход")
             r7 = .Cells(Rows.Count, zvNm).End(xlUp).Row + 2
 cn = Range(.Cells(rwZv, zvCn), .Cells(r7, zvCn)).Value
         End With
@@ -73,7 +73,7 @@ cn = Range(.Cells(rwZv, zvCn), .Cells(r7, zvCn)).Value
         Next
         
         
-        With ThisWorkbook.Sheets("Р Р°СЃС…РѕРґ")
+        With ThisWorkbook.Sheets("Расход")
             .Cells(rwZv, zvCnR).Resize(UBound(sm), 1) = cnR
             .Cells(rwZv, zvSm).Resize(UBound(sm), 1) = sm
             

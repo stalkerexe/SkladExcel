@@ -1,11 +1,11 @@
-ï»¿VERSION 5.00
+VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} frm_Find_pr 
-   Caption         =   "ÐŸÑ€Ð¸Ñ…Ð¾Ð´Ñ‹"
+   Caption         =   "Ïðèõîäû"
    ClientHeight    =   7170
    ClientLeft      =   45
    ClientTop       =   390
    ClientWidth     =   7695
-   OleObjectBlob   =   "frm_Find_pr.frm.frx":0000
+   OleObjectBlob   =   "frm_Find_pr.frx":0000
    ShowModal       =   0   'False
    StartUpPosition =   1  'CenterOwner
 End

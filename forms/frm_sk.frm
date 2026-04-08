@@ -1,11 +1,11 @@
-п»їVERSION 5.00
+VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} frm_sk 
-   Caption         =   "РЎРєР»Р°РґС‹"
+   Caption         =   "Склады"
    ClientHeight    =   2685
    ClientLeft      =   45
    ClientTop       =   390
    ClientWidth     =   5490
-   OleObjectBlob   =   "frm_sk.frm.frx":0000
+   OleObjectBlob   =   "frm_sk.frx":0000
    ShowModal       =   0   'False
    StartUpPosition =   1  'CenterOwner
 End
@@ -23,7 +23,7 @@ Attribute VB_Exposed = False
 Private Sub OK_Click()
 
     Call check_
-    If iCol = 0 Then MsgBox "Р’С‹Р±РµСЂРёС‚Рµ РїРѕР·РёС†РёРё!", 64, "РЎРєР»Р°Рґ": Exit Sub
+    If iCol = 0 Then MsgBox "Выберите позиции!", 64, "Склад": Exit Sub
     
     Call do_filter
     
@@ -97,9 +97,9 @@ End Sub
 
 Private Sub load_sklads()
 On Error Resume Next
-ListBox1.AddItem "РњР°С‚РµСЂРёР°Р»С‹"
-ListBox1.AddItem "РњРµС‚Р°Р»Р»РѕРїСЂРѕРєР°С‚"
-ListBox1.AddItem "РЎРїРµС†РѕРґРµР¶РґР°"
+ListBox1.AddItem "Материалы"
+ListBox1.AddItem "Металлопрокат"
+ListBox1.AddItem "Спецодежда"
 End Sub
 
 

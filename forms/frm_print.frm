@@ -1,11 +1,11 @@
-ï»¿VERSION 5.00
+VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} frm_print 
-   Caption         =   "ÐŸÐµÑ‡Ð°Ñ‚ÑŒ"
+   Caption         =   "Ïå÷àòü"
    ClientHeight    =   3735
    ClientLeft      =   45
    ClientTop       =   330
    ClientWidth     =   4455
-   OleObjectBlob   =   "frm_print.frm.frx":0000
+   OleObjectBlob   =   "frm_print.frx":0000
    ShowModal       =   0   'False
    StartUpPosition =   1  'CenterOwner
 End
@@ -23,22 +23,22 @@ Private Sub OK_Click()
         sPrinter = Me.Label2.Caption
         iCol_Print = Me.ComboBox1.Value
 
-        If Me.TextBox1.text = 1 Then Call prnt_zv
-        If Me.TextBox1.text = 2 Then Call prnt_pr
+        If Me.TextBox1.Text = 1 Then Call prnt_zv
+        If Me.TextBox1.Text = 2 Then Call prnt_pr
         
-If Me.TextBox1.text = 3 Then Call prnt_zk
-        If Me.TextBox1.text = 4 Then Call prnt_zk
+If Me.TextBox1.Text = 3 Then Call prnt_zk
+        If Me.TextBox1.Text = 4 Then Call prnt_zk
         
-        If Me.TextBox1.text = 5 Then Call print_ZVK_arh
+        If Me.TextBox1.Text = 5 Then Call print_ZVK_arh
         
-        If Me.TextBox1.text = 7 Then Call prnt_sk
+        If Me.TextBox1.Text = 7 Then Call prnt_sk
 
         Unload Me: DoEvents
 End Sub
 
 Private Sub prnt_sk()
 On Error Resume Next
-With ThisWorkbook.Sheets("Ð¡ÐºÐ»Ð°Ð´")
+With ThisWorkbook.Sheets("Ñêëàä")
 r7 = .Cells(Rows.Count, skNm).End(xlUp).Row
 With .PageSetup
 .PrintTitleRows = "$3:$5"

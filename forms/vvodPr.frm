@@ -1,11 +1,11 @@
-ï»¿VERSION 5.00
+VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} vvodPr 
-   Caption         =   "ÐŸÑ€Ð¸Ñ…Ð¾Ð´"
+   Caption         =   "Ïðèõîä"
    ClientHeight    =   2670
    ClientLeft      =   45
    ClientTop       =   330
    ClientWidth     =   10605
-   OleObjectBlob   =   "vvodPr.frm.frx":0000
+   OleObjectBlob   =   "vvodPr.frx":0000
    ShowModal       =   0   'False
    StartUpPosition =   1  'CenterOwner
 End
@@ -37,7 +37,7 @@ Private Sub do_find()
         
         If Val(comb_find.ListCount) > 0 Then comb_find.DropDown
         
-        If tb_psv.text = "" Then
+        If tb_psv.Text = "" Then
             If Val(comb_psv.ListCount) > 0 Then
                 comb_psv.DropDown
                 Exit Sub
@@ -50,7 +50,7 @@ End Sub
 Private Sub find_psv()
     On Error Resume Next
     
-    str_ = tb_psv.text
+    str_ = tb_psv.Text
     
     If VBA.Len(str_) = 0 Then
         comb_find.clear
@@ -120,7 +120,7 @@ Private Sub comb_find_Click()
         
         flag = 1
         
-        tb_psv.text = sZkz
+        tb_psv.Text = sZkz
         comb_psv.ListIndex = -1
         
         flag = 0
@@ -130,7 +130,7 @@ End Sub
 
 Private Sub comb_psv_Click()
         flag = 1
-        tb_psv.text = comb_psv.Value
+        tb_psv.Text = comb_psv.Value
         flag = 0
 End Sub
 
@@ -145,17 +145,17 @@ Private Sub OK_Click()
         On Error Resume Next
         
         ThisWorkbook.Activate
-        Sheets("ÐŸÑ€Ð¸Ñ…Ð¾Ð´").Select
+        Sheets("Ïðèõîä").Select
         
-        Cells(rwPr_zkz, 4).Value = tb_psv.text
-        Cells(rwPr_mj, 4).Value = tb_mj.text
-        Cells(rwPr_dt, 4).Value = tb_dt1.text
+        Cells(rwPr_zkz, 4).Value = tb_psv.Text
+        Cells(rwPr_mj, 4).Value = tb_mj.Text
+        Cells(rwPr_dt, 4).Value = tb_dt1.Text
         
-        Cells(1, prDoc).Value = tb_doc.text
-        Cells(1, prDocN).Value = "'" & tb_docN.text
-        Cells(1, prDocDt).Value = tb_dt2.text
+        Cells(1, prDoc).Value = tb_doc.Text
+        Cells(1, prDocN).Value = "'" & tb_docN.Text
+        Cells(1, prDocDt).Value = tb_dt2.Text
         
-        Cells(rwPr_doc, 4).Value = tb_doc.text & " â„– " & tb_docN.text & " Ð¾Ñ‚ " & tb_dt2.text
+        Cells(rwPr_doc, 4).Value = tb_doc.Text & " ¹ " & tb_docN.Text & " îò " & tb_dt2.Text
         
         Unload Me
 End Sub
@@ -184,14 +184,14 @@ Private Sub forma()
             Me.Left = .Left
         End With
         
-        With ThisWorkbook.Sheets("ÐŸÑ€Ð¸Ñ…Ð¾Ð´")
-            tb_psv.text = .Cells(rwPr_zkz, 4).Value
-            tb_mj.text = .Cells(rwPr_mj, 4).Value
-            tb_dt1.text = .Cells(rwPr_dt, 4).Value
+        With ThisWorkbook.Sheets("Ïðèõîä")
+            tb_psv.Text = .Cells(rwPr_zkz, 4).Value
+            tb_mj.Text = .Cells(rwPr_mj, 4).Value
+            tb_dt1.Text = .Cells(rwPr_dt, 4).Value
             
-            tb_doc.text = Cells(1, prDoc).Value
-            tb_docN.text = Cells(1, prDocN).Value
-            tb_dt2.text = Cells(1, prDocDt).Value
+            tb_doc.Text = Cells(1, prDoc).Value
+            tb_docN.Text = Cells(1, prDocN).Value
+            tb_dt2.Text = Cells(1, prDocDt).Value
         End With
         
         OK.BackColor = RGB(58, 110, 165)
@@ -263,12 +263,12 @@ Unload Me
 End Sub
 Private Sub comb_osn_Click()
 On Error Resume Next
-tb_doc.text = comb_osn.Value
+tb_doc.Text = comb_osn.Value
 tb_docN.SetFocus
 End Sub
 Private Sub comb_mj_Click()
 On Error Resume Next
-tb_mj.text = comb_Mj.Value
+tb_mj.Text = comb_Mj.Value
 End Sub
 
 

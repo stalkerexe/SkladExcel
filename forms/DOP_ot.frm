@@ -1,11 +1,11 @@
-п»їVERSION 5.00
+VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} DOP_ot 
-   Caption         =   "РћС‚С‡РµС‚С‹"
+   Caption         =   "Отчеты"
    ClientHeight    =   1500
    ClientLeft      =   45
    ClientTop       =   330
    ClientWidth     =   3930
-   OleObjectBlob   =   "DOP_ot.frm.frx":0000
+   OleObjectBlob   =   "DOP_ot.frx":0000
    ShowModal       =   0   'False
    StartUpPosition =   1  'CenterOwner
 End
@@ -25,8 +25,8 @@ shNmArh = "arh_prr"
 
 Call arr_arh_proverka
 If iCol = 0 Then
-    MsgBox "РџРѕРєР° РЅРµС‚ РЅР°РєР»Р°РґРЅС‹С… РґР»СЏ РїСЂРѕСЃРјРѕС‚СЂР° РѕС‚С‡РµС‚Р°." _
-    & Chr(10) & "РЎРЅР°С‡Р°Р»Р° РѕРїСЂРёС…РѕРґСѓР№С‚Рµ РёР»Рё РѕС‚РіСЂСѓР·РёС‚Рµ РЅР°РєР»Р°РґРЅС‹Рµ", 64, "РћС‚С‡РµС‚"
+    MsgBox "Пока нет накладных для просмотра отчета." _
+    & Chr(10) & "Сначала оприходуйте или отгрузите накладные", 64, "Отчет"
     Exit Sub
 End If
 
@@ -42,8 +42,8 @@ shNmArh = "arh_zkk"
 
 Call arr_arh_proverka
 If iCol = 0 Then
-    MsgBox "РџРѕРєР° РЅРµС‚ РЅР°РєР»Р°РґРЅС‹С… РґР»СЏ РїСЂРѕСЃРјРѕС‚СЂР° РѕС‚С‡РµС‚Р°." _
-    & Chr(10) & "РЎРЅР°С‡Р°Р»Р° РѕРїСЂРёС…РѕРґСѓР№С‚Рµ РёР»Рё РѕС‚РіСЂСѓР·РёС‚Рµ РЅР°РєР»Р°РґРЅС‹Рµ", 64, "РћС‚С‡РµС‚"
+    MsgBox "Пока нет накладных для просмотра отчета." _
+    & Chr(10) & "Сначала оприходуйте или отгрузите накладные", 64, "Отчет"
     Exit Sub
 End If
 
@@ -55,7 +55,7 @@ End Sub
 Private Sub UserForm_Initialize()
 On Error Resume Next
 Me.StartUpPosition = 0
-If ThisWorkbook.ActiveSheet.Name = "Р“Р»Р°РІРЅР°СЏ" Then
+If ThisWorkbook.ActiveSheet.Name = "Главная" Then
 With ActiveSheet.Shapes("cmbt_4")
 Me.Top = .Top
 Me.Left = .Left + .Width

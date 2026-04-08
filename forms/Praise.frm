@@ -1,10 +1,10 @@
-п»їVERSION 5.00
+VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} Praise 
    ClientHeight    =   4545
    ClientLeft      =   45
    ClientTop       =   330
    ClientWidth     =   10005
-   OleObjectBlob   =   "Praise.frm.frx":0000
+   OleObjectBlob   =   "Praise.frx":0000
    ShowModal       =   0   'False
    StartUpPosition =   1  'CenterOwner
 End
@@ -32,7 +32,7 @@ Private Sub tbFind_Nm_Change()
         If find_Flag = 3 Then Exit Sub
         
 iCmF = 4
-        str_ = tbFind_Nm.text
+        str_ = tbFind_Nm.Text
         Call find_in_text
 End Sub
 
@@ -41,7 +41,7 @@ Private Sub tbFind_Cod_Change()
         If find_Flag = 3 Then Exit Sub
 
 iCmF = 3
-        str_ = tbFind_Cod.text
+        str_ = tbFind_Cod.Text
         Call find_in_text
 End Sub
 
@@ -159,7 +159,7 @@ Private Sub ListBox1_DblClick(ByVal Cancel As MSForms.ReturnBoolean)
         ind = ListBox1.ListIndex
         If ind = -1 Then Exit Sub
         If ListBox1.List(ind, 2) = "---------------------------------" Then Exit Sub
-        If ThisWorkbook.ActiveSheet.Name <> "РџСЂРёС…РѕРґ" And ThisWorkbook.ActiveSheet.Name <> "Р Р°СЃС…РѕРґ" Then Sheets("Р Р°СЃС…РѕРґ").Select
+        If ThisWorkbook.ActiveSheet.Name <> "Приход" And ThisWorkbook.ActiveSheet.Name <> "Расход" Then Sheets("Расход").Select
         
         sSk = Me.comb_sk.Value
         With ListBox1
@@ -172,7 +172,7 @@ Private Sub ListBox1_DblClick(ByVal Cancel As MSForms.ReturnBoolean)
             sCol = .List(ind, 5)
         End With
         
-        If ThisWorkbook.ActiveSheet.Name = "РџСЂРёС…РѕРґ" Then
+        If ThisWorkbook.ActiveSheet.Name = "Приход" Then
             Call ent_Pr
         Else
             Call ent_Zv
@@ -220,7 +220,7 @@ Cells(iRow, zvCn) = sCnR
         'skid
         If Cells(rwZv_mj, zvOst).Value = "" Then GoTo 77
         iSkid = Cells(rwZv_mj, zvOst).Value
-        sCn = Cells(iRow, zvCn) 'С†РµРЅР°_Р±РµР·_СЃРєРёРґРєРё
+        sCn = Cells(iRow, zvCn) 'цена_без_скидки
         sCnR = sCn - (sCn * iSkid / 100)
         Cells(iRow, zvCnR) = sCnR
 77
@@ -232,7 +232,7 @@ End Sub
 
 Private Sub add_to_box()
         On Error Resume Next
-        With ThisWorkbook.Sheets("РєРѕСЂР·РёРЅР°")
+        With ThisWorkbook.Sheets("корзина")
             n = .Cells(Rows.Count, zvNm).End(xlUp).Row + 1
             If n < rwZv Then GoTo 22
             For Each cell In Range(.Cells(rwZv, 1), .Cells(n, 1))
@@ -246,7 +246,7 @@ Private Sub add_to_box()
             Next
         End With
 22
-        With ThisWorkbook.Sheets("РєРѕСЂР·РёРЅР°")
+        With ThisWorkbook.Sheets("корзина")
         n = .Cells(Rows.Count, zvNm).End(xlUp).Row + 1
         If n < rwZv Then n = rwZv
         Range(Cells(iRow, 1), Cells(iRow, 100)).Copy
@@ -254,7 +254,7 @@ Private Sub add_to_box()
         Application.CutCopyMode = False
         End With
         
-        With ThisWorkbook.Sheets("РєРѕСЂР·РёРЅР°")
+        With ThisWorkbook.Sheets("корзина")
             .Cells(n, zvCol).NumberFormat = "#,##0.00"
             .Cells(n, zvCnZ).NumberFormat = "#,##0.00"
             .Cells(n, zvCnR).NumberFormat = "#,##0.00"
@@ -264,7 +264,7 @@ Private Sub add_to_box()
         iRowBox = n
         Call formula_in_box
                 
-        With ThisWorkbook.Sheets("РєРѕСЂР·РёРЅР°")
+        With ThisWorkbook.Sheets("корзина")
             n = .Cells(Rows.Count, zvNm).End(xlUp).Row
             j = 1
             For i = rwZv To n
@@ -341,9 +341,9 @@ Private Sub ban_input()
             .IgnoreBlank = True
             .InCellDropdown = True
             .InputTitle = ""
-            .ErrorTitle = "Р—Р°РїСЂРµС‚ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ"
+            .ErrorTitle = "Запрет редактирования"
             .InputMessage = ""
-            .ErrorMessage = "РќРµР»СЊР·СЏ РёР·РјРµРЅСЏС‚СЊ РґР°РЅРЅС‹Рµ РІ СЌС‚РѕР№ СЏС‡РµР№РєРµ!"
+            .ErrorMessage = "Нельзя изменять данные в этой ячейке!"
             .ShowInput = True
             .ShowError = True
         End With
@@ -354,8 +354,8 @@ Private Sub lb_nm_MouseDown(ByVal Button As Integer, ByVal Shift As Integer, ByV
 On Error Resume Next
 Me.comb_gr.DropDown
 find_Flag = 3
-tbFind_Nm.text = ""
-tbFind_Cod.text = ""
+tbFind_Nm.Text = ""
+tbFind_Cod.Text = ""
 End Sub
 Private Sub comb_gr_Change()
 On Error Resume Next
@@ -438,15 +438,15 @@ End Sub
 Private Sub load_sklads()
 
         With comb_sk
-        .AddItem "РњР°С‚РµСЂРёР°Р»С‹"
-        .AddItem "РњРµС‚Р°Р»Р»РѕРїСЂРѕРєР°С‚"
-        .AddItem "РЎРїРµС†РѕРґРµР¶РґР°"
+        .AddItem "Материалы"
+        .AddItem "Металлопрокат"
+        .AddItem "Спецодежда"
         End With
             
         With comb_sk_set
-        .AddItem "РњР°С‚РµСЂРёР°Р»С‹"
-        .AddItem "РњРµС‚Р°Р»Р»РѕРїСЂРѕРєР°С‚"
-        .AddItem "РЎРїРµС†РѕРґРµР¶РґР°"
+        .AddItem "Материалы"
+        .AddItem "Металлопрокат"
+        .AddItem "Спецодежда"
         End With
 
 End Sub
@@ -491,19 +491,19 @@ End Sub
 
 Private Sub tbFind_Cod_MouseDown(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
 find_Flag = 1
-tbFind_Nm.text = ""
+tbFind_Nm.Text = ""
 End Sub
 Private Sub tbFind_Nm_MouseDown(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
 find_Flag = 2
-tbFind_Cod.text = ""
+tbFind_Cod.Text = ""
 End Sub
 
 Private Sub lb_cod_MouseDown(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
 On Error Resume Next
 comb_gr.DropDown
 find_Flag = 3
-tbFind_Nm.text = ""
-tbFind_Cod.text = ""
+tbFind_Nm.Text = ""
+tbFind_Cod.Text = ""
 End Sub
 
 Private Sub CommandButton1_Click()

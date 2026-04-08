@@ -1,11 +1,11 @@
-п»їVERSION 5.00
+VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} zvSelect 
-   Caption         =   " РќР°РєР»Р°РґРЅС‹Рµ"
+   Caption         =   " Накладные"
    ClientHeight    =   1875
    ClientLeft      =   45
    ClientTop       =   390
    ClientWidth     =   8865.001
-   OleObjectBlob   =   "zvSelect.frm.frx":0000
+   OleObjectBlob   =   "zvSelect.frx":0000
    ShowModal       =   0   'False
    StartUpPosition =   1  'CenterOwner
 End
@@ -35,10 +35,10 @@ Private Sub comb_vid_Click()
             comb_dt.Enabled = False
         End If
         
-        If iVid = "Р’РѕР·РІСЂР°С‚" Then
-                Me.lb_mj.Caption = "РќР°РєР»Р°РґРЅР°СЏ"
+        If iVid = "Возврат" Then
+                Me.lb_mj.Caption = "Накладная"
             Else
-                Me.lb_mj.Caption = "РЎРѕС‚СЂСѓРґРЅРёРє"
+                Me.lb_mj.Caption = "Сотрудник"
         End If
         
         ListBox1.SetFocus
@@ -75,20 +75,20 @@ If (Not Not c) = 0 Then Exit Sub
         j = 1
         For i = LBound(c) To UBound(c)
         
-            If sCombData = "Р’СЃРµ" Then GoTo 11
+            If sCombData = "Все" Then GoTo 11
             If sCombData = "" Then GoTo 11
             
-            If sCombData = "РЎРµРіРѕРґРЅСЏ" Then sData = VBA.Format(VBA.Date, "dd.mm.yyyy")
-            If sCombData = "Р’С‡РµСЂР°" Then sData = VBA.Format(VBA.Date - 1, "dd.mm.yyyy")
+            If sCombData = "Сегодня" Then sData = VBA.Format(VBA.Date, "dd.mm.yyyy")
+            If sCombData = "Вчера" Then sData = VBA.Format(VBA.Date - 1, "dd.mm.yyyy")
             
             If c(i, 4) = sData Then
 11
             If sZkz = "" Then GoTo 22
-            If sZkz = "Р’СЃРµ" Then GoTo 22
+            If sZkz = "Все" Then GoTo 22
             If c(i, 3) = sZkz Then
 22
             If sMj = "" Then GoTo 33
-            If sMj = "Р’СЃРµ" Then GoTo 33
+            If sMj = "Все" Then GoTo 33
             If c(i, 5) = sMj Then
             
 33
@@ -215,7 +215,7 @@ Private Sub parse_arh()
             c(n, 2) = Format(nom(i, 1), "00000")
 c(n, 3) = zkz(i, 1)
             c(n, 4) = Format(dt(i, 1), "dd.mm.yyyy")
-            c(n, 5) = mj(i, 1): If iVid = "Р’РѕР·РІСЂР°С‚" Then c(n, 5) = doc(i, 1)
+            c(n, 5) = mj(i, 1): If iVid = "Возврат" Then c(n, 5) = doc(i, 1)
             n = n + 1
             End If
         Next
@@ -228,8 +228,8 @@ Private Sub combo()
 On Error Resume Next
 
 With comb_vid
-.AddItem "РџСЂРёС…РѕРґ"
-.AddItem "РћС‚РіСЂСѓР·РєР°"
+.AddItem "Приход"
+.AddItem "Отгрузка"
 End With
 
 With comb_year
@@ -242,9 +242,9 @@ With comb_dt
 .Top = lb_dt.Top
 .Width = lb_dt.Width + 13
 .ZOrder 1
-.AddItem "Р’С‡РµСЂР°"
-.AddItem "РЎРµРіРѕРґРЅСЏ"
-.AddItem "Р’СЃРµ"
+.AddItem "Вчера"
+.AddItem "Сегодня"
+.AddItem "Все"
 End With
 
 With comb_Mj
@@ -267,17 +267,17 @@ Private Sub load_mj()
         On Error Resume Next
         Call RemoveDuplicates
         
-        With ThisWorkbook.Sheets("Р±СѓС„РµСЂ")
+        With ThisWorkbook.Sheets("буфер")
             r7 = .Cells(Rows.Count, "c").End(xlUp).Row + 1
             a = .Range("c1:c" & r7).Value
             comb_zkz.List = a
             i = comb_zkz.ListCount - 1
-            comb_zkz.List(i, 0) = "Р’СЃРµ"
+            comb_zkz.List(i, 0) = "Все"
             r7 = .Cells(Rows.Count, "e").End(xlUp).Row + 1
             a = .Range("e1:e" & r7).Value
             comb_Mj.List = a
             i = comb_Mj.ListCount - 1
-            comb_Mj.List(i, 0) = "Р’СЃРµ"
+            comb_Mj.List(i, 0) = "Все"
         End With
         
         Call clearBf
@@ -290,7 +290,7 @@ If (Not Not c) = 0 Then Exit Sub
 
         Call clearBf
 
-        With ThisWorkbook.Sheets("Р±СѓС„РµСЂ")
+        With ThisWorkbook.Sheets("буфер")
             .Cells(1, "a").Resize(UBound(c), 5) = c
             r7 = .Cells(Rows.Count, "a").End(xlUp).Row + 1
             .Range("c1:c" & r7).RemoveDuplicates Columns:=1, Header:=xlNo

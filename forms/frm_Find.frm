@@ -1,11 +1,11 @@
-ÔªøVERSION 5.00
+VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} frm_Find 
-   Caption         =   "–ü–æ–∏—Å–∫"
+   Caption         =   "œÓËÒÍ"
    ClientHeight    =   720
    ClientLeft      =   45
    ClientTop       =   330
    ClientWidth     =   6345
-   OleObjectBlob   =   "frm_Find.frm.frx":0000
+   OleObjectBlob   =   "frm_Find.frx":0000
    ShowModal       =   0   'False
    StartUpPosition =   1  'CenterOwner
 End
@@ -49,7 +49,7 @@ Me.Controls("tb_" & n) = ""
 End If
 Next
 comb_find.clear
-str_ = Me.ActiveControl.text
+str_ = Me.ActiveControl.Text
 If Len(str_) = 0 Then comb_find.SetFocus: Controls("tb_" & iCntr).SetFocus: Exit Sub
 If str_ = "" Then
 comb_find.SetFocus
@@ -103,7 +103,7 @@ On Error Resume Next
 ind = comb_find.ListIndex
 If ind = -1 Then Exit Sub
 Me.Caption = "   " & comb_find.List(ind, 1) & "          " & comb_find.List(ind, 2)
-tb_row.text = comb_find.List(ind, 0)
+tb_row.Text = comb_find.List(ind, 0)
 rw = Val(tb_row.Value)
 If rw = 0 Then Exit Sub
 Range(Cells(rw, 1), Cells(rw, 33)).Select
@@ -155,7 +155,7 @@ End If
 End Sub
 Private Sub load_sk__()
 On Error Resume Next
-With ThisWorkbook.Sheets("–°–∫–ª–∞–¥")
+With ThisWorkbook.Sheets("—ÍÎ‡‰")
 r7 = .Cells(Rows.Count, skNm).End(xlUp).Row + 2
 gr = .Range(.Cells(5, skGr), .Cells(r7, skGr)).Value
 cod = .Range(.Cells(5, skCod), .Cells(r7, skCod)).Value
@@ -190,7 +190,7 @@ End Sub
 Private Sub lb_nm_MouseDown(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
 On Error Resume Next
 Me.comb_gr.DropDown
-tb_1.text = ""
-tb_2.text = ""
+tb_1.Text = ""
+tb_2.Text = ""
 End Sub
 

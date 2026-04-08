@@ -1,11 +1,11 @@
-п»їVERSION 5.00
+VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} frmHelp 
-   Caption         =   "РџРѕРґСЃРєР°Р·РєР°"
+   Caption         =   "Подсказка"
    ClientHeight    =   12810
    ClientLeft      =   45
    ClientTop       =   330
    ClientWidth     =   10545
-   OleObjectBlob   =   "frmHelp.frm.frx":0000
+   OleObjectBlob   =   "frmHelp.frx":0000
    ShowModal       =   0   'False
    StartUpPosition =   1  'CenterOwner
 End
@@ -21,10 +21,10 @@ Attribute VB_Exposed = False
 Private Sub lb_link1_Click()
 On Error Resume Next
 Waite.Show
-Waite.Label1.Caption = "РРЅС‚РµСЂРЅРµС‚ СЃРѕРµРґРёРЅРµРЅРёРµ..."
+Waite.Label1.Caption = "Интернет соединение..."
 DoEvents
 ThisWorkbook.FollowHyperlink "https://sklad-excel.ru/help_mgp_4/"
-If Err Then Unload Waite: DoEvents: MsgBox "РРЅС‚РµСЂРЅРµС‚ РЅРµ РїРѕРґРєР»СЋС‡РµРЅ!", 48, " РРЅС‚РµСЂРЅРµС‚-РџРѕРґРєР»СЋС‡РµРЅРёРµ"
+If Err Then Unload Waite: DoEvents: MsgBox "Интернет не подключен!", 48, " Интернет-Подключение"
 Unload Waite
 End Sub
 Private Sub lb_link1_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
@@ -42,10 +42,10 @@ End Sub
 Private Sub lb_link2_Click()
 On Error Resume Next
 Waite.Show
-Waite.Label1.Caption = "РРЅС‚РµСЂРЅРµС‚ СЃРѕРµРґРёРЅРµРЅРёРµ..."
+Waite.Label1.Caption = "Интернет соединение..."
 DoEvents
 ThisWorkbook.FollowHyperlink "https://youtu.be/HvG0fFgNnpU"
-If Err Then Unload Waite: DoEvents: MsgBox "РРЅС‚РµСЂРЅРµС‚ РЅРµ РїРѕРґРєР»СЋС‡РµРЅ!", 48, " РРЅС‚РµСЂРЅРµС‚-РџРѕРґРєР»СЋС‡РµРЅРёРµ"
+If Err Then Unload Waite: DoEvents: MsgBox "Интернет не подключен!", 48, " Интернет-Подключение"
 Unload Waite
 End Sub
 Private Sub lb_link2_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
@@ -69,22 +69,22 @@ For i = 1 To 6
 Me.Controls("tb_" & i).Locked = True
 Next
 
-If ActiveSheet.Name = "Р“Р»Р°РІРЅР°СЏ" Then Me.MultiPage1.Value = 0
-If ActiveSheet.Name = "Р Р°СЃС…РѕРґ" Then Me.MultiPage1.Value = 1
-If ActiveSheet.Name = "РћС‚Р»РѕР¶РµРЅРѕ_СЂР°СЃС…РѕРґ" Then Me.MultiPage1.Value = 2
-If ActiveSheet.Name = "РџСЂРёС…РѕРґ" Then Me.MultiPage1.Value = 3
-If ActiveSheet.Name = "РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ" Then Me.MultiPage1.Value = 4
-If ActiveSheet.Name = "РЎРєР»Р°Рґ" Then Me.MultiPage1.Value = 5
+If ActiveSheet.Name = "Главная" Then Me.MultiPage1.Value = 0
+If ActiveSheet.Name = "Расход" Then Me.MultiPage1.Value = 1
+If ActiveSheet.Name = "Отложено_расход" Then Me.MultiPage1.Value = 2
+If ActiveSheet.Name = "Приход" Then Me.MultiPage1.Value = 3
+If ActiveSheet.Name = "Отложено_приход" Then Me.MultiPage1.Value = 4
+If ActiveSheet.Name = "Склад" Then Me.MultiPage1.Value = 5
 End Sub
 
 Private Sub MultiPage1_Change()
 With Me.MultiPage1
-If .Value = 0 Then Sheets("Р“Р»Р°РІРЅР°СЏ").Select
-If .Value = 1 Then Sheets("Р Р°СЃС…РѕРґ").Select
-If .Value = 2 Then Sheets("РћС‚Р»РѕР¶РµРЅРѕ_СЂР°СЃС…РѕРґ").Select
-If .Value = 3 Then Sheets("РџСЂРёС…РѕРґ").Select
-If .Value = 4 Then Sheets("РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ").Select
-If .Value = 5 Then Sheets("РЎРєР»Р°Рґ").Select
+If .Value = 0 Then Sheets("Главная").Select
+If .Value = 1 Then Sheets("Расход").Select
+If .Value = 2 Then Sheets("Отложено_расход").Select
+If .Value = 3 Then Sheets("Приход").Select
+If .Value = 4 Then Sheets("Отложено_приход").Select
+If .Value = 5 Then Sheets("Склад").Select
 End With
 End Sub
 

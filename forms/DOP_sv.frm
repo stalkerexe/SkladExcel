@@ -1,11 +1,11 @@
-п»їVERSION 5.00
+VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} DOP_sv 
-   Caption         =   "РћС‚Р»РѕР¶РµРЅРЅС‹Рµ РЅР°РєР»Р°РґРЅС‹Рµ"
+   Caption         =   "Отложенные накладные"
    ClientHeight    =   1560
    ClientLeft      =   45
    ClientTop       =   390
    ClientWidth     =   3675
-   OleObjectBlob   =   "DOP_sv.frm.frx":0000
+   OleObjectBlob   =   "DOP_sv.frx":0000
    ShowModal       =   0   'False
    StartUpPosition =   1  'CenterOwner
 End
@@ -19,12 +19,12 @@ Const n = 2
 Private Sub cm_1_Click()
 Unload Me
 DoEvents
-Sheets("РћС‚Р»РѕР¶РµРЅРѕ_СЂР°СЃС…РѕРґ").Select
+Sheets("Отложено_расход").Select
 End Sub
 Private Sub cm_2_Click()
 Unload Me
 DoEvents
-Sheets("РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ").Select
+Sheets("Отложено_приход").Select
 End Sub
 Private Sub UserForm_Initialize()
 On Error Resume Next

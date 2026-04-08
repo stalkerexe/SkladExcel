@@ -1,10 +1,10 @@
-п»їVERSION 5.00
+VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} Form_ 
    ClientHeight    =   7275
    ClientLeft      =   45
    ClientTop       =   390
    ClientWidth     =   6990
-   OleObjectBlob   =   "Form_.frm.frx":0000
+   OleObjectBlob   =   "Form_.frx":0000
    ShowModal       =   0   'False
    StartUpPosition =   1  'CenterOwner
 End
@@ -45,9 +45,9 @@ End Sub
 
 Private Sub lb_nm_Click()
 On Error Resume Next
-Waite.Show: Waite.Label1.Caption = "РРЅС‚РµСЂРЅРµС‚ СЃРѕРµРґРёРЅРµРЅРёРµ...": DoEvents
+Waite.Show: Waite.Label1.Caption = "Интернет соединение...": DoEvents
 ThisWorkbook.FollowHyperlink "https://sklad-excel.ru/uchet-prodaj/"
-If Err Then Unload Waite: DoEvents: MsgBox "РРЅС‚РµСЂРЅРµС‚ РЅРµ РїРѕРґРєР»СЋС‡РµРЅ!", 48, " РРЅС‚РµСЂРЅРµС‚-РџРѕРґРєР»СЋС‡РµРЅРёРµ"
+If Err Then Unload Waite: DoEvents: MsgBox "Интернет не подключен!", 48, " Интернет-Подключение"
 Unload Waite
 End Sub
 
@@ -59,9 +59,9 @@ End Sub
 
 Private Sub lb_cn_Click()
 On Error Resume Next
-Waite.Show: Waite.Label1.Caption = "РРЅС‚РµСЂРЅРµС‚ СЃРѕРµРґРёРЅРµРЅРёРµ...": DoEvents
+Waite.Show: Waite.Label1.Caption = "Интернет соединение...": DoEvents
 ThisWorkbook.FollowHyperlink "https://sklad-excel.ru/price/"
-If Err Then Unload Waite: DoEvents: MsgBox "РРЅС‚РµСЂРЅРµС‚ РЅРµ РїРѕРґРєР»СЋС‡РµРЅ!", 48, " РРЅС‚РµСЂРЅРµС‚-РџРѕРґРєР»СЋС‡РµРЅРёРµ"
+If Err Then Unload Waite: DoEvents: MsgBox "Интернет не подключен!", 48, " Интернет-Подключение"
 Unload Waite
 End Sub
 Private Sub lb_cn_MouseMove(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
@@ -72,9 +72,9 @@ End Sub
 
 Private Sub lb_me_Click()
 On Error Resume Next
-Waite.Show: Waite.Label1.Caption = "РРЅС‚РµСЂРЅРµС‚ СЃРѕРµРґРёРЅРµРЅРёРµ...": DoEvents
+Waite.Show: Waite.Label1.Caption = "Интернет соединение...": DoEvents
 ThisWorkbook.FollowHyperlink "https://sklad-excel.ru/me/"
-If Err Then Unload Waite: DoEvents: MsgBox "РРЅС‚РµСЂРЅРµС‚ РЅРµ РїРѕРґРєР»СЋС‡РµРЅ!", 48, " РРЅС‚РµСЂРЅРµС‚-РџРѕРґРєР»СЋС‡РµРЅРёРµ"
+If Err Then Unload Waite: DoEvents: MsgBox "Интернет не подключен!", 48, " Интернет-Подключение"
 Unload Waite
 End Sub
 

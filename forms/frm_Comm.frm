@@ -1,11 +1,11 @@
-п»їVERSION 5.00
+VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} frm_Comm 
-   Caption         =   "РџСЂРёРјРµС‡Р°РЅРёРµ"
+   Caption         =   "Примечание"
    ClientHeight    =   2640
    ClientLeft      =   45
    ClientTop       =   390
    ClientWidth     =   5415
-   OleObjectBlob   =   "frm_Comm.frm.frx":0000
+   OleObjectBlob   =   "frm_Comm.frx":0000
    ShowModal       =   0   'False
    StartUpPosition =   1  'CenterOwner
 End
@@ -26,10 +26,10 @@ End Sub
 
 Private Sub ent_comm()
 
-        iOperation = tb_sheet.text
+        iOperation = tb_sheet.Text
 
         If iOperation = "pr" Then
-            sheetNm = "РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ"
+            sheetNm = "Отложено_приход"
             cm = pzkComm
             cmNm = pzkNm
             Sheets(sheetNm).Select
@@ -37,7 +37,7 @@ Private Sub ent_comm()
         End If
         
         If iOperation = "rs" Then
-            sheetNm = "РћС‚Р»РѕР¶РµРЅРѕ_СЂР°СЃС…РѕРґ"
+            sheetNm = "Отложено_расход"
             cm = zkComm
             cmNm = zkNm
             Sheets(sheetNm).Select
@@ -54,8 +54,8 @@ End Sub
 Private Sub dann()
         On Error Resume Next
         With Me
-            marker = .tb_mk.text
-            sComm = .tb_comm.text
+            marker = .tb_mk.Text
+            sComm = .tb_comm.Text
             iRow = .tb_row.Value
         End With
 End Sub
@@ -106,7 +106,7 @@ Private Sub UserForm_Initialize()
 On Error Resume Next
 Me.StartUpPosition = 0
 Me.Top = 200
-If ThisWorkbook.ActiveSheet.Name = "РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ" Then
+If ThisWorkbook.ActiveSheet.Name = "Отложено_приход" Then
 Me.Left = Cells(2, pzkComm).Left
 Else
 Me.Left = Cells(2, zkComm).Left
@@ -121,6 +121,6 @@ End Sub
 Private Sub tb_comm_KeyDown(ByVal KeyCode As MSForms.ReturnInteger, ByVal Shift As Integer)
         If KeyCode = 13 Then
             KeyCode = 0
-            tb_comm.text = tb_comm.text & vbCrLf
+            tb_comm.Text = tb_comm.Text & vbCrLf
         End If
 End Sub

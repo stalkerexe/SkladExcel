@@ -1,10 +1,10 @@
-п»їVERSION 5.00
+VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} frm_ZVK 
    ClientHeight    =   8265.001
    ClientLeft      =   30
    ClientTop       =   390
    ClientWidth     =   17265
-   OleObjectBlob   =   "frm_ZVK.frm.frx":0000
+   OleObjectBlob   =   "frm_ZVK.frx":0000
    ShowModal       =   0   'False
    StartUpPosition =   1  'CenterOwner
 End
@@ -119,7 +119,7 @@ Private Sub OK_Click()
         Call proverka_vz
         
         If iCol = 0 Then
-            MsgBox "РќРµ РІС‹Р±СЂР°РЅС‹ РїРѕР·РёС†РёРё РґР»СЏ РІРѕР·РІСЂР°С‚Р°!", 64, "Р’РѕР·РІСЂР°С‚ РЅР° СЃРєР»Р°Рґ"
+            MsgBox "Не выбраны позиции для возврата!", 64, "Возврат на склад"
             Exit Sub
         End If
         
@@ -142,7 +142,7 @@ End Sub
 
 Private Sub cmb_Print_Click()
         Call unload_menu_button
-        marker = tb_mk.text:  If marker = "" Then Exit Sub
+        marker = tb_mk.Text:  If marker = "" Then Exit Sub
         Call printZVK
 End Sub
 
@@ -363,13 +363,13 @@ End Sub
 Private Sub do_show_menu_button()
         On Error Resume Next
         
-        If tb_what.text = "РћС‚РіСЂСѓР·РєР°" Then
+        If tb_what.Text = "Отгрузка" Then
             iHg = 80
         Else
             iHg = 60
         End If
         
-        If tb_what.text = "Р’РѕР·РІСЂР°С‚" Then iHg = 40
+        If tb_what.Text = "Возврат" Then iHg = 40
         
         Me.Frame_menu.Height = iHg
 

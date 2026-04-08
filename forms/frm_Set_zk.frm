@@ -1,11 +1,11 @@
-п»їVERSION 5.00
+VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} frm_Set_zk 
-   Caption         =   "РќР°СЃС‚СЂРѕР№РєРё С„РѕСЂРјР°С‚Р°"
+   Caption         =   "Настройки формата"
    ClientHeight    =   2685
    ClientLeft      =   45
    ClientTop       =   390
    ClientWidth     =   4080
-   OleObjectBlob   =   "frm_Set_zk.frm.frx":0000
+   OleObjectBlob   =   "frm_Set_zk.frx":0000
    ShowModal       =   0   'False
    StartUpPosition =   1  'CenterOwner
 End
@@ -25,9 +25,9 @@ Private Sub OK_Click()
 
         With ThisWorkbook.Sheets("setting")
         
-            .Range("o24").Value = tb_rz.text
+            .Range("o24").Value = tb_rz.Text
             
-            .Range("o26").Value = tb_m.text
+            .Range("o26").Value = tb_m.Text
             
             If CheckBox_rz.Value = True Then .Range("o25").Value = 1
             If CheckBox_rz.Value = False Then .Range("o25").Value = 0
@@ -54,10 +54,10 @@ Private Sub setting_m()
 
     iMsh = ThisWorkbook.Sheets("setting").Range("o26").Value
 
-    Sheets("РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ").Select
+    Sheets("Отложено_приход").Select
     ActiveWindow.Zoom = iMsh
 
-    Sheets("РћС‚Р»РѕР¶РµРЅРѕ_СЂР°СЃС…РѕРґ").Select
+    Sheets("Отложено_расход").Select
     ActiveWindow.Zoom = iMsh
 
 End Sub
@@ -73,9 +73,9 @@ Private Sub load_dann()
 
         With ThisWorkbook.Sheets("setting")
         
-            tb_rz.text = .Range("o24").Value
+            tb_rz.Text = .Range("o24").Value
             
-            tb_m.text = .Range("o26").Value
+            tb_m.Text = .Range("o26").Value
             
             If .Range("o25").Value = 1 Then CheckBox_rz.Value = True
             If .Range("o25").Value = 0 Then CheckBox_rz.Value = False
@@ -132,11 +132,11 @@ comb_m.DropDown
 End Sub
 
 Private Sub comb_rz_Click()
-tb_rz.text = comb_rz.Value
+tb_rz.Text = comb_rz.Value
 End Sub
 
 Private Sub comb_m_Click()
-tb_m.text = comb_m.Value
+tb_m.Text = comb_m.Value
 End Sub
 
 

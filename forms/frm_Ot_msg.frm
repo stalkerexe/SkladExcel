@@ -1,11 +1,11 @@
-ï»¿VERSION 5.00
+VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} frm_Ot_msg 
-   Caption         =   " Ð¡Ð¾Ð·Ð´Ð°Ñ‚ÑŒ Ð¾Ñ‚Ñ‡ÐµÑ‚"
+   Caption         =   " Ñîçäàòü îò÷åò"
    ClientHeight    =   1830
    ClientLeft      =   30
    ClientTop       =   390
    ClientWidth     =   6360
-   OleObjectBlob   =   "frm_Ot_msg.frm.frx":0000
+   OleObjectBlob   =   "frm_Ot_msg.frx":0000
    ShowModal       =   0   'False
    StartUpPosition =   1  'CenterOwner
 End
