@@ -16,12 +16,16 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 
 Private Sub OK_Click()
-        If tb_psv.Text = "" Then
-        MsgBox "Введите данные поставщика!", 64, "Данные"
-        tb_psv.SetFocus
-        Exit Sub
+        If Trim(tb_psv.Text) = "" Then
+            MsgBox "Введите данные поставщика!", vbInformation, "Данные"
+            tb_psv.SetFocus
+            Exit Sub
         End If
-        frm_msg.Show
+
+        If save_psv_to_spr(tb_psv.Text) Then
+            Call refresh_vvod_forms_sources
+            Unload Me
+        End If
 End Sub
 
 
@@ -35,4 +39,3 @@ End Sub
 Private Sub NO_Click()
 Unload Me
 End Sub
-
