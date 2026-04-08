@@ -87,7 +87,7 @@ Private Sub form_show()
         With frm_ZVK
             .lb_vid_nk.Caption = sZg & " ¹"
             .tb_nomer.Caption = VBA.Format(nomer, "00000")
-            .tb_zkz.Text = sZkz
+            .tb_Zkz.Text = sZkz
             .tb_Mnj.Text = sMj
             .tb_Dt.Text = sDt
             .tb_doc.Text = sOsn: If sOsn = "" Then .lb_doc.Visible = False
