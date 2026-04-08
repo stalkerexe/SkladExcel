@@ -18,11 +18,6 @@ Dim skName As String
 Set ws = ThisWorkbook.Sheets(SKLAD_SHEET)
 lastRow = ws.Cells(ws.Rows.Count, SKLAD_COLUMN).End(xlUp).Row
 
-If lastRow < SKLAD_FIRST_ROW Then
-    SeedDefaultWarehouses ws
-    lastRow = ws.Cells(ws.Rows.Count, SKLAD_COLUMN).End(xlUp).Row
-End If
-
 For i = SKLAD_FIRST_ROW To lastRow
     skName = Trim(CStr(ws.Cells(i, SKLAD_COLUMN).Value))
     If skName <> "" Then
@@ -31,25 +26,10 @@ For i = SKLAD_FIRST_ROW To lastRow
         End If
     End If
 Next
-
-If dic_sk.Count = 0 Then SeedDefaultsToDictionary
 Exit Sub
 
 fallback:
 Set dic_sk = CreateObject("Scripting.Dictionary")
-SeedDefaultsToDictionary
-End Sub
-
-Private Sub SeedDefaultWarehouses(ByVal ws As Worksheet)
-ws.Cells(SKLAD_FIRST_ROW, SKLAD_COLUMN).Value = "Материалы"
-ws.Cells(SKLAD_FIRST_ROW + 1, SKLAD_COLUMN).Value = "Металлопрокат"
-ws.Cells(SKLAD_FIRST_ROW + 2, SKLAD_COLUMN).Value = "Спецодежда"
-End Sub
-
-Private Sub SeedDefaultsToDictionary()
-dic_sk.Add dic_sk.Count, "Материалы"
-dic_sk.Add dic_sk.Count, "Металлопрокат"
-dic_sk.Add dic_sk.Count, "Спецодежда"
 End Sub
 
 Private Function DictionaryContainsValue(ByVal d As Object, ByVal valueToFind As String) As Boolean
@@ -61,6 +41,55 @@ For i = 0 To d.Count - 1
     End If
 Next
 End Function
+
+Public Sub LoadSkToControl(ByVal ctr As Object, Optional ByVal selectedName As String = "")
+On Error Resume Next
+
+If ctr Is Nothing Then Exit Sub
+
+Call load_sk
+
+If selectedName = "" Then selectedName = CStr(ctr.Value)
+ctr.Clear
+
+Dim i As Long
+For i = 0 To dic_sk.Count - 1
+    ctr.AddItem dic_sk.Item(i)
+Next
+
+If ctr.ListCount = 0 Then Exit Sub
+
+For i = 0 To ctr.ListCount - 1
+    If StrComp(CStr(ctr.List(i)), selectedName, vbTextCompare) = 0 Then
+        ctr.ListIndex = i
+        Exit Sub
+    End If
+Next
+
+ctr.ListIndex = 0
+End Sub
+
+Public Function IsUserFormLoaded(ByVal formName As String) As Boolean
+Dim frm As Object
+For Each frm In VBA.UserForms
+    If StrComp(frm.Name, formName, vbTextCompare) = 0 Then
+        IsUserFormLoaded = True
+        Exit Function
+    End If
+Next
+End Function
+
+Public Sub RefreshWarehouseSelectors(Optional ByVal selectedName As String = "")
+On Error Resume Next
+
+If IsUserFormLoaded("Form_sklads") Then LoadSkToControl Form_sklads.ListBox1, selectedName
+If IsUserFormLoaded("frm_sk") Then LoadSkToControl frm_sk.ListBox1, selectedName
+If IsUserFormLoaded("frm_ZVK") Then LoadSkToControl frm_ZVK.comb_sk, selectedName
+If IsUserFormLoaded("Praise") Then
+    LoadSkToControl Praise.comb_sk, selectedName
+    LoadSkToControl Praise.comb_sk_set, selectedName
+End If
+End Sub
 
 Public Sub sh_frm_Skidka()
         On Error Resume Next

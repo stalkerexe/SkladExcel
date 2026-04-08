@@ -97,9 +97,7 @@ End Sub
 
 Private Sub load_sklads()
 On Error Resume Next
-ListBox1.AddItem "Материалы"
-ListBox1.AddItem "Металлопрокат"
-ListBox1.AddItem "Спецодежда"
+Call LoadSkToControl(ListBox1)
 End Sub
 
 

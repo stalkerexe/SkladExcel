@@ -139,29 +139,7 @@ End Sub
 
 Private Sub RefreshSkladListUI(ByVal selectedName As String)
 On Error Resume Next
-With Form_sklads.ListBox1
-    .Clear
-End With
-
-Call load_sk
-
-Dim i As Long
-For i = 0 To dic_sk.Count - 1
-    Form_sklads.ListBox1.AddItem dic_sk.Item(i)
-Next
-
-If Form_sklads.ListBox1.ListCount = 0 Then Exit Sub
-
-If selectedName <> "" Then
-    For i = 0 To Form_sklads.ListBox1.ListCount - 1
-        If StrComp(CStr(Form_sklads.ListBox1.List(i)), selectedName, vbTextCompare) = 0 Then
-            Form_sklads.ListBox1.ListIndex = i
-            Exit Sub
-        End If
-    Next
-End If
-
-Form_sklads.ListBox1.ListIndex = 0
+Call RefreshWarehouseSelectors(selectedName)
 End Sub
 
 Private Function NormalizeSkName(ByVal value As String) As String
