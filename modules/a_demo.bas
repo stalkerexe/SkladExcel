@@ -6,12 +6,9 @@ Private Const SKLAD_COLUMN As Long = 27 'Колонка AA
 Private Const SKLAD_FIRST_ROW As Long = 2
 
 Public Sub open_sklad()
-On Error GoTo errHandler
+On Error GoTo ErrHandler
 
-If Form_sklads.ListBox1.ListIndex = -1 Then
-    MsgBox "Выберите склад!", 64, "Склад"
-    Exit Sub
-End If
+If Not EnsureSkladSelected(Form_sklads.ListBox1, "open_sklad") Then Exit Sub
 
 sSk = CStr(Form_sklads.ListBox1.Value)
 Unload Form_sklads
@@ -19,12 +16,12 @@ DoEvents
 Call sklad_show
 Exit Sub
 
-errHandler:
-MsgBox "Не удалось открыть склад: " & Err.Description, 16, "Склад"
+ErrHandler:
+ReportVbaError "open_sklad", Err.Number, Err.Description, "Склад"
 End Sub
 
 Public Sub добавить_склад()
-On Error GoTo errHandler
+On Error GoTo ErrHandler
 
 Dim newName As String
 newName = NormalizeSkName(InputBox("Введите название нового склада:", "Добавить склад"))
@@ -41,17 +38,14 @@ Call load_sk
 RefreshSkladListUI newName
 Exit Sub
 
-errHandler:
-MsgBox "Не удалось добавить склад: " & Err.Description, 16, "Склад"
+ErrHandler:
+ReportVbaError "добавить_склад", Err.Number, Err.Description, "Склад"
 End Sub
 
 Public Sub rename_sk()
-On Error GoTo errHandler
+On Error GoTo ErrHandler
 
-If Form_sklads.ListBox1.ListIndex = -1 Then
-    MsgBox "Выберите склад!", 64, "Склад"
-    Exit Sub
-End If
+If Not EnsureSkladSelected(Form_sklads.ListBox1, "rename_sk") Then Exit Sub
 
 Dim oldName As String
 Dim newName As String
@@ -82,17 +76,14 @@ RefreshSkladListUI newName
 MsgBox "Склад переименован.", 64, "Склад"
 Exit Sub
 
-errHandler:
-MsgBox "Не удалось переименовать склад: " & Err.Description, 16, "Склад"
+ErrHandler:
+ReportVbaError "rename_sk", Err.Number, Err.Description, "Склад"
 End Sub
 
 Public Sub delete_sk()
-On Error GoTo errHandler
+On Error GoTo ErrHandler
 
-If Form_sklads.ListBox1.ListIndex = -1 Then
-    MsgBox "Выберите склад!", 64, "Склад"
-    Exit Sub
-End If
+If Not EnsureSkladSelected(Form_sklads.ListBox1, "delete_sk") Then Exit Sub
 
 Dim oldName As String
 oldName = NormalizeSkName(CStr(Form_sklads.ListBox1.Value))
@@ -133,14 +124,28 @@ RefreshSkladListUI ""
 MsgBox "Склад удалён.", 64, "Склад"
 Exit Sub
 
-errHandler:
-MsgBox "Не удалось удалить склад: " & Err.Description, 16, "Склад"
+ErrHandler:
+ReportVbaError "delete_sk", Err.Number, Err.Description, "Склад"
 End Sub
 
 Private Sub RefreshSkladListUI(ByVal selectedName As String)
 On Error Resume Next
 Call RefreshWarehouseSelectors(selectedName)
 End Sub
+
+Private Function EnsureSkladSelected(ByVal lb As Object, ByVal procName As String) As Boolean
+If lb Is Nothing Then
+    MsgBox procName & ": список складов недоступен.", vbCritical, "Склад"
+    Exit Function
+End If
+
+If lb.ListIndex = -1 Then
+    MsgBox "Выберите склад!", 64, "Склад"
+    Exit Function
+End If
+
+EnsureSkladSelected = True
+End Function
 
 Private Function NormalizeSkName(ByVal value As String) As String
 NormalizeSkName = Trim(Replace(Replace(value, vbCr, " "), vbLf, " "))
@@ -157,7 +162,10 @@ Next
 End Function
 
 Private Sub AppendSkladToStore(ByVal skladName As String)
-With ThisWorkbook.Sheets(SKLAD_SHEET)
+Dim ws As Worksheet
+If Not RequireSheet(SKLAD_SHEET, ws, "AppendSkladToStore") Then Exit Sub
+
+With ws
     Dim lastRow As Long
     lastRow = .Cells(.Rows.Count, SKLAD_COLUMN).End(xlUp).Row
     If lastRow < SKLAD_FIRST_ROW Then lastRow = SKLAD_FIRST_ROW - 1
@@ -167,7 +175,10 @@ End With
 End Sub
 
 Private Function UpdateSkladNameInStore(ByVal oldName As String, ByVal newName As String) As Boolean
-With ThisWorkbook.Sheets(SKLAD_SHEET)
+Dim ws As Worksheet
+If Not RequireSheet(SKLAD_SHEET, ws, "UpdateSkladNameInStore") Then Exit Function
+
+With ws
     Dim lastRow As Long
     Dim i As Long
 
@@ -185,7 +196,10 @@ End With
 End Function
 
 Private Function DeleteSkladFromStore(ByVal oldName As String) As Boolean
-With ThisWorkbook.Sheets(SKLAD_SHEET)
+Dim ws As Worksheet
+If Not RequireSheet(SKLAD_SHEET, ws, "DeleteSkladFromStore") Then Exit Function
+
+With ws
     Dim lastRow As Long
     Dim i As Long
 
@@ -212,8 +226,12 @@ CountWarehouseMoves = CountWarehouseMoves + CountMatchesInSheetColumn("arh_vzz",
 End Function
 
 Private Function CountMatchesInSheetColumn(ByVal sheetName As String, ByVal colIndex As Long, ByVal skName As String) As Long
-On Error GoTo done
-With ThisWorkbook.Sheets(sheetName)
+On Error GoTo ErrHandler
+
+Dim ws As Worksheet
+If Not RequireSheet(sheetName, ws, "CountMatchesInSheetColumn") Then Exit Function
+
+With ws
     Dim lastRow As Long
     Dim i As Long
     lastRow = .Cells(.Rows.Count, colIndex).End(xlUp).Row
@@ -223,7 +241,10 @@ With ThisWorkbook.Sheets(sheetName)
         End If
     Next
 End With
-done:
+
+Exit Function
+ErrHandler:
+ReportVbaError "CountMatchesInSheetColumn", Err.Number, Err.Description, "Склад"
 End Function
 
 Private Sub ReplaceWarehouseInDocs(ByVal oldName As String, ByVal newName As String)
@@ -235,8 +256,12 @@ ReplaceWarehouseInSheetColumn "arh_vzz", arhSk, oldName, newName
 End Sub
 
 Private Sub ReplaceWarehouseInSheetColumn(ByVal sheetName As String, ByVal colIndex As Long, ByVal oldName As String, ByVal newName As String)
-On Error GoTo done
-With ThisWorkbook.Sheets(sheetName)
+On Error GoTo ErrHandler
+
+Dim ws As Worksheet
+If Not RequireSheet(sheetName, ws, "ReplaceWarehouseInSheetColumn") Then Exit Sub
+
+With ws
     Dim lastRow As Long
     Dim i As Long
     lastRow = .Cells(.Rows.Count, colIndex).End(xlUp).Row
@@ -246,7 +271,10 @@ With ThisWorkbook.Sheets(sheetName)
         End If
     Next
 End With
-done:
+
+Exit Sub
+ErrHandler:
+ReportVbaError "ReplaceWarehouseInSheetColumn", Err.Number, Err.Description, "Склад"
 End Sub
 
 Private Function AskMigrationTarget(ByVal oldName As String) As String
@@ -282,12 +310,3 @@ End If
 
 AskMigrationTarget = candidate
 End Function
-
-
-
-
-
-
-
-
-

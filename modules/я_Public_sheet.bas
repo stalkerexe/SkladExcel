@@ -18,6 +18,24 @@ If showError Then
 End If
 End Function
 
+Public Function RequireSheet(ByVal sheetName As String, ByRef targetSheet As Worksheet, Optional ByVal procName As String = "") As Boolean
+Set targetSheet = GetSheetByName(sheetName, False)
+If targetSheet Is Nothing Then
+    If procName = "" Then procName = "RequireSheet"
+    MsgBox procName & ": не найден лист '" & sheetName & "'.", vbCritical, "Ошибка"
+    Exit Function
+End If
+
+RequireSheet = True
+End Function
+
+Public Sub ReportVbaError(ByVal procName As String, ByVal errNumber As Long, ByVal errDescription As String, Optional ByVal title As String = "Ошибка")
+Dim msg As String
+msg = procName & ": [" & CStr(errNumber) & "] " & errDescription
+Debug.Print msg
+MsgBox msg, vbCritical, title
+End Sub
+
 
 Public Const skGr As Integer = 2
 Public Const skNm As Integer = 4
@@ -153,7 +171,3 @@ Public Const bzTlf As Integer = 4
 
 Public Const bzPsv As Integer = 2
 Public Const bzMj As Integer = 2
-
-
-
-
