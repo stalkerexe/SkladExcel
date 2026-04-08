@@ -14,6 +14,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Option Explicit
 
 
 Private Sub CommandButton1_Click()
@@ -80,6 +81,8 @@ End Sub
 Private Sub load()
 On Error Resume Next
 Call load_sk
+ListBox1.Clear
+Dim i As Long
 For i = 0 To dic_sk.Count - 1
 ListBox1.AddItem dic_sk.Item(i)
 Next
