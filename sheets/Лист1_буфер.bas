@@ -1,4 +1,4 @@
-' Component: Λθρς1  [αστεπ]
+ο»Ώ' Component: Π›ΠΈΡΡ‚1  [Π±ΡƒΡ„ΠµΡ€]
 ' Type: Document (Sheet / ThisWorkbook)
 Option Explicit
 

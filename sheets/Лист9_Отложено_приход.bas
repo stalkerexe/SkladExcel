@@ -1,4 +1,4 @@
-' Component: Лист9  [Отложено_приход]
+п»ї' Component: Р›РёСЃС‚9  [РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ]
 ' Type: Document (Sheet / ThisWorkbook)
 Option Explicit
 
@@ -43,25 +43,25 @@ With Application.CommandBars.Add(Name:="MyContextMenu", Position:=msoBarPopup, T
 With .Controls.Add(Type:=msoControlButton)
 .Style = msoButtonIconAndCaption
 .FaceId = 162
-.Caption = "Редактировать"
+.Caption = "Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ"
 .OnAction = "zv_pedactirov_pr"
 End With
 With .Controls.Add(Type:=msoControlButton)
 .Style = msoButtonIconAndCaption
 .FaceId = 4
-.Caption = "Печать"
+.Caption = "РџРµС‡Р°С‚СЊ"
 .OnAction = "printZk_pr"
 End With
 With .Controls.Add(Type:=msoControlButton)
 .Style = msoButtonIconAndCaption
 .FaceId = 3160
-.Caption = "Приходовать"
+.Caption = "РџСЂРёС…РѕРґРѕРІР°С‚СЊ"
 .OnAction = "prZk"
 End With
 With .Controls.Add(Type:=msoControlButton)
 .Style = msoButtonIconAndCaption
 .FaceId = 21
-.Caption = "Удалить приход"
+.Caption = "РЈРґР°Р»РёС‚СЊ РїСЂРёС…РѕРґ"
 .OnAction = "prDelete"
 End With
 End With

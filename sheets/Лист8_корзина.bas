@@ -1,4 +1,4 @@
-' Component: Лист8  [корзина]
+п»ї' Component: Р›РёСЃС‚8  [РєРѕСЂР·РёРЅР°]
 ' Type: Document (Sheet / ThisWorkbook)
 Option Explicit
 

@@ -1,4 +1,4 @@
-' Component: Лист10  [Главная]
+п»ї' Component: Р›РёСЃС‚10  [Р“Р»Р°РІРЅР°СЏ]
 ' Type: Document (Sheet / ThisWorkbook)
 Option Explicit
 

@@ -1,4 +1,4 @@
-' Component: Лист6  [Отложено_расход]
+п»ї' Component: Р›РёСЃС‚6  [РћС‚Р»РѕР¶РµРЅРѕ_СЂР°СЃС…РѕРґ]
 ' Type: Document (Sheet / ThisWorkbook)
 Option Explicit
 
@@ -30,13 +30,13 @@ With Application.CommandBars.Add(Name:="MyContextMenu", Position:=msoBarPopup, T
 With .Controls.Add(Type:=msoControlButton)
 .Style = msoButtonIconAndCaption
 .FaceId = 162
-.Caption = "Редактировать"
+.Caption = "Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ"
 .OnAction = "zv_pedactirov_"
 End With
 With .Controls.Add(Type:=msoControlButton)
 .Style = msoButtonIconAndCaption
 .FaceId = 4
-.Caption = "Печать"
+.Caption = "РџРµС‡Р°С‚СЊ"
 .OnAction = "printZk"
 End With
 
@@ -44,13 +44,13 @@ End With
 With .Controls.Add(Type:=msoControlButton)
 .Style = msoButtonIconAndCaption
 .FaceId = 3160
-.Caption = "Отгрузить"
+.Caption = "РћС‚РіСЂСѓР·РёС‚СЊ"
 .OnAction = "otgr_zk"
 End With
 With .Controls.Add(Type:=msoControlButton)
 .Style = msoButtonIconAndCaption
 .FaceId = 21
-.Caption = "Удалить заказ"
+.Caption = "РЈРґР°Р»РёС‚СЊ Р·Р°РєР°Р·"
 .OnAction = "delete_zv"
 End With
 End With

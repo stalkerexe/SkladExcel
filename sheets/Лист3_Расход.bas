@@ -1,4 +1,4 @@
-' Component: Лист3  [Расход]
+п»ї' Component: Р›РёСЃС‚3  [Р Р°СЃС…РѕРґ]
 ' Type: Document (Sheet / ThisWorkbook)
 Option Explicit
 
@@ -24,7 +24,7 @@ With Application.CommandBars.Add(Name:="MyContextMenu_zv", Position:=msoBarPopup
 With .Controls.Add(Type:=msoControlButton)
 .Style = msoButtonIconAndCaption
 .FaceId = 21
-.Caption = "Удалить позицию"
+.Caption = "РЈРґР°Р»РёС‚СЊ РїРѕР·РёС†РёСЋ"
 .OnAction = "del_poz_zv"
 End With
 End With
@@ -38,18 +38,18 @@ If Target.Row < rwZv Then Exit Sub
 r = Cells(Rows.Count, zvNm).End(xlUp).Row
 ra = Target.Row
 If Not Intersect(Target, Range(Cells(rwZv, zvCol), Cells(r, zvCnR))) Is Nothing Then
-Call проверка_остатков(ra)
+Call РїСЂРѕРІРµСЂРєР°_РѕСЃС‚Р°С‚РєРѕРІ(ra)
 End If
 End Sub
 
-Private Function проверка_остатков(i As Integer)
+Private Function РїСЂРѕРІРµСЂРєР°_РѕСЃС‚Р°С‚РєРѕРІ(i As Integer)
 On Error Resume Next
 If Sheets("setting").Range("i4") = 1 Then
 If Cells(i, zvCol) > Cells(i, zvOst) Then
 Cells(i, zvCol) = Cells(i, zvOst)
 Cells(i, zvCol).Select
-MsgBox "Превышен лимит остатков склада!" & Chr(10) & Chr(10) & _
-"   На складе осталось: " & Cells(i, zvOst) & " шт", 64, "Лимит"
+MsgBox "РџСЂРµРІС‹С€РµРЅ Р»РёРјРёС‚ РѕСЃС‚Р°С‚РєРѕРІ СЃРєР»Р°РґР°!" & Chr(10) & Chr(10) & _
+"   РќР° СЃРєР»Р°РґРµ РѕСЃС‚Р°Р»РѕСЃСЊ: " & Cells(i, zvOst) & " С€С‚", 64, "Р›РёРјРёС‚"
 Exit Function
 End If
 End If
@@ -69,7 +69,7 @@ End Sub
 Private Sub Worksheet_SelectionChange(ByVal Target As Range)
         On Error Resume Next
         Call unload_mn_mn
-        If ThisWorkbook.Sheets("Расход").Shapes("mn_vid").Visible = True Then Call unload_mn_vid
+        If ThisWorkbook.Sheets("Р Р°СЃС…РѕРґ").Shapes("mn_vid").Visible = True Then Call unload_mn_vid
         
         If Target.Count > 1 Then Exit Sub
         

@@ -1,4 +1,4 @@
-' Component: Лист4  [Приход]
+п»ї' Component: Р›РёСЃС‚4  [РџСЂРёС…РѕРґ]
 ' Type: Document (Sheet / ThisWorkbook)
 Option Explicit
 
@@ -43,7 +43,7 @@ With Application.CommandBars.Add(Name:="MyContextMenu_pr", Position:=msoBarPopup
 With .Controls.Add(Type:=msoControlButton)
 .Style = msoButtonIconAndCaption
 .FaceId = 21
-.Caption = "Удалить позицию"
+.Caption = "РЈРґР°Р»РёС‚СЊ РїРѕР·РёС†РёСЋ"
 .OnAction = "del_poz_pr"
 End With
 End With
@@ -59,11 +59,11 @@ If Target.Row < rwZv Then Exit Sub
 r = Cells(Rows.Count, prNm).End(xlUp).Row
 ra = Target.Row
 If Not Intersect(Target, Range(Cells(rwZv, prCol), Cells(r, prCnR))) Is Nothing Then
-Call проверка_остатков(ra)
+Call РїСЂРѕРІРµСЂРєР°_РѕСЃС‚Р°С‚РєРѕРІ(ra)
 End If
 End Sub
 
-Private Function проверка_остатков(i As Integer)
+Private Function РїСЂРѕРІРµСЂРєР°_РѕСЃС‚Р°С‚РєРѕРІ(i As Integer)
 On Error Resume Next
 r = Cells(Rows.Count, prNm).End(xlUp).Row
 Cells(i, prSm) = Cells(i, prCol) * Cells(i, prCnZ)

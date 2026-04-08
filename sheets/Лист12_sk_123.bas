@@ -1,4 +1,4 @@
-' Component: Лист12  [sk_123]
+п»ї' Component: Р›РёСЃС‚12  [sk_123]
 ' Type: Document (Sheet / ThisWorkbook)
 Option Explicit
 
