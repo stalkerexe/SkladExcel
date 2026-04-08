@@ -37,13 +37,18 @@ Application.DisplayFormulaBar = True
 ActiveWindow.DisplayHeadings = True
 End Sub
 Public Sub ekr()
-On Error Resume Next
+Dim skladSheet As Worksheet
+
 If Application.DisplayFullScreen = False Then
 Call polnekr
 Else
 Call verekr
 End If
-Sheets("Cклад").Select
+
+Set skladSheet = GetSheetByName(SHEET_SKLAD)
+If skladSheet Is Nothing Then Exit Sub
+
+skladSheet.Select
 End Sub
 Public Sub AutoFilter_delete()
 On Error Resume Next
