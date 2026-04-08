@@ -80,10 +80,5 @@ Call load
 End Sub
 Private Sub load()
 On Error Resume Next
-Call load_sk
-ListBox1.Clear
-Dim i As Long
-For i = 0 To dic_sk.Count - 1
-ListBox1.AddItem dic_sk.Item(i)
-Next
+Call LoadSkToControl(ListBox1)
 End Sub

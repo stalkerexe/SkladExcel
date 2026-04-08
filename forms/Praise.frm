@@ -436,18 +436,8 @@ Private Sub load_all()
 End Sub
 
 Private Sub load_sklads()
-
-        With comb_sk
-        .AddItem "Материалы"
-        .AddItem "Металлопрокат"
-        .AddItem "Спецодежда"
-        End With
-            
-        With comb_sk_set
-        .AddItem "Материалы"
-        .AddItem "Металлопрокат"
-        .AddItem "Спецодежда"
-        End With
+        Call LoadSkToControl(comb_sk)
+        Call LoadSkToControl(comb_sk_set)
 
 End Sub
 

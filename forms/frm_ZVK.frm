@@ -209,10 +209,7 @@ End Sub
 
 Private Sub load_sklads()
         On Error Resume Next
-        Call load_sk
-        For i = 0 To dic_sk.Count - 1
-        comb_sk.AddItem dic_sk.Item(i)
-        Next
+        Call LoadSkToControl(comb_sk)
 End Sub
 
 
