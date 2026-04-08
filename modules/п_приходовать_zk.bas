@@ -1,4 +1,4 @@
-п»їAttribute VB_Name = "Рї_РїСЂРёС…РѕРґРѕРІР°С‚СЊ_zk"
+Attribute VB_Name = "п_приходовать_zk"
 Option Explicit
 
 
@@ -7,7 +7,7 @@ Public Sub prZk()
         On Error Resume Next
         iRow = ActiveCell.Row
         Range(Cells(iRow, 3), Cells(iRow, 12)).Select
-        If MsgBox("РћРїСЂРёС…РѕРґРѕРІР°С‚СЊ РЅР°РєР»Р°РґРЅСѓСЋ в„– " & Cells(iRow, zkNom) & ": " & Chr(34) & Cells(iRow, zkNm) & Chr(34) & "?", vbOKCancel + vbQuestion, "РџСЂРёС…РѕРґ") = vbCancel Then Exit Sub
+        If MsgBox("Оприходовать накладную № " & Cells(iRow, zkNom) & ": " & Chr(34) & Cells(iRow, zkNm) & Chr(34) & "?", vbOKCancel + vbQuestion, "Приход") = vbCancel Then Exit Sub
         Call prZk_do
 End Sub
 
@@ -22,12 +22,12 @@ Private Sub do_otg()
         
         Call this_row_mk:   Waite.Label2.Caption = "diap_zk_this...": DoEvents
         Call diap_zk_this:  Waite.Label2.Caption = "doOst...": DoEvents
-        Call doOst:         Waite.Label2.Caption = "СЃРѕС…СЂР°РЅРёС‚СЊ_РЅР°РєР»Р°РґРЅСѓСЋ...": DoEvents
+        Call doOst:         Waite.Label2.Caption = "сохранить_накладную...": DoEvents
         Call svPr:          Waite.Label2.Caption = "delete_zk_in_file...": DoEvents
         Call delete_zk_in_file:  Waite.Label2.Caption = "clearBf...": DoEvents
-        Call clearBf:       Waite.Label2.Caption = "РѕР±РЅРѕРІРёС‚СЊ РґР°РЅРЅС‹Рµ...": DoEvents
+        Call clearBf:       Waite.Label2.Caption = "обновить данные...": DoEvents
 
-        Call do_sklad_obnovitt:   Waite.Label2.Caption = "РѕР±РЅРѕРІРёС‚СЊ_РґР°РЅРЅС‹Рµ...": DoEvents
+        Call do_sklad_obnovitt:   Waite.Label2.Caption = "обновить_данные...": DoEvents
 
         Erase mk: iOperation = "": iOperation2 = ""
         
@@ -36,7 +36,7 @@ End Sub
 Private Sub this_row_mk()
         iRow = ActiveCell.Row
         marker = Cells(iRow, 1)
-        shNm = "РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ"
+        shNm = "Отложено_приход"
         iOperation = "zk_pr"
 End Sub
 

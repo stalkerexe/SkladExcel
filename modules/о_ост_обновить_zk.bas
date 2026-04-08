@@ -1,11 +1,11 @@
-п»їAttribute VB_Name = "Рѕ_РѕСЃС‚_РѕР±РЅРѕРІРёС‚СЊ_zk"
+Attribute VB_Name = "о_ост_обновить_zk"
 Option Explicit
 Dim cc()
 
 Public Sub ost_sk_zk()
         On Error Resume Next
         Call arr_this
-        Call РїРµСЂРµР±СЂР°С‚СЊ_sk
+        Call перебрать_sk
         Call resize_this_ost
 End Sub
 
@@ -14,12 +14,12 @@ Private Sub arr_this()
         
         row1 = 5
         
-        If shNm = "РћС‚Р»РѕР¶РµРЅРѕ_СЂР°СЃС…РѕРґ" Then
+        If shNm = "Отложено_расход" Then
             row2 = ThisWorkbook.Sheets(shNm).Cells(Rows.Count, zkNm).End(xlUp).Row + 1
             Call arr_zk_this
         End If
         
-        If shNm = "РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ" Then
+        If shNm = "Отложено_приход" Then
             row2 = ThisWorkbook.Sheets(shNm).Cells(Rows.Count, pzkNm).End(xlUp).Row + 1
             Call arr_zk_this_pr
         End If
@@ -31,17 +31,17 @@ End Sub
 Private Sub resize_this_ost()
         On Error Resume Next
         
-        If shNm = "РћС‚Р»РѕР¶РµРЅРѕ_СЂР°СЃС…РѕРґ" Then
+        If shNm = "Отложено_расход" Then
             ThisWorkbook.Sheets(shNm).Cells(5, zkOst).Resize(UBound(cc), 1) = cc
         End If
         
-        If shNm = "РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ" Then
+        If shNm = "Отложено_приход" Then
             ThisWorkbook.Sheets(shNm).Cells(5, pzkOst).Resize(UBound(cc), 1) = cc
         End If
 
 End Sub
 
-Private Sub РїРµСЂРµР±СЂР°С‚СЊ_sk()
+Private Sub перебрать_sk()
         On Error Resume Next
         Call load_sk
         For n = 0 To dic_sk.Count - 1

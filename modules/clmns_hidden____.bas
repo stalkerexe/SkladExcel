@@ -1,4 +1,4 @@
-п»їAttribute VB_Name = "clmns_hidden____"
+Attribute VB_Name = "clmns_hidden____"
 
 
 Public Sub clmns_hidden()
@@ -6,7 +6,7 @@ Public Sub clmns_hidden()
         Call do_clmns_hidden
         Call doScreenOn
         Unload frm_Set: DoEvents
-        MsgBox "   Р’С‹РїРѕР»РЅРµРЅРѕ!     ", 64, "РћРїС†РёРё"
+        MsgBox "   Выполнено!     ", 64, "Опции"
 End Sub
 
 Private Sub do_clmns_hidden()
@@ -21,11 +21,11 @@ Private Sub hidden_clm()
         Else
         flag_hidden = True
         End If
-        ThisWorkbook.Sheets("РџСЂРёС…РѕРґ").Cells(1, prCod).EntireColumn.Hidden = flag_hidden
-        ThisWorkbook.Sheets("Р Р°СЃС…РѕРґ").Cells(1, zvCod).EntireColumn.Hidden = flag_hidden
-        ThisWorkbook.Sheets("РћС‚Р»РѕР¶РµРЅРѕ_СЂР°СЃС…РѕРґ").Cells(1, zkCod).EntireColumn.Hidden = flag_hidden
-        ThisWorkbook.Sheets("РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ").Cells(1, pzkCod).EntireColumn.Hidden = flag_hidden
-        ThisWorkbook.Sheets("РЎРєР»Р°Рґ").Cells(1, skCod).EntireColumn.Hidden = flag_hidden
+        ThisWorkbook.Sheets("Приход").Cells(1, prCod).EntireColumn.Hidden = flag_hidden
+        ThisWorkbook.Sheets("Расход").Cells(1, zvCod).EntireColumn.Hidden = flag_hidden
+        ThisWorkbook.Sheets("Отложено_расход").Cells(1, zkCod).EntireColumn.Hidden = flag_hidden
+        ThisWorkbook.Sheets("Отложено_приход").Cells(1, pzkCod).EntireColumn.Hidden = flag_hidden
+        ThisWorkbook.Sheets("Склад").Cells(1, skCod).EntireColumn.Hidden = flag_hidden
         
         If ThisWorkbook.Sheets("setting").Range("b8") = 1 Then
             flag_hidden = False
@@ -33,28 +33,28 @@ Private Sub hidden_clm()
             flag_hidden = True
         End If
         
-        With ThisWorkbook.Sheets("РџСЂРёС…РѕРґ")
+        With ThisWorkbook.Sheets("Приход")
         .Cells(1, prCnZ).EntireColumn.Hidden = flag_hidden
         .Cells(1, prCnR).EntireColumn.Hidden = flag_hidden
         .Cells(1, prSm).EntireColumn.Hidden = flag_hidden
         End With
         
-        With ThisWorkbook.Sheets("Р Р°СЃС…РѕРґ")
+        With ThisWorkbook.Sheets("Расход")
         .Cells(1, zvCnR).EntireColumn.Hidden = flag_hidden
         .Cells(1, zvSm).EntireColumn.Hidden = flag_hidden
         End With
         
-        With ThisWorkbook.Sheets("РћС‚Р»РѕР¶РµРЅРѕ_СЂР°СЃС…РѕРґ")
+        With ThisWorkbook.Sheets("Отложено_расход")
         .Cells(1, zkCnR).EntireColumn.Hidden = flag_hidden
         .Cells(1, zkSm).EntireColumn.Hidden = flag_hidden
         End With
         
-        With ThisWorkbook.Sheets("РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ")
+        With ThisWorkbook.Sheets("Отложено_приход")
         .Cells(1, pzkCnZ).EntireColumn.Hidden = flag_hidden
         .Cells(1, pzkSm).EntireColumn.Hidden = flag_hidden
         End With
         
-        With ThisWorkbook.Sheets("РЎРєР»Р°Рґ")
+        With ThisWorkbook.Sheets("Склад")
         .Cells(1, skCnZ).EntireColumn.Hidden = flag_hidden
         .Cells(1, skCnR).EntireColumn.Hidden = flag_hidden
         .Cells(1, bxSm).EntireColumn.Hidden = flag_hidden
@@ -65,39 +65,39 @@ Private Sub hidden_clm()
         Else
         flag_hidden = True
         End If
-        ThisWorkbook.Sheets("РћС‚Р»РѕР¶РµРЅРѕ_СЂР°СЃС…РѕРґ").Cells(1, zkBr).EntireColumn.Hidden = flag_hidden
-        ThisWorkbook.Sheets("РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ").Cells(1, pzkBr).EntireColumn.Hidden = flag_hidden
-        ThisWorkbook.Sheets("Р Р°СЃС…РѕРґ").Cells(1, zvBr).EntireColumn.Hidden = flag_hidden
-        ThisWorkbook.Sheets("РЎРєР»Р°Рґ").Cells(1, skBr).EntireColumn.Hidden = flag_hidden
+        ThisWorkbook.Sheets("Отложено_расход").Cells(1, zkBr).EntireColumn.Hidden = flag_hidden
+        ThisWorkbook.Sheets("Отложено_приход").Cells(1, pzkBr).EntireColumn.Hidden = flag_hidden
+        ThisWorkbook.Sheets("Расход").Cells(1, zvBr).EntireColumn.Hidden = flag_hidden
+        ThisWorkbook.Sheets("Склад").Cells(1, skBr).EntireColumn.Hidden = flag_hidden
         
         If ThisWorkbook.Sheets("setting").Range("b11") = 1 Then
         flag_hidden = False
         Else
         flag_hidden = True
         End If
-        ThisWorkbook.Sheets("РЎРєР»Р°Рґ").Cells(1, skCr).EntireColumn.Hidden = flag_hidden
+        ThisWorkbook.Sheets("Склад").Cells(1, skCr).EntireColumn.Hidden = flag_hidden
         
         If ThisWorkbook.Sheets("setting").Range("b35") = 1 Then
         flag_hidden = False
         Else
         flag_hidden = True
         End If
-        ThisWorkbook.Sheets("РџСЂРёС…РѕРґ").Cells(rwPr_doc, 2).EntireRow.Hidden = flag_hidden
-        ThisWorkbook.Sheets("РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ").Cells(2, pzkOsn).EntireColumn.Hidden = flag_hidden
+        ThisWorkbook.Sheets("Приход").Cells(rwPr_doc, 2).EntireRow.Hidden = flag_hidden
+        ThisWorkbook.Sheets("Отложено_приход").Cells(2, pzkOsn).EntireColumn.Hidden = flag_hidden
         
         If ThisWorkbook.Sheets("setting").Range("b40") = 1 Then
         flag_hidden = False
         Else
         flag_hidden = True
         End If
-        ThisWorkbook.Sheets("Р Р°СЃС…РѕРґ").Cells(rwZv_adr, 2).EntireRow.Hidden = flag_hidden
+        ThisWorkbook.Sheets("Расход").Cells(rwZv_adr, 2).EntireRow.Hidden = flag_hidden
         
         If ThisWorkbook.Sheets("setting").Range("b41") = 1 Then
         flag_hidden = False
         Else
         flag_hidden = True
         End If
-        ThisWorkbook.Sheets("Р Р°СЃС…РѕРґ").Cells(rwZv_tlf, 2).EntireRow.Hidden = flag_hidden
+        ThisWorkbook.Sheets("Расход").Cells(rwZv_tlf, 2).EntireRow.Hidden = flag_hidden
 
         Call hidden_clm_opl
 
@@ -119,7 +119,7 @@ Private Sub hidden_clm_opl()
             flag_hidden = False
         End If
         
-        With ThisWorkbook.Sheets("Р Р°СЃС…РѕРґ")
+        With ThisWorkbook.Sheets("Расход")
         
             .Shapes("cmb_oplata").Visible = flag_hidden
             .Shapes("cmb_oplata").Top = .Cells(rwZv_mj, zvSm).Top - 10
@@ -134,7 +134,7 @@ Private Sub hidden_clm_opl()
                 .Cells(rwZv_mj, zvSm) = ""
                 .Cells(rwZv_mj - 1, zvSm) = ""
             Else
-                .Cells(rwZv_mj - 1, zvSm) = "РЎРїРѕСЃРѕР± РѕРїР»Р°С‚С‹"
+                .Cells(rwZv_mj - 1, zvSm) = "Способ оплаты"
             End If
             
         End With
@@ -150,7 +150,7 @@ Private Sub hidden_clm_skid()
             flag_hidden = False
         End If
         
-        With ThisWorkbook.Sheets("Р Р°СЃС…РѕРґ")
+        With ThisWorkbook.Sheets("Расход")
         
             .Shapes("cmb_skidka").Visible = flag_hidden
             .Shapes("cmb_skidka").Top = .Cells(rwZv_mj, zvOst).Top - 4
@@ -165,7 +165,7 @@ Private Sub hidden_clm_skid()
                 .Cells(rwZv_mj, zvOst) = ""
                 .Cells(rwZv_mj - 1, zvOst) = ""
             Else
-                .Cells(rwZv_mj - 1, zvOst) = "РЎРєРёРґРєР° %"
+                .Cells(rwZv_mj - 1, zvOst) = "Скидка %"
             End If
             
         End With

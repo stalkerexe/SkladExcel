@@ -1,4 +1,4 @@
-﻿Attribute VB_Name = "я_Public_sheet"
+Attribute VB_Name = "�_Public_sheet"
 
 
 Public Const skGr As Integer = 2

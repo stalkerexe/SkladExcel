@@ -1,16 +1,16 @@
-п»їAttribute VB_Name = "СЂР°СЃС…РѕРґ_РѕР±РЅРѕРІРёС‚СЊ"
+Attribute VB_Name = "расход_обновить"
 Option Explicit
 Dim cell As Range
 
 Public Sub do_obnov()
         On Error Resume Next
         
-        ThisWorkbook.Activate: Sheets("РћС‚Р»РѕР¶РµРЅРѕ_СЂР°СЃС…РѕРґ").Activate
+        ThisWorkbook.Activate: Sheets("Отложено_расход").Activate
         
         Call dann_set
         Call format_
         
-        shNm = "РћС‚Р»РѕР¶РµРЅРѕ_СЂР°СЃС…РѕРґ"
+        shNm = "Отложено_расход"
         Call ost_sk_zk
         
         Call format_all
@@ -22,7 +22,7 @@ End Sub
 
 Private Sub format_()
         On Error Resume Next
-        r7 = ThisWorkbook.Sheets("РћС‚Р»РѕР¶РµРЅРѕ_СЂР°СЃС…РѕРґ").Cells(Rows.Count, zkNm).End(xlUp).Row: If r7 <= 5 Then Exit Sub
+        r7 = ThisWorkbook.Sheets("Отложено_расход").Cells(Rows.Count, zkNm).End(xlUp).Row: If r7 <= 5 Then Exit Sub
         
         For Each cell In Range(Cells(5, zkNm), Cells(r7, zkNm))
             rw = cell.Row: Waite.Label2.Caption = Cells(rw, zkNm) & "...": DoEvents
@@ -159,7 +159,7 @@ Private Sub diap_this()
     
     row1 = rw + 1
     
-    shNm = "РћС‚Р»РѕР¶РµРЅРѕ_СЂР°СЃС…РѕРґ"
+    shNm = "Отложено_расход"
     Call find_row2_this
     
 End Sub

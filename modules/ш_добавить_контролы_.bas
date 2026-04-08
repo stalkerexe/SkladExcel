@@ -1,14 +1,14 @@
-п»їAttribute VB_Name = "С€_РґРѕР±Р°РІРёС‚СЊ_РєРѕРЅС‚СЂРѕР»С‹_"
+Attribute VB_Name = "ш_добавить_контролы_"
 Option Explicit
 
 Dim r As Long
 
-Public Sub РґРѕР±Р°РІРёС‚СЊ_РєРѕРЅС‚СЂРѕР»С‹()
+Public Sub добавить_контролы()
 On Error Resume Next
 iSize = 10
 controls_all_delete
 Call arr_box
-Call РєРѕРЅС‚СЂРѕР»С‹_РЅР°РєР»Р°РґРЅРѕР№
+Call контролы_накладной
 Call Frame_height
 Call Frame_width
 Call sum_box
@@ -16,9 +16,9 @@ frm_Show.SpinButton.Visible = False
 frm_Show.ico_del.Visible = False
 DoEvents
 End Sub
-Private Sub РєРѕРЅС‚СЂРѕР»С‹_РЅР°РєР»Р°РґРЅРѕР№()
+Private Sub контролы_накладной()
 On Error Resume Next
-With ThisWorkbook.Sheets("РєРѕСЂР·РёРЅР°")
+With ThisWorkbook.Sheets("корзина")
 r = .Cells(Rows.Count, zvNm).End(xlUp).Row
 iCol = Application.CountIf(Range(.Cells(rwZv, zvNm), .Cells(r + 3, zvNm)), "<>")
 End With
@@ -35,7 +35,7 @@ Next
 End Sub
 Private Sub arr_box()
 On Error Resume Next
-With ThisWorkbook.Sheets("РєРѕСЂР·РёРЅР°")
+With ThisWorkbook.Sheets("корзина")
 r7 = .Cells(Rows.Count, zvNm).End(xlUp).Row + 1
 nn = Range(.Cells(rwZv, zvNN), .Cells(r7, zvNN)).Value
 nm = Range(.Cells(rwZv, zvNm), .Cells(r7, zvNm)).Value
@@ -98,7 +98,7 @@ Private Sub add_cntrl_nk()
 On Error Resume Next
 With frm_Show.Frame_nk.Controls.Add("Forms.TextBox.1")
 .Name = nmCntr
-.text = txCntr
+.Text = txCntr
 .Height = hgCntr
 .Top = top1 + (nom_Cnr - 1) * (hgCntr - 1)
 .Left = leftCntr
@@ -148,14 +148,14 @@ frm_Show.ScrollBar1.Width = 0
 End Sub
 Public Sub sum_box()
 On Error Resume Next
-summ = ThisWorkbook.Sheets("РєРѕСЂР·РёРЅР°").Cells(rwzvSm, zvSm)
+summ = ThisWorkbook.Sheets("корзина").Cells(rwzvSm, zvSm)
 frm_Show.tb_sm.Value = Format(summ, "#,##0.00")
-ThisWorkbook.Sheets("РЎРєР»Р°Рґ").Cells(3, iBox2) = ThisWorkbook.Sheets("РєРѕСЂР·РёРЅР°").Cells(rwzvSm, zvSm)
-With ThisWorkbook.Sheets("РєРѕСЂР·РёРЅР°")
+ThisWorkbook.Sheets("Склад").Cells(3, iBox2) = ThisWorkbook.Sheets("корзина").Cells(rwzvSm, zvSm)
+With ThisWorkbook.Sheets("корзина")
 r = .Cells(Rows.Count, zvNm).End(xlUp).Row
 iCol = Application.CountIf(Range(.Cells(rwZv, zvNm), .Cells(r + 7, zvNm)), "<>")
 End With
-ThisWorkbook.Sheets("РЎРєР»Р°Рґ").Cells(3, iBox1) = iCol
+ThisWorkbook.Sheets("Склад").Cells(3, iBox1) = iCol
 End Sub
 Public Sub clear_color()
 On Error Resume Next

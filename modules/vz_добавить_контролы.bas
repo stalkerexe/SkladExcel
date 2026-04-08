@@ -1,23 +1,23 @@
-п»їAttribute VB_Name = "vz_РґРѕР±Р°РІРёС‚СЊ_РєРѕРЅС‚СЂРѕР»С‹"
+Attribute VB_Name = "vz_добавить_контролы"
 Option Explicit
 
 Private Const hgCntr = 18
 
 
-Public Sub РґРѕР±Р°РІРёС‚СЊ_РєРѕРЅС‚СЂРѕР»С‹_vz()
+Public Sub добавить_контролы_vz()
 
         iColCtr = iCol
         If iColCtr = 0 Then Exit Sub
         
         iVid = zvSelect.comb_vid.Value
 
-        Call РєРѕРЅС‚СЂРѕР»С‹_РЅР°РєР»Р°РґРЅРѕР№
+        Call контролы_накладной
         Call arr_controls_vz
         Call Frame_height
 
 End Sub
 
-Private Sub РєРѕРЅС‚СЂРѕР»С‹_РЅР°РєР»Р°РґРЅРѕР№()
+Private Sub контролы_накладной()
         On Error Resume Next
         
         iSize = 9
@@ -49,9 +49,9 @@ Private Sub dann_poz()
         sCol = col(i, 1)
         sSk = sk(i, 1)
         
-        If iVid = "РџСЂРёС…РѕРґ" Then sCn = cnZ(i, 1)
-        If iVid = "РћС‚РіСЂСѓР·РєР°" Then sCn = cnR(i, 1)
-        If iVid = "Р’РѕР·РІСЂР°С‚" Then sCn = cnR(i, 1)
+        If iVid = "Приход" Then sCn = cnZ(i, 1)
+        If iVid = "Отгрузка" Then sCn = cnR(i, 1)
+        If iVid = "Возврат" Then sCn = cnR(i, 1)
         
 End Sub
 
@@ -171,7 +171,7 @@ Private Sub add_cntrl_nk()
         On Error Resume Next
         With frm_ZVK.Frame_nk.Controls.Add("Forms.TextBox.1")
             .Name = nmCntr
-            .text = txCntr
+            .Text = txCntr
             .Height = hgCntr
             .Top = (nom_Cnr - 1) * (hgCntr - 1): If .Top = 0 Then .Top = 1
             .Left = leftCntr
@@ -190,7 +190,7 @@ Private Sub add_cntrl_nk_vz()
         On Error Resume Next
         With frm_ZVK.Frame_nk_vz.Controls.Add("Forms.TextBox.1")
             .Name = nmCntr
-            .text = txCntr
+            .Text = txCntr
             .Height = hgCntr
             .Top = (nom_Cnr - 1) * (hgCntr - 1): If .Top = 0 Then .Top = 1
             .Left = leftCntr

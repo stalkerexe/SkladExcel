@@ -1,10 +1,10 @@
-п»їAttribute VB_Name = "С€Р°Р±Р»РѕРЅС‹"
+Attribute VB_Name = "шаблоны"
 
 
 Private Sub find_path_file_vid()
-        If iVid = "ot" Then iFiles = "ot": iPapka = "РћС‚РіСЂСѓР·РєР°"
-        If iVid = "pr" Then iFiles = "pr": iPapka = "РџСЂРёС…РѕРґ"
-        If iVid = "vz" Then iFiles = "vz": iPapka = "Р’РѕР·РІСЂР°С‚"
+        If iVid = "ot" Then iFiles = "ot": iPapka = "Отгрузка"
+        If iVid = "pr" Then iFiles = "pr": iPapka = "Приход"
+        If iVid = "vz" Then iFiles = "vz": iPapka = "Возврат"
 End Sub
 
 

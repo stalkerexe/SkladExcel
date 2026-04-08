@@ -1,4 +1,4 @@
-п»їAttribute VB_Name = "Рї_РїСЂРёС…РѕРґ_РѕР±РЅРѕРІРёС‚СЊ"
+Attribute VB_Name = "п_приход_обновить"
 Option Explicit
 Dim cell As Range
 
@@ -6,12 +6,12 @@ Dim cell As Range
 Public Sub do_obnov_pr()
         On Error Resume Next
         
-        ThisWorkbook.Activate: Sheets("РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ").Activate
+        ThisWorkbook.Activate: Sheets("Отложено_приход").Activate
         
         Call dann_set
         Call format_
         
-        shNm = "РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ"
+        shNm = "Отложено_приход"
         Call ost_sk_zk
         
         Call format_all
@@ -23,7 +23,7 @@ End Sub
 
 Private Sub format_()
         On Error Resume Next
-        r7 = ThisWorkbook.Sheets("РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ").Cells(Rows.Count, pzkNm).End(xlUp).Row: If r7 <= 5 Then Exit Sub
+        r7 = ThisWorkbook.Sheets("Отложено_приход").Cells(Rows.Count, pzkNm).End(xlUp).Row: If r7 <= 5 Then Exit Sub
         
         For Each cell In Range(Cells(5, pzkNm), Cells(r7, pzkNm))
             rw = cell.Row: Waite.Label2.Caption = Cells(rw, pzkNm) & "...": DoEvents
@@ -175,7 +175,7 @@ End Sub
 Private Sub diap_this()
     On Error Resume Next
     row1 = rw + 1
-    shNm = "РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ"
+    shNm = "Отложено_приход"
     Call find_row2_this
 End Sub
 

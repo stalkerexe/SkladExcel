@@ -1,4 +1,4 @@
-п»їAttribute VB_Name = "Р°СЂС…РёРІ_load"
+Attribute VB_Name = "архив_load"
 Option Explicit
 Dim sZg As String
 
@@ -16,7 +16,7 @@ Public Sub load_nk_from_arh()
         
         Erase c
         DoEvents
-        If row1 = 0 Then MsgBox "Р­С‚Р° РЅР°РєР»Р°РґРЅР°СЏ РЅРµ РЅР°Р№РґРµРЅР° РІ Р°СЂС…РёРІРµ", 64, "РќР°РєР»Р°РґРЅР°СЏ"
+        If row1 = 0 Then MsgBox "Эта накладная не найдена в архиве", 64, "Накладная"
 End Sub
 
 Private Sub dann_arh()
@@ -43,10 +43,10 @@ End Sub
 
 
 Private Sub find_zg()
-        If iVid = "РџСЂРёС…РѕРґ" Then sZg = "РџСЂРёС…РѕРґРЅР°СЏ РЅР°РєР»Р°РґРЅР°СЏ"
-        If iVid = "РћС‚РіСЂСѓР·РєР°" Then sZg = "Р Р°СЃС…РѕРґРЅР°СЏ РЅР°РєР»Р°РґРЅР°СЏ"
-        If iVid = "Р’РѕР·РІСЂР°С‚" Then sZg = "РќР°РєР»Р°РґРЅР°СЏ РІРѕР·РІСЂР°С‚Р°"
-        If iVid = "РџРµСЂРµРјРµС‰РµРЅРёРµ" Then sZg = "РќР°РєР»Р°РґРЅР°СЏ РїРµСЂРµРјРµС‰РµРЅРёСЏ"
+        If iVid = "Приход" Then sZg = "Приходная накладная"
+        If iVid = "Отгрузка" Then sZg = "Расходная накладная"
+        If iVid = "Возврат" Then sZg = "Накладная возврата"
+        If iVid = "Перемещение" Then sZg = "Накладная перемещения"
 End Sub
 
 
@@ -60,7 +60,7 @@ Private Sub to_form()
         Call arr_arh
 99
         Call form_show
-        Call РґРѕР±Р°РІРёС‚СЊ_РєРѕРЅС‚СЂРѕР»С‹_vz
+        Call добавить_контролы_vz
         
         If ThisWorkbook.Sheets("setting").Range("f12") = 1 Then
             frm_ZVK.CheckBox_perenos.Value = True
@@ -71,34 +71,34 @@ End Sub
 Private Sub form_show()
         On Error Resume Next
 
-        Waite.Label2.Caption = "Р—Р°РіСЂСѓР·РєР° РґР°РЅРЅС‹С…...":  DoEvents
+        Waite.Label2.Caption = "Загрузка данных...":  DoEvents
         
         With frm_ZVK
             .Show
             .lb_doc.Visible = True
-            .tb_ind.text = ind
-            .tb_date.text = sDt
-            .tb_what.text = iVid
-            .tb_year.text = iGod
+            .tb_ind.Text = ind
+            .tb_date.Text = sDt
+            .tb_what.Text = iVid
+            .tb_year.Text = iGod
             .Top = zvSelect.Top + 15
             .Left = zvSelect.Left
         End With
         
         With frm_ZVK
-            .lb_vid_nk.Caption = sZg & " в„–"
+            .lb_vid_nk.Caption = sZg & " №"
             .tb_nomer.Caption = VBA.Format(nomer, "00000")
-            .tb_Zkz.text = sZkz
-            .tb_Mnj.text = sMj
-            .tb_Dt.text = sDt
-            .tb_doc.text = sOsn: If sOsn = "" Then .lb_doc.Visible = False
-            .tb_mk.text = marker
-            .tb_sm.text = VBA.Format(summ, "#,##0.00")
+            .tb_zkz.Text = sZkz
+            .tb_Mnj.Text = sMj
+            .tb_Dt.Text = sDt
+            .tb_doc.Text = sOsn: If sOsn = "" Then .lb_doc.Visible = False
+            .tb_mk.Text = marker
+            .tb_sm.Text = VBA.Format(summ, "#,##0.00")
         End With
         
-        If iVid = "РћС‚РіСЂСѓР·РєР°" Then
+        If iVid = "Отгрузка" Then
             With frm_ZVK
                 .lb_doc.Visible = False
-                .tb_doc.text = ""
+                .tb_doc.Text = ""
             End With
         End If
         
@@ -111,9 +111,9 @@ Private Sub dann()
         
         iRow = row1
         
-        If iVid = "РџСЂРёС…РѕРґ" Then Call dann_arh_pr
-        If iVid = "РћС‚РіСЂСѓР·РєР°" Then Call dann_arh_rs
-        If iVid = "Р’РѕР·РІСЂР°С‚" Then Call dann_arh_vz
+        If iVid = "Приход" Then Call dann_arh_pr
+        If iVid = "Отгрузка" Then Call dann_arh_rs
+        If iVid = "Возврат" Then Call dann_arh_vz
         
 End Sub
 
@@ -123,8 +123,8 @@ Private Sub arr_arh()
         
         iRow = row1
         
-        If iVid = "РџСЂРёС…РѕРґ" Then Call arr_arh_pr
-        If iVid = "РћС‚РіСЂСѓР·РєР°" Then Call arr_arh_rs
+        If iVid = "Приход" Then Call arr_arh_pr
+        If iVid = "Отгрузка" Then Call arr_arh_rs
         
 End Sub
 

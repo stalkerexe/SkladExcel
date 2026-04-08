@@ -1,3 +1,3 @@
-﻿Attribute VB_Name = "с_____________________________"
+Attribute VB_Name = "�_____________________________"
 Option Explicit
 

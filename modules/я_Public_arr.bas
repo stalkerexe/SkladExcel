@@ -1,4 +1,4 @@
-ï»¿Attribute VB_Name = "Ñ_Public_arr"
+Attribute VB_Name = "ÿ_Public_arr"
 Public ost_zv()
 
 Public c_sk()
@@ -13,7 +13,7 @@ Public mk()
 Public cr()
 Public zkz(): Public adr(): Public tlf(): Public psv(): Public mj()
 Public god As Integer
-Public Ğ¸Ğ¼Ñ_ÑĞºĞ»Ğ°Ğ´Ğ° As String
+Public èìÿ_ñêëàäà As String
 
 
 Public nm_sk(): Public cod_sk(): Public col_sk(): Public br_sk(): Public ed_sk()

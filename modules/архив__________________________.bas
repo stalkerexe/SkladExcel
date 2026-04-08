@@ -1,4 +1,4 @@
-ï»¿Attribute VB_Name = "Ð°Ñ€Ñ…Ð¸Ð²__________________________"
+Attribute VB_Name = "àðõèâ__________________________"
 Option Explicit
 
 Public widCod As Byte

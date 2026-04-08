@@ -1,9 +1,9 @@
-п»їAttribute VB_Name = "arr_all_"
+Attribute VB_Name = "arr_all_"
 Option Explicit
 
 Public Sub arr_zv()
         On Error Resume Next
-        With ThisWorkbook.Sheets("Р Р°СЃС…РѕРґ")
+        With ThisWorkbook.Sheets("Расход")
             r7 = .Cells(Rows.Count, zvNm).End(xlUp).Row + 2
             nn = Range(.Cells(rwZv, zvNN), .Cells(r7, zvNN)).Value
             nm = Range(.Cells(rwZv, zvNm), .Cells(r7, zvNm)).Value
@@ -29,7 +29,7 @@ End Sub
 
 Public Sub arr_pr()
         On Error Resume Next
-        With ThisWorkbook.Sheets("РџСЂРёС…РѕРґ")
+        With ThisWorkbook.Sheets("Приход")
             r7 = .Cells(Rows.Count, prNm).End(xlUp).Row + 2
             nn = Range(.Cells(rwZv, prNN), .Cells(r7, prNN)).Value
             nm = Range(.Cells(rwZv, prNm), .Cells(r7, prNm)).Value
@@ -61,7 +61,7 @@ End Sub
 
 Public Sub arr_zk_this()
         On Error Resume Next
-        With ThisWorkbook.Sheets("РћС‚Р»РѕР¶РµРЅРѕ_СЂР°СЃС…РѕРґ")
+        With ThisWorkbook.Sheets("Отложено_расход")
             nn = Range(.Cells(row1, zkNN), .Cells(row2, zkNN)).Value
             nm = Range(.Cells(row1, zkNm), .Cells(row2, zkNm)).Value
             cod = Range(.Cells(row1, zkCod), .Cells(row2, zkCod)).Value
@@ -80,7 +80,7 @@ End Sub
 
 Public Sub arr_zk_this_pr()
         On Error Resume Next
-        With ThisWorkbook.Sheets("РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ")
+        With ThisWorkbook.Sheets("Отложено_приход")
             nn = Range(.Cells(row1, pzkNN), .Cells(row2, pzkNN)).Value
             nm = Range(.Cells(row1, pzkNm), .Cells(row2, pzkNm)).Value
             cod = Range(.Cells(row1, pzkCod), .Cells(row2, pzkCod)).Value

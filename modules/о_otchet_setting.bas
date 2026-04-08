@@ -1,4 +1,4 @@
-﻿Attribute VB_Name = "о_otchet_setting"
+Attribute VB_Name = "�_otchet_setting"
 Option Explicit
 
 Public Sub set_otchet()

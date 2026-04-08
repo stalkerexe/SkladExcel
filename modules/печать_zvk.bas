@@ -1,4 +1,4 @@
-п»їAttribute VB_Name = "РїРµС‡Р°С‚СЊ_zvk"
+Attribute VB_Name = "печать_zvk"
 Option Explicit
 
 
@@ -32,8 +32,8 @@ Private Sub open_arh_file()
 End Sub
 
 Private Sub copy_to_blank()
-        If iVid = "РџСЂРёС…РѕРґ" Then Call copy_to_blank_pr
-        If iVid = "РћС‚РіСЂСѓР·РєР°" Then Call copy_to_blank_rs
+        If iVid = "Приход" Then Call copy_to_blank_pr
+        If iVid = "Отгрузка" Then Call copy_to_blank_rs
 End Sub
 
 Private Sub do_print_paper()
@@ -44,12 +44,12 @@ Private Sub dann_arh()
         On Error Resume Next
         iRow = row1
         
-        If iVid = "РџСЂРёС…РѕРґ" Then
+        If iVid = "Приход" Then
             Call dann_arh_pr
             Call arr_arh_pr
         End If
         
-        If iVid = "РћС‚РіСЂСѓР·РєР°" Then
+        If iVid = "Отгрузка" Then
             Call dann_arh_rs
             Call arr_arh_rs
         End If

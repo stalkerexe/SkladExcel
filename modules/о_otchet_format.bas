@@ -1,4 +1,4 @@
-п»їAttribute VB_Name = "Рѕ_otchet_format"
+Attribute VB_Name = "о_otchet_format"
 Option Explicit
 
 Dim arr_wid()
@@ -123,21 +123,21 @@ Private Sub format_otchet_zg_ot()
         ReDim arr_wid(1 To iCmOt + 1, 2)
         
         arr_wid(1, 1) = 1:   arr_wid(1, 2) = ""
-        arr_wid(2, 1) = 8:   arr_wid(2, 2) = "РќРѕРјРµСЂ"
-        arr_wid(3, 1) = 10:  arr_wid(3, 2) = "Р”Р°С‚Р°"
-        arr_wid(4, 1) = 39:  arr_wid(4, 2) = "РќР°РёРјРµРЅРѕРІР°РЅРёРµ"
-        arr_wid(5, 1) = 11:  arr_wid(5, 2) = "РђСЂС‚РёРєСѓР»"
-        arr_wid(6, 1) = 9:   arr_wid(6, 2) = "РљРѕР» - РІРѕ"
-        arr_wid(7, 1) = 11:  arr_wid(7, 2) = "Р¦РµРЅР° РїСЂРѕРґР°Р¶Р°"
-        arr_wid(8, 1) = 15:  arr_wid(8, 2) = "РЎСѓРјРјР° РїСЂРѕРґР°Р¶Р°"
-        arr_wid(9, 1) = 13:  arr_wid(9, 2) = "Р¦РµРЅР° Р·Р°РєСѓРї"
-        arr_wid(10, 1) = 14:  arr_wid(10, 2) = "РЎСѓРјРјР° Р·Р°РєСѓРї"
-        arr_wid(11, 1) = 16:  arr_wid(11, 2) = "РџСЂРёР±С‹Р»СЊ"
-        arr_wid(12, 1) = 17:  arr_wid(12, 2) = "РЎРѕС‚СЂСѓРґРЅРёРє"
-        arr_wid(13, 1) = 23: arr_wid(13, 2) = "РџРѕР»СѓС‡Р°С‚РµР»СЊ"
-        arr_wid(14, 1) = 12: arr_wid(14, 2) = "РЎРєР»Р°Рґ"
-        arr_wid(15, 1) = 12: arr_wid(15, 2) = "РЎРїРѕСЃРѕР± РѕРїР»Р°С‚С‹"
-        arr_wid(16, 1) = 9: arr_wid(16, 2) = "РЎРєРёРґРєР° %"
+        arr_wid(2, 1) = 8:   arr_wid(2, 2) = "Номер"
+        arr_wid(3, 1) = 10:  arr_wid(3, 2) = "Дата"
+        arr_wid(4, 1) = 39:  arr_wid(4, 2) = "Наименование"
+        arr_wid(5, 1) = 11:  arr_wid(5, 2) = "Артикул"
+        arr_wid(6, 1) = 9:   arr_wid(6, 2) = "Кол - во"
+        arr_wid(7, 1) = 11:  arr_wid(7, 2) = "Цена продажа"
+        arr_wid(8, 1) = 15:  arr_wid(8, 2) = "Сумма продажа"
+        arr_wid(9, 1) = 13:  arr_wid(9, 2) = "Цена закуп"
+        arr_wid(10, 1) = 14:  arr_wid(10, 2) = "Сумма закуп"
+        arr_wid(11, 1) = 16:  arr_wid(11, 2) = "Прибыль"
+        arr_wid(12, 1) = 17:  arr_wid(12, 2) = "Сотрудник"
+        arr_wid(13, 1) = 23: arr_wid(13, 2) = "Получатель"
+        arr_wid(14, 1) = 12: arr_wid(14, 2) = "Склад"
+        arr_wid(15, 1) = 12: arr_wid(15, 2) = "Способ оплаты"
+        arr_wid(16, 1) = 9: arr_wid(16, 2) = "Скидка %"
         
         For cm = 1 To iCmOt + 1
             With wbOt.ActiveSheet
@@ -197,16 +197,16 @@ Private Sub format_otchet_zg_pr()
         ReDim arr_wid(1 To 11, 2)
         
         arr_wid(1, 1) = 2:   arr_wid(1, 2) = ""
-        arr_wid(2, 1) = 9:   arr_wid(2, 2) = "РќРѕРјРµСЂ"
-        arr_wid(3, 1) = 12:  arr_wid(3, 2) = "Р”Р°С‚Р°"
-        arr_wid(4, 1) = 42:  arr_wid(4, 2) = "РќР°РёРјРµРЅРѕРІР°РЅРёРµ"
-        arr_wid(5, 1) = 12:  arr_wid(5, 2) = "РђСЂС‚РёРєСѓР»"
-        arr_wid(6, 1) = 9:   arr_wid(6, 2) = "РљРѕР» - РІРѕ"
-        arr_wid(7, 1) = 11:  arr_wid(7, 2) = "Р¦РµРЅР°"
-        arr_wid(8, 1) = 15:  arr_wid(8, 2) = "РЎСѓРјРјР°"
-        arr_wid(9, 1) = 17:  arr_wid(9, 2) = "РЎРѕС‚СЂСѓРґРЅРёРє"
-        arr_wid(10, 1) = 25: arr_wid(10, 2) = "РџРѕСЃС‚Р°РІС‰РёРє"
-        arr_wid(11, 1) = 25: arr_wid(11, 2) = "Р”РѕРєСѓРјРµРЅС‚"
+        arr_wid(2, 1) = 9:   arr_wid(2, 2) = "Номер"
+        arr_wid(3, 1) = 12:  arr_wid(3, 2) = "Дата"
+        arr_wid(4, 1) = 42:  arr_wid(4, 2) = "Наименование"
+        arr_wid(5, 1) = 12:  arr_wid(5, 2) = "Артикул"
+        arr_wid(6, 1) = 9:   arr_wid(6, 2) = "Кол - во"
+        arr_wid(7, 1) = 11:  arr_wid(7, 2) = "Цена"
+        arr_wid(8, 1) = 15:  arr_wid(8, 2) = "Сумма"
+        arr_wid(9, 1) = 17:  arr_wid(9, 2) = "Сотрудник"
+        arr_wid(10, 1) = 25: arr_wid(10, 2) = "Поставщик"
+        arr_wid(11, 1) = 25: arr_wid(11, 2) = "Документ"
         
         For cm = 1 To iCmOt + 1
             With wbOt.ActiveSheet
@@ -340,6 +340,6 @@ Private Sub min_max_data()
 End Sub
 
 Private Sub find_zg()
-        If iVid = "pr" Then sZg = "Р—РђРљРЈРџРљРђ Р—Рђ РџР•Р РРћР”"
-        If iVid = "ot" Then sZg = "Р Р•РђР›РР—РћР’РђРќРћ Р—Рђ РџР•Р РРћР”"
+        If iVid = "pr" Then sZg = "ЗАКУПКА ЗА ПЕРИОД"
+        If iVid = "ot" Then sZg = "РЕАЛИЗОВАНО ЗА ПЕРИОД"
 End Sub

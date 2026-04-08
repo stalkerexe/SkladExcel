@@ -1,4 +1,4 @@
-п»їAttribute VB_Name = "С€_РјРµРЅСЋ"
+Attribute VB_Name = "ш_меню"
 Option Explicit
 
 Dim hh As Double
@@ -26,7 +26,7 @@ End With
 End Sub
 Public Sub unload_mn_vid()
 On Error Resume Next
-With ThisWorkbook.Sheets("Р Р°СЃС…РѕРґ").Shapes("mn_vid")
+With ThisWorkbook.Sheets("Расход").Shapes("mn_vid")
 .Height = 10
 .Top = 10
 .Visible = False
@@ -58,7 +58,7 @@ End With
 End Sub
 Public Sub unload_mn_vid_pr()
 On Error Resume Next
-With ThisWorkbook.Sheets("РџСЂРёС…РѕРґ").Shapes("mn_vid_pr")
+With ThisWorkbook.Sheets("Приход").Shapes("mn_vid_pr")
 h = .Height
 .Height = hh
 .Top = 10

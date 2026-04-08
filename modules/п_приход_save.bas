@@ -1,16 +1,16 @@
-п»їAttribute VB_Name = "Рї_РїСЂРёС…РѕРґ_save"
+Attribute VB_Name = "п_приход_save"
 Option Explicit
 
 Public Sub svPrihod()
 
         Call unload_mn_vid_pr: DoEvents
 
-        With ThisWorkbook.Sheets("РџСЂРёС…РѕРґ")
+        With ThisWorkbook.Sheets("Приход")
         r7 = .Cells(Rows.Count, prNm).End(xlUp).Row
         If r7 < rwZv Then
-        MsgBox "          РќРµС‚ РїРѕР·РёС†РёР№ РІ РЅР°РєР»Р°РґРЅРѕР№!" & VBA.Chr(10) & _
+        MsgBox "          Нет позиций в накладной!" & VBA.Chr(10) & _
         "---------------------------------------------------" & VBA.Chr(10) & _
-        "РќР°Р¶РјРёС‚Рµ РєРЅРѕРїРєСѓ <Р”РѕР±Р°РІРёС‚СЊ РїРѕР·РёС†РёСЋ> Рё РґРІРѕР№РЅС‹Рј РєР»РёРєРѕРј РІС‹Р±РµСЂРёС‚Рµ РїРѕР·РёС†РёРё", 64, ""
+        "Нажмите кнопку <Добавить позицию> и двойным кликом выберите позиции", 64, ""
         Exit Sub
         End If
         End With
@@ -18,10 +18,10 @@ Public Sub svPrihod()
         sZkz = Cells(rwPr_zkz, 4).Value
         sDt = VBA.CDate(Cells(rwPr_dt, 4).Value)
             
-        If MsgBox("     РћС‚Р»РѕР¶РёС‚СЊ РЅР°РєР»Р°РґРЅСѓСЋ?               " & VBA.Chr(10) & _
+        If MsgBox("     Отложить накладную?               " & VBA.Chr(10) & _
         "---------------------------------------------------" & VBA.Chr(10) & _
-        "   РљРѕРЅС‚СЂР°РіРµРЅС‚: " & sZkz & VBA.Chr(10) & _
-        "   Р”Р°С‚Р°: " & sDt, vbOKCancel + vbQuestion, "РџСЂРёС…РѕРґ") = vbCancel Then Exit Sub
+        "   Контрагент: " & sZkz & VBA.Chr(10) & _
+        "   Дата: " & sDt, vbOKCancel + vbQuestion, "Приход") = vbCancel Then Exit Sub
         
         Call doScreenOff
         Call do_sv
@@ -30,9 +30,9 @@ End Sub
 
 Private Sub do_sv()
 
-        Call dann:            Waite.Label2.Caption = "РљРѕРїРёСЂРѕРІР°РЅРёРµ РґР°РЅРЅС‹С…...": DoEvents
+        Call dann:            Waite.Label2.Caption = "Копирование данных...": DoEvents
         Call copy_to_zkz:     Waite.Label2.Caption = "clear_this...": DoEvents
-        Call clear_this:      Waite.Label2.Caption = "РѕР±РЅРѕРІРёС‚СЊ...": DoEvents
+        Call clear_this:      Waite.Label2.Caption = "обновить...": DoEvents
         Call erase_arr_zv
         Call erase_arr_sk
 
@@ -53,7 +53,7 @@ End Sub
 
 Private Sub copy_to_zkz_dann()
         On Error Resume Next
-        With ThisWorkbook.Sheets("РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ")
+        With ThisWorkbook.Sheets("Отложено_приход")
             n7 = .Cells(Rows.Count, pzkNm).End(xlUp).Row + 2: If n7 < 5 Then n7 = 5
             .Cells(n7, 1) = marker
             .Cells(n7, pzkNom) = nomer
@@ -79,25 +79,25 @@ End Sub
 Private Sub copy_to_zkz_nk()
         On Error Resume Next
         n7 = n7 + 1
-        With ThisWorkbook.Sheets("РџСЂРёС…РѕРґ")
+        With ThisWorkbook.Sheets("Приход")
             r7 = .Cells(Rows.Count, prNm).End(xlUp).Row
             
             .Range(.Cells(rwZv, prNm), .Cells(r7, prCnZ)).Copy
-            ThisWorkbook.Sheets("РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ").Cells(n7, pzkNm).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False
+            ThisWorkbook.Sheets("Отложено_приход").Cells(n7, pzkNm).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False
             .Range(.Cells(rwZv, prSm), .Cells(r7, prSm)).Copy
-            ThisWorkbook.Sheets("РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ").Cells(n7, pzkSm).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False
+            ThisWorkbook.Sheets("Отложено_приход").Cells(n7, pzkSm).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False
             .Range(.Cells(rwZv, prNN), .Cells(r7, prNN)).Copy
-            ThisWorkbook.Sheets("РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ").Cells(n7, pzkNN).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False
+            ThisWorkbook.Sheets("Отложено_приход").Cells(n7, pzkNN).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False
             .Range(.Cells(rwZv, prSk), .Cells(r7, prSk)).Copy
-            ThisWorkbook.Sheets("РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ").Cells(n7, pzkSk).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False
+            ThisWorkbook.Sheets("Отложено_приход").Cells(n7, pzkSk).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False
             .Range(.Cells(rwZv, prCnR), .Cells(r7, prCnR)).Copy
-            ThisWorkbook.Sheets("РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ").Cells(n7, pzkCnR).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False
+            ThisWorkbook.Sheets("Отложено_приход").Cells(n7, pzkCnR).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False
             
             .Range(.Cells(rwZv, prGr), .Cells(r7, prGr)).Copy
-            ThisWorkbook.Sheets("РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ").Cells(n7, pzkGr).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False
+            ThisWorkbook.Sheets("Отложено_приход").Cells(n7, pzkGr).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False
             
             .Range(.Cells(rwZv, 1), .Cells(r7, 1)).Copy
-            ThisWorkbook.Sheets("РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ").Cells(n7, pzkID).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False
+            ThisWorkbook.Sheets("Отложено_приход").Cells(n7, pzkID).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False
             
             Application.CutCopyMode = False
             
@@ -111,17 +111,17 @@ End Sub
 Private Sub clear_this()
         On Error Resume Next
         
-        With ThisWorkbook.Sheets("РџСЂРёС…РѕРґ")
+        With ThisWorkbook.Sheets("Приход")
             If .Cells(9, zvOst) = "" Then
                 Call nom_nk(3)
                 .Range("d2") = nomer
             End If
         End With
 
-        Call СЂРµР¶РёРј_СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ_off_pr("РџСЂРёС…РѕРґ")
+        Call режим_редактирования_off_pr("Приход")
         
         
-        With ThisWorkbook.Sheets("РџСЂРёС…РѕРґ")
+        With ThisWorkbook.Sheets("Приход")
             r7 = .UsedRange.Rows.Count + .UsedRange.Row - 1
             .Range("a" & rwZv & ":a" & r7 + 44).EntireRow.Delete
             .Range("a1").Value = ""

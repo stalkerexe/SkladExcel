@@ -1,4 +1,4 @@
-п»їAttribute VB_Name = "СЃРєР»Р°Рґ_СЃРјРѕС‚СЂРµС‚СЊ"
+Attribute VB_Name = "склад_смотреть"
 
 
 
@@ -11,15 +11,15 @@ End Sub
 Public Sub do_sklad_show()
     On Error Resume Next
     
-    Sheets("РЎРєР»Р°Рґ").Select
+    Sheets("Склад").Select
     
     flag_open = 0:       Waite.Label2.Caption = "clear_this": DoEvents
     
-    Call clear_this:     Waite.Label2.Caption = "РїРµСЂРµР±СЂР°С‚СЊ_sk": DoEvents
+    Call clear_this:     Waite.Label2.Caption = "перебрать_sk": DoEvents
     
-    Call РїРµСЂРµР±СЂР°С‚СЊ_sk:   Waite.Label2.Caption = "format_": DoEvents
+    Call перебрать_sk:   Waite.Label2.Caption = "format_": DoEvents
     
-    Call format_:        Waite.Label2.Caption = "Р—Р°РІРµСЂС€РµРЅРёРµ...": DoEvents
+    Call format_:        Waite.Label2.Caption = "Завершение...": DoEvents
     
     Call clearBf
 
@@ -33,7 +33,7 @@ Public Sub do_sklad_show()
 End Sub
 
 
-Private Sub РїРµСЂРµР±СЂР°С‚СЊ_sk()
+Private Sub перебрать_sk()
 
 On Error Resume Next
     
@@ -58,11 +58,11 @@ Private Sub resize_sk_bf()
 
     Call clearBf
 
-    With ThisWorkbook.Sheets("Р±СѓС„РµСЂ")
+    With ThisWorkbook.Sheets("буфер")
         .Cells(1, "a").Resize(UBound(c), 9) = c
     End With
 
-    With ThisWorkbook.Sheets("Р±СѓС„РµСЂ")
+    With ThisWorkbook.Sheets("буфер")
         r7 = .Cells(Rows.Count, skNm).End(xlUp).Row + 2
         gr_sk = .Range(.Cells(1, skGr), .Cells(r7, skGr)).Value
         gr = .Range(.Cells(1, 2), .Cells(r7, 2)).Value
@@ -80,7 +80,7 @@ End Sub
 Private Sub parse_sk()
     On Error Resume Next
 
-        With ThisWorkbook.Sheets("РЎРєР»Р°Рґ")
+        With ThisWorkbook.Sheets("Склад")
             r7 = .Cells(Rows.Count, skNm).End(xlUp).Row + 2: If r7 <= 6 Then r7 = 6
             .Cells(r7, 1) = 1
 
@@ -99,12 +99,12 @@ Private Sub parse_sk()
 
         row1 = r7 + 1
 
-        With ThisWorkbook.Sheets("РЎРєР»Р°Рґ")
+        With ThisWorkbook.Sheets("Склад")
             Range(.Cells(row1, skNm), .Cells(row1 + UBound(c), skNm)).NumberFormat = "@"
         End With
 
    
-    With ThisWorkbook.Sheets("РЎРєР»Р°Рґ")
+    With ThisWorkbook.Sheets("Склад")
         .Cells(row1, skGr).Resize(UBound(nm_sk), 1) = gr_sk
         .Cells(row1, 2).Resize(UBound(nm_sk), 1) = gr
         .Cells(row1, skCod).Resize(UBound(nm_sk), 1) = cod_sk
@@ -116,7 +116,7 @@ Private Sub parse_sk()
         .Cells(row1, skBr).Resize(UBound(nm_sk), 1) = br_sk
     End With
     
-    With ThisWorkbook.Sheets("РЎРєР»Р°Рґ")
+    With ThisWorkbook.Sheets("Склад")
         row2 = .Cells(Rows.Count, skNm).End(xlUp).Row
         Range(.Cells(row1, skSk), .Cells(row2, skSk)) = sSk
     End With
@@ -129,11 +129,11 @@ End Sub
 Private Sub copy_()
 On Error Resume Next
 
-    With ThisWorkbook.Sheets("РЎРєР»Р°Рґ")
+    With ThisWorkbook.Sheets("Склад")
         r = .Cells(Rows.Count, skNm).End(xlUp).Row + 2: If r <= 5 Then r = 5
             .Cells(r, 1) = 1
             With .Cells(r, skNm)
-                .Value = "СЃРєР»Р°Рґ   " & sSk
+                .Value = "склад   " & sSk
                 .Font.Bold = True
                 .Font.Size = 16
                 .Font.ColorIndex = 3
@@ -142,7 +142,7 @@ On Error Resume Next
 
 
 r = r + 1
-With ThisWorkbook.Sheets("РЎРєР»Р°Рґ")
+With ThisWorkbook.Sheets("Склад")
 r9 = Cells(Rows.Count, skNm).End(xlUp).Row + 2
 Range(Cells(5, 1), Cells(r9, skComm)).Copy
 .Cells(r, 1).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False
@@ -220,7 +220,7 @@ End Sub
 
 Private Sub clear_this()
 On Error Resume Next
-With ThisWorkbook.Sheets("РЎРєР»Р°Рґ")
+With ThisWorkbook.Sheets("Склад")
 Call AutoFilter_delete
 r7 = .UsedRange.Rows.Count + .UsedRange.Row - 1
 .Range("a" & 5 & ":a" & r7 + 44).EntireRow.Delete
@@ -229,7 +229,7 @@ End Sub
 
 Public Sub shapes_left()
 On Error Resume Next
-With ThisWorkbook.Sheets("РЎРєР»Р°Рґ").Shapes("grCmbBox")
+With ThisWorkbook.Sheets("Склад").Shapes("grCmbBox")
     .Left = Range("m3").Left - .Width + 5
 End With
 End Sub

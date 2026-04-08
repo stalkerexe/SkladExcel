@@ -1,4 +1,4 @@
-п»їAttribute VB_Name = "РїРµС‡Р°С‚СЊ_С„oСЂРјР°"
+Attribute VB_Name = "печать_фoрма"
 Option Explicit
 
 Public Sub printZv()
@@ -7,11 +7,11 @@ Public Sub printZv()
         DoEvents
         r7 = Cells(Rows.Count, zvNm).End(xlUp).Row
         If r7 < rwZv Then
-        MsgBox "РќРµС‚ РїРѕР·РёС†РёР№ РґР»СЏ РїРµС‡Р°С‚Рё РІ РЅР°РєР»Р°РґРЅРѕР№!", 64, "РџРµС‡Р°С‚СЊ"
+        MsgBox "Нет позиций для печати в накладной!", 64, "Печать"
         Exit Sub
         End If
         frm_print.Show
-        frm_print.TextBox1.text = 1
+        frm_print.TextBox1.Text = 1
 End Sub
 
 Public Sub printPr()
@@ -20,18 +20,18 @@ Public Sub printPr()
         DoEvents
         r7 = Cells(Rows.Count, prNm).End(xlUp).Row
         If r7 < rwZv Then
-        MsgBox "РќРµС‚ РїРѕР·РёС†РёР№ РґР»СЏ РїРµС‡Р°С‚Рё РІ РїСЂРёС…РѕРґРµ!", 64, "РџРµС‡Р°С‚СЊ"
+        MsgBox "Нет позиций для печати в приходе!", 64, "Печать"
         Exit Sub
         End If
         frm_print.Show
-        frm_print.TextBox1.text = 2
+        frm_print.TextBox1.Text = 2
 End Sub
 
 Public Sub printZk()
         On Error Resume Next
         With frm_print
             .Show
-            .TextBox1.text = 3
+            .TextBox1.Text = 3
             .tb_row.Value = ActiveCell.Row
         End With
 End Sub
@@ -40,7 +40,7 @@ Public Sub printZk_pr()
         On Error Resume Next
         With frm_print
             .Show
-            .TextBox1.text = 4
+            .TextBox1.Text = 4
             .tb_row.Value = ActiveCell.Row
         End With
 End Sub
@@ -48,14 +48,14 @@ End Sub
 Public Sub printSk()
         On Error Resume Next
         frm_print.Show
-        frm_print.TextBox1.text = 7
+        frm_print.TextBox1.Text = 7
 End Sub
 
 Public Sub printZVK()
         On Error Resume Next
         With frm_print
             .Show
-            .TextBox1.text = 5
+            .TextBox1.Text = 5
             .StartUpPosition = 0
             .Top = frm_ZVK.Top + frm_ZVK.OK_menu.Top
             .Left = frm_ZVK.Left + frm_ZVK.OK_menu.Left - .Width

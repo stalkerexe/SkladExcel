@@ -1,9 +1,9 @@
-ï»¿Attribute VB_Name = "Ñˆ____________________________"
+Attribute VB_Name = "ø____________________________"
 
 
 Public Function sort_do(cm1 As Integer, cm2 As Integer)
         On Error Resume Next
-        With ThisWorkbook.Sheets("Ð±ÑƒÑ„ÐµÑ€")
+        With ThisWorkbook.Sheets("áóôåð")
             r7 = .Cells(Rows.Count, cm1).End(xlUp).Row
             .Sort.SortFields.clear
             .Sort.SortFields.Add Key:=.Cells(1, cm1), SortOn:=xlSortOnValues, Order:=xlAscending, DataOption:=xlSortNormal

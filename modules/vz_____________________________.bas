@@ -1,4 +1,4 @@
-﻿Attribute VB_Name = "vz_____________________________"
+Attribute VB_Name = "vz_____________________________"
 Option Explicit
 
 Public iColCtr As Integer

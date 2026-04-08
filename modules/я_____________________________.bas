@@ -1,4 +1,4 @@
-п»їAttribute VB_Name = "СЏ_____________________________"
+Attribute VB_Name = "я_____________________________"
 Option Explicit
 Dim rEnd As Long
 
@@ -30,8 +30,8 @@ End Sub
 Private Sub find_rEnd()
         On Error Resume Next
 
-        If shNm = "РћС‚Р»РѕР¶РµРЅРѕ_СЂР°СЃС…РѕРґ" Then cm = zkNm
-        If shNm = "РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ" Then cm = pzkNm
+        If shNm = "Отложено_расход" Then cm = zkNm
+        If shNm = "Отложено_приход" Then cm = pzkNm
 
         With ThisWorkbook.Sheets(shNm)
             r24 = .UsedRange.Rows.Count + .UsedRange.Row

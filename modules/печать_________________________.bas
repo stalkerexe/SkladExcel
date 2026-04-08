@@ -1,4 +1,4 @@
-п»їAttribute VB_Name = "РїРµС‡Р°С‚СЊ_________________________"
+Attribute VB_Name = "печать_________________________"
 Option Explicit
 
 Public nmBlank As String

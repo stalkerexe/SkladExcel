@@ -1,4 +1,4 @@
-п»їAttribute VB_Name = "a_demo"
+Attribute VB_Name = "a_demo"
 
 
 
@@ -7,7 +7,7 @@ On Error Resume Next
 frm_Demo_sk.Show
 End Sub
 
-Public Sub РґРѕР±Р°РІРёС‚СЊ_СЃРєР»Р°Рґ()
+Public Sub добавить_склад()
 On Error Resume Next
 frm_msg.Show
 End Sub

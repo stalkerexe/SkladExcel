@@ -1,4 +1,4 @@
-﻿Attribute VB_Name = "я_Public_class"
+Attribute VB_Name = "�_Public_class"
 Option Explicit
 
 Public arr_Ctr() As New Nakladn_Page

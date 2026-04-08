@@ -1,4 +1,4 @@
-п»їAttribute VB_Name = "РїРµС‡Р°С‚СЊ_azv"
+Attribute VB_Name = "печать_azv"
 Option Explicit
 
 Private Const shRow As Integer = 13
@@ -49,7 +49,7 @@ End Sub
 Private Sub copy_dann()
         On Error Resume Next
         With ThisWorkbook.Sheets(nmBlank)
-            .Range("c2").Value = "Р Р°СЃС…РѕРґРЅР°СЏ РЅР°РєР»Р°РґРЅР°СЏ в„– " & nomer & " РѕС‚ " & sDt
+            .Range("c2").Value = "Расходная накладная № " & nomer & " от " & sDt
             .Cells(rwZv_zkz, 4).Value = sZkz
             .Cells(rwZv_adr, 4).Value = sAdr
             .Cells(rwZv_tlf, 4).Value = sTlf
@@ -120,7 +120,7 @@ Private Sub podp_sm()
 
             .Cells(r7, zvSm).RowHeight = 22
 
-            .Cells(r7, zvCnR).Value = "РС‚РѕРіРѕ:"
+            .Cells(r7, zvCnR).Value = "Итого:"
 
             .Cells(r7, zvSm).Value = summ
             .Cells(r7, zvSm).NumberFormat = "#,##0.00"
