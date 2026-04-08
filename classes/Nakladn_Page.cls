@@ -1,4 +1,4 @@
-VERSION 1.0 CLASS
+ï»¿VERSION 1.0 CLASS
 BEGIN
   MultiUse = -1  'True
 END
@@ -23,7 +23,7 @@ Private Sub nCol_Change()
 On Error Resume Next
 nom_Cnr = Mid(nCol.Name, 5)
 iRow = nom_Cnr + rwZv - 1
-With ThisWorkbook.Sheets("êîðçèíà")
+With ThisWorkbook.Sheets("ÐºÐ¾Ñ€Ð·Ð¸Ð½Ð°")
 .Cells(iRow, zvCol) = Replace(nCol, ",", ".")
 End With
 Call sum_box
