@@ -1,5 +1,5 @@
 ﻿' Component: ЭтаКнига  [Склад Excel.xlsm]
-' Type: Document (Sheet / ThisWorkbook)
+' Type: Document
 Option Explicit
 
 

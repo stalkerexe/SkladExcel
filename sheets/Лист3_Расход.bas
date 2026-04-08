@@ -1,5 +1,5 @@
 ﻿' Component: Лист3  [Расход]
-' Type: Document (Sheet / ThisWorkbook)
+' Type: Document
 Option Explicit
 
 Dim r As Long

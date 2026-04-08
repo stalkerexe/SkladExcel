@@ -1,5 +1,5 @@
 ﻿' Component: Лист8  [корзина]
-' Type: Document (Sheet / ThisWorkbook)
+' Type: Document
 Option Explicit
 
 Private Sub Worksheet_Change(ByVal Target As Range)

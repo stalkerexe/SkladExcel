@@ -1,5 +1,5 @@
 ﻿' Component: Лист10  [Главная]
-' Type: Document (Sheet / ThisWorkbook)
+' Type: Document
 Option Explicit
 
 Private Sub Worksheet_Deactivate()

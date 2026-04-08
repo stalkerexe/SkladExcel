@@ -1,5 +1,5 @@
 ﻿' Component: Лист9  [Отложено_приход]
-' Type: Document (Sheet / ThisWorkbook)
+' Type: Document
 Option Explicit
 
 
