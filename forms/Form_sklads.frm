@@ -14,6 +14,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Option Explicit
 
 
 Private Sub CommandButton1_Click()
@@ -39,19 +40,7 @@ Call добавить_склад
 End Sub
 
 Private Sub ListBox1_DblClick(ByVal Cancel As MSForms.ReturnBoolean)
-On Error Resume Next
-If ListBox1.ListIndex = -1 Then Exit Sub
-Application.CommandBars("MyContextMenu_ListBox").Delete
-With Application.CommandBars.Add(Name:="MyContextMenu_ListBox", Position:=msoBarPopup, Temporary:=True)
-With .Controls.Add(Type:=msoControlButton)
-.Style = msoButtonIconAndCaption
-.FaceId = 9255
-.Caption = "Открыть склад"
-.OnAction = "open_sklad"
-End With
-With .Controls.Add(Type:=msoControlButton)
-.Style = msoButtonIconAndCaption
-.FaceId = 137
+@@ -55,32 +56,34 @@ With .Controls.Add(Type:=msoControlButton)
 .Caption = "Добавить склад"
 .OnAction = "добавить_склад"
 End With
@@ -80,6 +69,8 @@ End Sub
 Private Sub load()
 On Error Resume Next
 Call load_sk
+ListBox1.Clear
+Dim i As Long
 For i = 0 To dic_sk.Count - 1
 ListBox1.AddItem dic_sk.Item(i)
 Next
