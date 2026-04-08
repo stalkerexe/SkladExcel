@@ -216,7 +216,7 @@ With ThisWorkbook.Sheets(SKLAD_SHEET)
 
     For i = SKLAD_FIRST_ROW To lastRow
         If StrComp(NormalizeSkName(CStr(.Cells(i, SKLAD_COLUMN).Value)), oldName, vbTextCompare) = 0 Then
-            .Rows(i).Delete
+            .Range(.Cells(i, SKLAD_COLUMN), .Cells(lastRow, SKLAD_COLUMN)).Delete Shift:=xlUp
             DeleteSkladFromStore = True
             Exit Function
         End If
@@ -273,6 +273,11 @@ End Sub
 
 Private Function AskMigrationTarget(ByVal oldName As String) As String
 Call load_sk
+
+If dic_sk.Count <= 1 Then
+    MsgBox "Нет доступного склада для миграции движений.", 48, "Удаление склада"
+    Exit Function
+End If
 
 Dim msg As String
 Dim i As Long
