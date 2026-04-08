@@ -1,23 +1,23 @@
-Attribute VB_Name = "vz_добавить_контролы"
+п»їAttribute VB_Name = "vz_РґРѕР±Р°РІРёС‚СЊ_РєРѕРЅС‚СЂРѕР»С‹"
 Option Explicit
 
 Private Const hgCntr = 18
 
 
-Public Sub добавить_контролы_vz()
+Public Sub РґРѕР±Р°РІРёС‚СЊ_РєРѕРЅС‚СЂРѕР»С‹_vz()
 
         iColCtr = iCol
         If iColCtr = 0 Then Exit Sub
         
         iVid = zvSelect.comb_vid.Value
 
-        Call контролы_накладной
+        Call РєРѕРЅС‚СЂРѕР»С‹_РЅР°РєР»Р°РґРЅРѕР№
         Call arr_controls_vz
         Call Frame_height
 
 End Sub
 
-Private Sub контролы_накладной()
+Private Sub РєРѕРЅС‚СЂРѕР»С‹_РЅР°РєР»Р°РґРЅРѕР№()
         On Error Resume Next
         
         iSize = 9
@@ -49,9 +49,9 @@ Private Sub dann_poz()
         sCol = col(i, 1)
         sSk = sk(i, 1)
         
-        If iVid = "Приход" Then sCn = cnZ(i, 1)
-        If iVid = "Отгрузка" Then sCn = cnR(i, 1)
-        If iVid = "Возврат" Then sCn = cnR(i, 1)
+        If iVid = "РџСЂРёС…РѕРґ" Then sCn = cnZ(i, 1)
+        If iVid = "РћС‚РіСЂСѓР·РєР°" Then sCn = cnR(i, 1)
+        If iVid = "Р’РѕР·РІСЂР°С‚" Then sCn = cnR(i, 1)
         
 End Sub
 

@@ -1,12 +1,12 @@
-Attribute VB_Name = "ф_файлы"
+п»їAttribute VB_Name = "С„_С„Р°Р№Р»С‹"
 Option Explicit
 
 Public Sub load_sk()
 On Error Resume Next
 Set dic_sk = CreateObject("Scripting.Dictionary")
-dic_sk.Add 0, "Материалы"
-dic_sk.Add 1, "Металлопрокат"
-dic_sk.Add 2, "Спецодежда"
+dic_sk.Add 0, "РњР°С‚РµСЂРёР°Р»С‹"
+dic_sk.Add 1, "РњРµС‚Р°Р»Р»РѕРїСЂРѕРєР°С‚"
+dic_sk.Add 2, "РЎРїРµС†РѕРґРµР¶РґР°"
 End Sub
 
 Public Sub sh_frm_Skidka()

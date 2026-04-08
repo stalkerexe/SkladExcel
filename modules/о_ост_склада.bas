@@ -1,4 +1,4 @@
-Attribute VB_Name = "о_ост_склада"
+п»їAttribute VB_Name = "Рѕ_РѕСЃС‚_СЃРєР»Р°РґР°"
 
 
 Public Sub ost_skds()
@@ -29,9 +29,9 @@ End Sub
 
 
 Public Sub find_cm_sk()
-        If sSk = "Материалы" Then cm = 2
-        If sSk = "Металлопрокат" Then cm = 4
-        If sSk = "Спецодежда" Then cm = 6
+        If sSk = "РњР°С‚РµСЂРёР°Р»С‹" Then cm = 2
+        If sSk = "РњРµС‚Р°Р»Р»РѕРїСЂРѕРєР°С‚" Then cm = 4
+        If sSk = "РЎРїРµС†РѕРґРµР¶РґР°" Then cm = 6
 End Sub
 
 

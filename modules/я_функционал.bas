@@ -1,9 +1,9 @@
-Attribute VB_Name = "я_функционал"
+п»їAttribute VB_Name = "СЏ_С„СѓРЅРєС†РёРѕРЅР°Р»"
 Option Explicit
 
 Public Sub A__999()
 
-    With Sheets("Главная")
+    With Sheets("Р“Р»Р°РІРЅР°СЏ")
         .Shapes("cmbt_1").Visible = False
         .Shapes("cmbt_2").Visible = False
         .Shapes("cmbt_3").Visible = False
@@ -16,15 +16,15 @@ Public Sub A__999()
         .Shapes("cmbt_10").Visible = False
     End With
     
-    With Sheets("Склад")
+    With Sheets("РЎРєР»Р°Рґ")
         .Shapes("grCmbBox").Visible = False
     End With
     
-    Sheets("Cклад").Visible = 2
-    Sheets("Приход").Visible = 2
-    Sheets("Отложено_приход").Visible = 2
-    Sheets("Расход").Visible = 2
-    Sheets("Отложено_расход").Visible = 2
+    Sheets("CРєР»Р°Рґ").Visible = 2
+    Sheets("РџСЂРёС…РѕРґ").Visible = 2
+    Sheets("РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ").Visible = 2
+    Sheets("Р Р°СЃС…РѕРґ").Visible = 2
+    Sheets("РћС‚Р»РѕР¶РµРЅРѕ_СЂР°СЃС…РѕРґ").Visible = 2
 
 End Sub
 

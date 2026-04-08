@@ -1,4 +1,4 @@
-Attribute VB_Name = "я_календарь"
+п»їAttribute VB_Name = "СЏ_РєР°Р»РµРЅРґР°СЂСЊ"
 Option Explicit
 
 Public dt_1 As Date

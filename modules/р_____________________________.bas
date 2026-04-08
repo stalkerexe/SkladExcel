@@ -1,10 +1,10 @@
-Attribute VB_Name = "р_____________________________"
+п»їAttribute VB_Name = "СЂ_____________________________"
 Option Explicit
 
 Public Sub clear_zv_all()
         On Error Resume Next
         Call unload_mn_vid:  DoEvents
-        If MsgBox("Удалить все позиции из накладной?       ", vbOKCancel + vbQuestion, "Очистить") = vbCancel Then Exit Sub
+        If MsgBox("РЈРґР°Р»РёС‚СЊ РІСЃРµ РїРѕР·РёС†РёРё РёР· РЅР°РєР»Р°РґРЅРѕР№?       ", vbOKCancel + vbQuestion, "РћС‡РёСЃС‚РёС‚СЊ") = vbCancel Then Exit Sub
         Call doScreenOff
         Call do_clear_zv_all
         Call doScreenOn
@@ -12,7 +12,7 @@ End Sub
 
 Private Sub do_clear_zv_all()
         On Error Resume Next
-        With ThisWorkbook.Sheets("Расход")
+        With ThisWorkbook.Sheets("Р Р°СЃС…РѕРґ")
             r7 = .UsedRange.Rows.Count + .UsedRange.Row - 1
             .Range(.Cells(rwZv, 2), .Cells(r7 + 44, 2)).EntireRow.Delete
             .Cells(rwzvSm, zvSm) = ""
@@ -21,7 +21,7 @@ Private Sub do_clear_zv_all()
 .Cells(rwZv_mj, zvOst) = ""
         End With
         
-        Call режим_редактирования_off_pr("Расход")
+        Call СЂРµР¶РёРј_СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ_off_pr("Р Р°СЃС…РѕРґ")
         
         Call clear_box
 End Sub
@@ -30,10 +30,10 @@ End Sub
 Public Sub RemoveDuplicates_sk()
 On Error Resume Next
 Call clearBf
-With ThisWorkbook.Sheets("буфер")
+With ThisWorkbook.Sheets("Р±СѓС„РµСЂ")
 .Cells(1, "a").Resize(UBound(sk), 1) = sk
 End With
-With ThisWorkbook.Sheets("буфер")
+With ThisWorkbook.Sheets("Р±СѓС„РµСЂ")
 r24 = .Cells(Rows.Count, 1).End(xlUp).Row + 1
 .Range("a1:a" & r24).RemoveDuplicates Columns:=1, Header:=xlNo
 r24 = .Cells(Rows.Count, 1).End(xlUp).Row + 1
@@ -45,7 +45,7 @@ End Sub
 
 Public Sub clear_sk()
 On Error Resume Next
-With ThisWorkbook.Sheets("Склад")
+With ThisWorkbook.Sheets("РЎРєР»Р°Рґ")
     Call AutoFilter_delete
     r7 = .UsedRange.Rows.Count + .UsedRange.Row - 1
     .Range("a" & 5 & ":a" & r7 + 44).EntireRow.Delete

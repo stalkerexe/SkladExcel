@@ -1,4 +1,4 @@
-Attribute VB_Name = "склад_обновить"
+п»їAttribute VB_Name = "СЃРєР»Р°Рґ_РѕР±РЅРѕРІРёС‚СЊ"
 Option Explicit
 
 Public Sub sklad_obnovitt()
@@ -22,7 +22,7 @@ End Sub
 
 Private Sub arr_sk_this_sheet()
         On Error Resume Next
-        With ThisWorkbook.Sheets("Склад")
+        With ThisWorkbook.Sheets("РЎРєР»Р°Рґ")
             r7 = .Cells(Rows.Count, skNm).End(xlUp).Row + 4
             nn = Range(.Cells(5, 1), .Cells(r7, 1)).Value
             nm = Range(.Cells(5, skNm), .Cells(r7, skNm)).Value

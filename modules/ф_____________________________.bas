@@ -1,17 +1,17 @@
-Attribute VB_Name = "ф_____________________________"
+п»їAttribute VB_Name = "С„_____________________________"
 Option Explicit
 
 
-Public Function режим_редактирования_on_pr(shNm As String)
+Public Function СЂРµР¶РёРј_СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ_on_pr(shNm As String)
         With ThisWorkbook.Sheets(shNm)
-            .Cells(9, zvOst) = "Режим_редактирования"
+            .Cells(9, zvOst) = "Р РµР¶РёРј_СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ"
 .Range("d1").Value = .Range("d2").Value
         End With
 End Function
 
-Public Function режим_редактирования_off_pr(shNm As String)
+Public Function СЂРµР¶РёРј_СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ_off_pr(shNm As String)
         With ThisWorkbook.Sheets(shNm)
-            If .Cells(9, zvOst) = "Режим_редактирования" Then
+            If .Cells(9, zvOst) = "Р РµР¶РёРј_СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ" Then
                 .Cells(9, zvOst) = ""
 .Range("d2").Value = .Range("d1").Value
                 .Range("d1") = ""
@@ -21,9 +21,9 @@ End Function
 
 
 Public Sub find_path_vid()
-        If iVid = "Приход" Then shNmArh = "arh_prr"
-        If iVid = "Отгрузка" Then shNmArh = "arh_zkk"
-        If iVid = "Возврат" Then shNmArh = "arh_vzz"
+        If iVid = "РџСЂРёС…РѕРґ" Then shNmArh = "arh_prr"
+        If iVid = "РћС‚РіСЂСѓР·РєР°" Then shNmArh = "arh_zkk"
+        If iVid = "Р’РѕР·РІСЂР°С‚" Then shNmArh = "arh_vzz"
 End Sub
 
 Public Sub dann_zvk()

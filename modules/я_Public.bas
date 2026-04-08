@@ -1,4 +1,4 @@
-Attribute VB_Name = "�_Public"
+﻿Attribute VB_Name = "я_Public"
 Public id()
 Public opl()
 Public skid()

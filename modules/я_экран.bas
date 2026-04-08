@@ -1,4 +1,4 @@
-Attribute VB_Name = "я_экран"
+п»їAttribute VB_Name = "СЏ_СЌРєСЂР°РЅ"
 Option Explicit
 
 
@@ -43,7 +43,7 @@ Call polnekr
 Else
 Call verekr
 End If
-Sheets("Cклад").Select
+Sheets("CРєР»Р°Рґ").Select
 End Sub
 Public Sub AutoFilter_delete()
 On Error Resume Next
@@ -54,7 +54,7 @@ End If
 End With
 End Sub
 Public Sub msg_demo()
-MsgBox "Данная функция доступна только для полной версии программы!", 64, "Демо-версия"
+MsgBox "Р”Р°РЅРЅР°СЏ С„СѓРЅРєС†РёСЏ РґРѕСЃС‚СѓРїРЅР° С‚РѕР»СЊРєРѕ РґР»СЏ РїРѕР»РЅРѕР№ РІРµСЂСЃРёРё РїСЂРѕРіСЂР°РјРјС‹!", 64, "Р”РµРјРѕ-РІРµСЂСЃРёСЏ"
 End Sub
 
 Public Function nom_nk(clmn As Integer)
@@ -66,7 +66,7 @@ End With
 End Function
 Public Sub clearBf()
 On Error Resume Next
-With ThisWorkbook.Sheets("буфер")
+With ThisWorkbook.Sheets("Р±СѓС„РµСЂ")
 .Cells.ClearContents
 End With
 End Sub

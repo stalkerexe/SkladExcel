@@ -1,4 +1,4 @@
-Attribute VB_Name = "Add_Damp"
+п»їAttribute VB_Name = "Add_Damp"
 Option Explicit
 
 Public Sub ExportVBAProjectToTxt_UTF8()
@@ -8,56 +8,56 @@ Public Sub ExportVBAProjectToTxt_UTF8()
     Dim stream As Object
     Dim lineContent As String
     
-    ' Путь к файлу
+    ' РџСѓС‚СЊ Рє С„Р°Р№Р»Сѓ
     filePath = ThisWorkbook.Path & "\VBA_Sklad_Dump_UTF8.txt"
 
-    ' Создаем объект потока
+    ' РЎРѕР·РґР°РµРј РѕР±СЉРµРєС‚ РїРѕС‚РѕРєР°
     Set stream = CreateObject("ADODB.Stream")
     
     With stream
         .Type = 2 ' adTypeText
-        .Charset = "utf-8" ' Устанавливаем UTF-8
+        .Charset = "utf-8" ' РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј UTF-8
         .Open
         
-        ' Пишем заголовок (добавим кириллицу для проверки кодировки)
-        .WriteText "===== ЭКСПОРТ ПРОЕКТА VBA (UTF-8) =====" & vbCrLf
-        .WriteText "Книга: " & ThisWorkbook.Name & vbCrLf
-        .WriteText "Дата: " & Now & vbCrLf
+        ' РџРёС€РµРј Р·Р°РіРѕР»РѕРІРѕРє (РґРѕР±Р°РІРёРј РєРёСЂРёР»Р»РёС†Сѓ РґР»СЏ РїСЂРѕРІРµСЂРєРё РєРѕРґРёСЂРѕРІРєРё)
+        .WriteText "===== Р­РљРЎРџРћР Рў РџР РћР•РљРўРђ VBA (UTF-8) =====" & vbCrLf
+        .WriteText "РљРЅРёРіР°: " & ThisWorkbook.Name & vbCrLf
+        .WriteText "Р”Р°С‚Р°: " & Now & vbCrLf
         .WriteText String(50, "=") & vbCrLf & vbCrLf
 
-        ' ==== ДЕРЕВО ПРОЕКТА ====
-        .WriteText "### СТРУКТУРА ПРОЕКТА ###" & vbCrLf
+        ' ==== Р”Р•Р Р•Р’Рћ РџР РћР•РљРўРђ ====
+        .WriteText "### РЎРўР РЈРљРўРЈР Рђ РџР РћР•РљРўРђ ###" & vbCrLf
         For Each comp In ThisWorkbook.VBProject.VBComponents
             .WriteText "- " & comp.Name & " (" & ComponentTypeName(comp.Type) & ")" & vbCrLf
         Next comp
         .WriteText String(50, "-") & vbCrLf & vbCrLf
 
-        ' ==== КОД МОДУЛЕЙ ====
+        ' ==== РљРћР” РњРћР”РЈР›Р•Р™ ====
         For Each comp In ThisWorkbook.VBProject.VBComponents
-            .WriteText "=== КОМПОНЕНТ: " & comp.Name & " ===" & vbCrLf
-            .WriteText "ТИП: " & ComponentTypeName(comp.Type) & vbCrLf
+            .WriteText "=== РљРћРњРџРћРќР•РќРў: " & comp.Name & " ===" & vbCrLf
+            .WriteText "РўРРџ: " & ComponentTypeName(comp.Type) & vbCrLf
             .WriteText String(50, "-") & vbCrLf
 
             If comp.CodeModule.CountOfLines > 0 Then
                 For i = 1 To comp.CodeModule.CountOfLines
-                    ' Читаем строку кода
+                    ' Р§РёС‚Р°РµРј СЃС‚СЂРѕРєСѓ РєРѕРґР°
                     lineContent = comp.CodeModule.Lines(i, 1)
-                    ' Записываем с номером строки
+                    ' Р—Р°РїРёСЃС‹РІР°РµРј СЃ РЅРѕРјРµСЂРѕРј СЃС‚СЂРѕРєРё
                     .WriteText Format(i, "0000") & " | " & lineContent & vbCrLf
                 Next i
             Else
-                .WriteText "[Пустой модуль]" & vbCrLf
+                .WriteText "[РџСѓСЃС‚РѕР№ РјРѕРґСѓР»СЊ]" & vbCrLf
             End If
 
             .WriteText vbCrLf & vbCrLf
         Next comp
 
-        ' Сохраняем (2 = перезаписать файл)
+        ' РЎРѕС…СЂР°РЅСЏРµРј (2 = РїРµСЂРµР·Р°РїРёСЃР°С‚СЊ С„Р°Р№Р»)
         .SaveToFile filePath, 2
         .Close
     End With
 
-    MsgBox "Готово! Файл сохранен в UTF-8:" & vbCrLf & filePath, vbInformation
+    MsgBox "Р“РѕС‚РѕРІРѕ! Р¤Р°Р№Р» СЃРѕС…СЂР°РЅРµРЅ РІ UTF-8:" & vbCrLf & filePath, vbInformation
 End Sub
 
 Private Function ComponentTypeName(ByVal t As Long) As String

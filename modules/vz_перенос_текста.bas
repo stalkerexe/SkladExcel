@@ -1,4 +1,4 @@
-Attribute VB_Name = "vz_перенос_текста"
+п»їAttribute VB_Name = "vz_РїРµСЂРµРЅРѕСЃ_С‚РµРєСЃС‚Р°"
 Option Explicit
 Public iControl As Control
 Public widControl As Double
@@ -51,7 +51,7 @@ Private Sub perenos_Height_yes()
             If iHeightMax <= hgCntr Then iHeightMax = hgCntr
             
             
-            Call высота_в_ряду
+            Call РІС‹СЃРѕС‚Р°_РІ_СЂСЏРґСѓ
             
 smHeight = smHeight + iHeightMax
             
@@ -74,7 +74,7 @@ Private Sub fimd_max_height()
         
 End Sub
 
-Private Sub высота_в_ряду()
+Private Sub РІС‹СЃРѕС‚Р°_РІ_СЂСЏРґСѓ()
         On Error Resume Next
 
         For Each ctr In frm_ZVK.Frame_nk.Controls

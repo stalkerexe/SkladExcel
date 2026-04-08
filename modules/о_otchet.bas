@@ -1,4 +1,4 @@
-Attribute VB_Name = "о_otchet"
+п»їAttribute VB_Name = "Рѕ_otchet"
 Public iCmOt As Integer
 Public wbOt As Workbook
 
@@ -104,10 +104,10 @@ Private Sub parse_arh_ot()
                 c(j, 7) = sm(i, 1)
                 c(j, 8) = cnZ(i, 1)
                 
-                сумма_закуп = col(i, 1) * cnZ(i, 1)
-                c(j, 9) = сумма_закуп
+                СЃСѓРјРјР°_Р·Р°РєСѓРї = col(i, 1) * cnZ(i, 1)
+                c(j, 9) = СЃСѓРјРјР°_Р·Р°РєСѓРї
                 
-c(j, 10) = sm(i, 1) - сумма_закуп
+c(j, 10) = sm(i, 1) - СЃСѓРјРјР°_Р·Р°РєСѓРї
                 c(j, 11) = mj(i, 1)
                 c(j, 12) = zkz(i, 1)
                 

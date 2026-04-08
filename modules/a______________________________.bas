@@ -1,4 +1,4 @@
-Attribute VB_Name = "a______________________________"
+﻿Attribute VB_Name = "a______________________________"
 Option Explicit
 
 Public fg_open_arh As Byte

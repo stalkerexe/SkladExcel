@@ -1,22 +1,22 @@
-Attribute VB_Name = "о_оформить_заказ_pr"
+п»їAttribute VB_Name = "Рѕ_РѕС„РѕСЂРјРёС‚СЊ_Р·Р°РєР°Р·_pr"
 Option Explicit
 
-Public Sub оформить_заказ_pr()
+Public Sub РѕС„РѕСЂРјРёС‚СЊ_Р·Р°РєР°Р·_pr()
         Call copy_
         Call format_pr
 End Sub
 
 Private Sub copy_()
         On Error Resume Next
-        With ThisWorkbook.Sheets("Приход")
+        With ThisWorkbook.Sheets("РџСЂРёС…РѕРґ")
             r7 = .UsedRange.Rows.Count + .UsedRange.Row - 1
             .Range("a" & rwZv & ":a" & r7 + 44).EntireRow.Delete
             .Cells(rwzvSm, zvSm) = ""
             .Range("a1") = ""
             .Range("d2") = ""
         End With
-        Sheets("Приход").Activate
-        With ThisWorkbook.Sheets("корзина")
+        Sheets("РџСЂРёС…РѕРґ").Activate
+        With ThisWorkbook.Sheets("РєРѕСЂР·РёРЅР°")
         r7 = .Cells(Rows.Count, zvNm).End(xlUp).Row
         .Range(.Cells(rwZv, 1), .Cells(r7, zvCol)).Copy
         Cells(rwZv, 1).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks:=False, Transpose:=False
@@ -39,7 +39,7 @@ End Sub
 Private Sub format_pr()
         On Error Resume Next
         row1 = rwZv
-        row2 = ThisWorkbook.Sheets("Приход").Cells(Rows.Count, prNm).End(xlUp).Row
+        row2 = ThisWorkbook.Sheets("РџСЂРёС…РѕРґ").Cells(Rows.Count, prNm).End(xlUp).Row
         Call format_pr_
         Cells(rwZv, prCol) = Cells(rwZv, prCol)
 End Sub

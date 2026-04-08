@@ -1,4 +1,4 @@
-Attribute VB_Name = "ф_файлы_2"
+п»їAttribute VB_Name = "С„_С„Р°Р№Р»С‹_2"
 Option Explicit
 
 
@@ -6,8 +6,8 @@ Public Sub clearpr3()
 On Error Resume Next
 Call unload_mn_vid_pr
 DoEvents
-If MsgBox("Удалить все позиции из накладной?", vbOKCancel + vbQuestion, "Очистить") = vbCancel Then Exit Sub
-With ThisWorkbook.Sheets("Приход")
+If MsgBox("РЈРґР°Р»РёС‚СЊ РІСЃРµ РїРѕР·РёС†РёРё РёР· РЅР°РєР»Р°РґРЅРѕР№?", vbOKCancel + vbQuestion, "РћС‡РёСЃС‚РёС‚СЊ") = vbCancel Then Exit Sub
+With ThisWorkbook.Sheets("РџСЂРёС…РѕРґ")
 r7 = .UsedRange.Rows.Count + .UsedRange.Row - 1
 .Range(.Cells(rwZv, 2), .Cells(r7 + 44, 2)).EntireRow.Delete
 .Cells(rwzvSm, prSm) = ""
@@ -15,18 +15,18 @@ r7 = .UsedRange.Rows.Count + .UsedRange.Row - 1
 .Cells(1, prComm) = ""
 End With
 
-        Call режим_редактирования_off_pr("Приход")
+        Call СЂРµР¶РёРј_СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ_off_pr("РџСЂРёС…РѕРґ")
 
 End Sub
 
 
 Public Sub clear_box()
-With ThisWorkbook.Sheets("корзина")
+With ThisWorkbook.Sheets("РєРѕСЂР·РёРЅР°")
 r7 = .UsedRange.Rows.Count + .UsedRange.Row - 1
 .Range(.Cells(rwZv, 2), .Cells(r7 + 44, 2)).EntireRow.Delete
 .Cells(rwzvSm, zvSm) = ""
 End With
-With ThisWorkbook.Sheets("Склад")
+With ThisWorkbook.Sheets("РЎРєР»Р°Рґ")
 .Cells(3, iBox1) = 0
 .Cells(3, iBox2) = 0
 End With
@@ -73,22 +73,22 @@ End Sub
 
 
 Public Sub s_pr()
-Sheets("Приход").Select
+Sheets("РџСЂРёС…РѕРґ").Select
 End Sub
 Public Sub s_zv()
-Sheets("Расход").Select
+Sheets("Р Р°СЃС…РѕРґ").Select
 End Sub
 Public Sub s_sk()
-Sheets("Склад").Select
+Sheets("РЎРєР»Р°Рґ").Select
 End Sub
 Public Sub s_gl()
-Sheets("Главная").Select
+Sheets("Р“Р»Р°РІРЅР°СЏ").Select
 End Sub
 Public Sub s_ot_rs()
-Sheets("Отложено_расход").Select
+Sheets("РћС‚Р»РѕР¶РµРЅРѕ_СЂР°СЃС…РѕРґ").Select
 End Sub
 Public Sub s_ot_pr()
-Sheets("Отложено_приход").Select
+Sheets("РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ").Select
 End Sub
 
 Public Sub sh_frm_sk()
@@ -143,7 +143,7 @@ With frm_Show
 .StartUpPosition = 0
 .Left = Application.Width
 .Top = ActiveSheet.Shapes("grCmbBox").Top + ActiveSheet.Shapes("grCmbBox").Height + 20
-Call добавить_контролы
+Call РґРѕР±Р°РІРёС‚СЊ_РєРѕРЅС‚СЂРѕР»С‹
 a = Application.Width
 b = ActiveSheet.Shapes("grCmbBox").Left
 For i = a To b Step -30

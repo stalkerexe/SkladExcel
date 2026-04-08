@@ -1,4 +1,4 @@
-Attribute VB_Name = "я_фигуры"
+п»їAttribute VB_Name = "СЏ_С„РёРіСѓСЂС‹"
 
 Const hh = 2.5
 Const iHeight = 54

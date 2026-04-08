@@ -1,4 +1,4 @@
-Attribute VB_Name = "печать_zkk"
+п»їAttribute VB_Name = "РїРµС‡Р°С‚СЊ_zkk"
 Option Explicit
 
 Private Const shRow As Integer = 13
@@ -22,21 +22,21 @@ Private Sub do_blank()
 End Sub
 
 Private Sub do_vid()
-        If frm_print.TextBox1.Text = 3 Then iVid = "Отгрузка": shNm = "Отложено_расход"
-        If frm_print.TextBox1.Text = 4 Then iVid = "Приход": shNm = "Отложено_приход"
+        If frm_print.TextBox1.Text = 3 Then iVid = "РћС‚РіСЂСѓР·РєР°": shNm = "РћС‚Р»РѕР¶РµРЅРѕ_СЂР°СЃС…РѕРґ"
+        If frm_print.TextBox1.Text = 4 Then iVid = "РџСЂРёС…РѕРґ": shNm = "РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ"
 End Sub
 
 
 Private Sub copy_to_blank()
         On Error Resume Next
         
-        If iVid = "Приход" Then
+        If iVid = "РџСЂРёС…РѕРґ" Then
             Call dann_zk_pr
             Call arr_zk_this_pr
             Call copy_to_blank_pr
         End If
         
-        If iVid = "Отгрузка" Then
+        If iVid = "РћС‚РіСЂСѓР·РєР°" Then
             Call dann_zk_rs
             Call arr_zk_this
             Call copy_to_blank_rs

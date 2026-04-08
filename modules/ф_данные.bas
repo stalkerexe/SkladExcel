@@ -1,9 +1,9 @@
-Attribute VB_Name = "ф_данные"
+п»їAttribute VB_Name = "С„_РґР°РЅРЅС‹Рµ"
 Option Explicit
 
 Public Sub dann_zv()
         On Error Resume Next
-        With ThisWorkbook.Sheets("Расход")
+        With ThisWorkbook.Sheets("Р Р°СЃС…РѕРґ")
             nomer = .Range("d2")
             sZkz = .Cells(rwZv_zkz, 4).Value
             sAdr = .Cells(rwZv_adr, 4).Value
@@ -20,7 +20,7 @@ End Sub
 
 Public Sub dann_pr()
         On Error Resume Next
-        With ThisWorkbook.Sheets("Приход")
+        With ThisWorkbook.Sheets("РџСЂРёС…РѕРґ")
             nomer = .Range("d2")
             sZkz = .Cells(rwPr_zkz, 4).Value
             sMj = .Cells(rwPr_mj, 4).Value
@@ -41,7 +41,7 @@ End Sub
 
 Public Sub dann_zk_rs()
         On Error Resume Next
-        With ThisWorkbook.Sheets("Отложено_расход")
+        With ThisWorkbook.Sheets("РћС‚Р»РѕР¶РµРЅРѕ_СЂР°СЃС…РѕРґ")
             nomer = .Cells(iRow, zkNom)
             sZkz = .Cells(iRow, zkZkz)
             sTlf = .Cells(iRow, zkTlf)
@@ -58,7 +58,7 @@ End Sub
 
 Public Sub dann_zk_pr()
         On Error Resume Next
-        With ThisWorkbook.Sheets("Отложено_приход")
+        With ThisWorkbook.Sheets("РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ")
             nomer = .Cells(iRow, pzkNom)
             sZkz = .Cells(iRow, pzkPsv)
             sMj = .Cells(iRow, pzkMj)

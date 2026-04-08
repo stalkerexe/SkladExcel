@@ -1,11 +1,11 @@
-Attribute VB_Name = "п_____________________________"
+п»їAttribute VB_Name = "Рї_____________________________"
 Option Explicit
 
 
 Public Sub format_pr_()
         On Error Resume Next
 
-        With ThisWorkbook.Sheets("Приход")
+        With ThisWorkbook.Sheets("РџСЂРёС…РѕРґ")
         
             Range(.Cells(row1, prNm), .Cells(row2, prSm)).Borders.LineStyle = True
             Range(.Cells(row1, prEd), .Cells(row2, prSm)).HorizontalAlignment = xlCenter
@@ -52,7 +52,7 @@ End Sub
 Public Sub format_zv_()
         On Error Resume Next
         
-        With ThisWorkbook.Sheets("Расход")
+        With ThisWorkbook.Sheets("Р Р°СЃС…РѕРґ")
         
             Range(.Cells(row1, zvNm), .Cells(row2, zvSm)).Borders.LineStyle = True
             

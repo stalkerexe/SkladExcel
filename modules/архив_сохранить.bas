@@ -1,4 +1,4 @@
-Attribute VB_Name = "архив_сохранить"
+п»їAttribute VB_Name = "Р°СЂС…РёРІ_СЃРѕС…СЂР°РЅРёС‚СЊ"
 Public shNmArh As String
 
 Public Sub save_nk()

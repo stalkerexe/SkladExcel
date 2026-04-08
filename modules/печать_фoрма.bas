@@ -1,4 +1,4 @@
-Attribute VB_Name = "печать_фoрма"
+п»їAttribute VB_Name = "РїРµС‡Р°С‚СЊ_С„oСЂРјР°"
 Option Explicit
 
 Public Sub printZv()
@@ -7,7 +7,7 @@ Public Sub printZv()
         DoEvents
         r7 = Cells(Rows.Count, zvNm).End(xlUp).Row
         If r7 < rwZv Then
-        MsgBox "Нет позиций для печати в накладной!", 64, "Печать"
+        MsgBox "РќРµС‚ РїРѕР·РёС†РёР№ РґР»СЏ РїРµС‡Р°С‚Рё РІ РЅР°РєР»Р°РґРЅРѕР№!", 64, "РџРµС‡Р°С‚СЊ"
         Exit Sub
         End If
         frm_print.Show
@@ -20,7 +20,7 @@ Public Sub printPr()
         DoEvents
         r7 = Cells(Rows.Count, prNm).End(xlUp).Row
         If r7 < rwZv Then
-        MsgBox "Нет позиций для печати в приходе!", 64, "Печать"
+        MsgBox "РќРµС‚ РїРѕР·РёС†РёР№ РґР»СЏ РїРµС‡Р°С‚Рё РІ РїСЂРёС…РѕРґРµ!", 64, "РџРµС‡Р°С‚СЊ"
         Exit Sub
         End If
         frm_print.Show

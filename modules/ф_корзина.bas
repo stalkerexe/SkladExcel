@@ -1,4 +1,4 @@
-Attribute VB_Name = "ф_корзина"
+п»їAttribute VB_Name = "С„_РєРѕСЂР·РёРЅР°"
 Option Explicit
 
 Dim r As Long: Dim rr As Long
@@ -20,21 +20,21 @@ iRow = ActiveCell.Row
 Call find_gr
 Call dann
 Call copy_
-If frm_Show.Visible = True Then добавить_контролы
-With ThisWorkbook.Sheets("корзина")
+If frm_Show.Visible = True Then РґРѕР±Р°РІРёС‚СЊ_РєРѕРЅС‚СЂРѕР»С‹
+With ThisWorkbook.Sheets("РєРѕСЂР·РёРЅР°")
 r = .Cells(Rows.Count, zvNm).End(xlUp).Row
 iCol = Application.CountIf(Range(.Cells(rwZv, zvNm), .Cells(r + 3, zvNm)), "<>")
 End With
-With ThisWorkbook.Sheets("Склад")
+With ThisWorkbook.Sheets("РЎРєР»Р°Рґ")
 .Cells(3, iBox1) = iCol
-.Cells(3, iBox2) = ThisWorkbook.Sheets("корзина").Cells(rwzvSm, zvSm)
+.Cells(3, iBox2) = ThisWorkbook.Sheets("РєРѕСЂР·РёРЅР°").Cells(rwzvSm, zvSm)
 End With
 End Sub
 
 
 Private Sub arr_sk_sk()
 On Error Resume Next
-With ThisWorkbook.Sheets("Склад")
+With ThisWorkbook.Sheets("РЎРєР»Р°Рґ")
     gr_sk = Range(.Cells(5, skGr), .Cells(iRow, skGr)).Value
     nm_sk = Range(.Cells(5, skNm), .Cells(iRow, skNm)).Value
 End With
@@ -61,7 +61,7 @@ End Sub
 
 Private Sub dann()
 On Error Resume Next
-With ThisWorkbook.Sheets("Склад")
+With ThisWorkbook.Sheets("РЎРєР»Р°Рґ")
 sID = iRow
 sNm = .Cells(iRow, skNm).Value
 sCod = .Cells(iRow, skCod).Value
@@ -77,7 +77,7 @@ End Sub
 Private Sub copy_()
 On Error Resume Next
 
-With ThisWorkbook.Sheets("корзина")
+With ThisWorkbook.Sheets("РєРѕСЂР·РёРЅР°")
 r = .Cells(Rows.Count, zvNm).End(xlUp).Row + 1
 If r < rwZv Then r = rwZv: GoTo 22
 For Each cell In Range(.Cells(rwZv, 1), .Cells(r, 1))
@@ -107,7 +107,7 @@ Next
 .Cells(r, zvGr) = sGr
 End With
 
-With ThisWorkbook.Sheets("корзина")
+With ThisWorkbook.Sheets("РєРѕСЂР·РёРЅР°")
     .Cells(r, zvNN) = r - rwZv + 1
 End With
 
@@ -118,7 +118,7 @@ End Sub
 
 Public Sub del_poz_box()
 On Error Resume Next
-With ThisWorkbook.Sheets("корзина")
+With ThisWorkbook.Sheets("РєРѕСЂР·РёРЅР°")
 .Cells(iRow, 2).EntireRow.Delete
 r = .Cells(Rows.Count, zvNm).End(xlUp).Row
 j = 1
@@ -135,7 +135,7 @@ Public Sub formula_in_box()
         
         If iRowBox = 0 Then Exit Sub
         
-        With ThisWorkbook.Sheets("корзина")
+        With ThisWorkbook.Sheets("РєРѕСЂР·РёРЅР°")
         
             iCellsOne = .Cells(iRowBox, zvCol).Address(RowAbsolute:=False, ColumnAbsolute:=False)
             iCellsTwo = .Cells(iRowBox, zvCnR).Address(RowAbsolute:=False, ColumnAbsolute:=False)

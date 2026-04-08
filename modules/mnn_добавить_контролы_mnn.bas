@@ -1,4 +1,4 @@
-Attribute VB_Name = "mnn_добавить_контролы_mnn"
+п»їAttribute VB_Name = "mnn_РґРѕР±Р°РІРёС‚СЊ_РєРѕРЅС‚СЂРѕР»С‹_mnn"
 Option Explicit
 
 Public Const hgCntrMnn As Double = 20
@@ -6,18 +6,18 @@ Public Const widMnn As Double = 120
 Public Const iZazor As Double = 2
 
 
-Public Sub добавить_контролы_mnn()
+Public Sub РґРѕР±Р°РІРёС‚СЊ_РєРѕРЅС‚СЂРѕР»С‹_mnn()
         On Error Resume Next
 
         iColCtr = iCol
         If iColCtr = 0 Then Exit Sub
         
-        Call контролы_накладной
+        Call РєРѕРЅС‚СЂРѕР»С‹_РЅР°РєР»Р°РґРЅРѕР№
         Call arr_controls_mnn
 
 End Sub
 
-Private Sub контролы_накладной()
+Private Sub РєРѕРЅС‚СЂРѕР»С‹_РЅР°РєР»Р°РґРЅРѕР№()
         On Error Resume Next
         
         iSize = 9
