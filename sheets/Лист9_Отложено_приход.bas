@@ -1,6 +1,7 @@
-п»ї' Component: Р›РёСЃС‚9  [РћС‚Р»РѕР¶РµРЅРѕ_РїСЂРёС…РѕРґ]
+' Component: Лист9  [Отложено_приход]
 ' Type: Document (Sheet / ThisWorkbook)
 Option Explicit
+
 
 Private Sub Worksheet_BeforeDoubleClick(ByVal Target As Range, Cancel As Boolean)
         On Error Resume Next
@@ -42,25 +43,25 @@ With Application.CommandBars.Add(Name:="MyContextMenu", Position:=msoBarPopup, T
 With .Controls.Add(Type:=msoControlButton)
 .Style = msoButtonIconAndCaption
 .FaceId = 162
-.Caption = "Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ"
+.Caption = "Редактировать"
 .OnAction = "zv_pedactirov_pr"
 End With
 With .Controls.Add(Type:=msoControlButton)
 .Style = msoButtonIconAndCaption
 .FaceId = 4
-.Caption = "РџРµС‡Р°С‚СЊ"
+.Caption = "Печать"
 .OnAction = "printZk_pr"
 End With
 With .Controls.Add(Type:=msoControlButton)
 .Style = msoButtonIconAndCaption
 .FaceId = 3160
-.Caption = "РџСЂРёС…РѕРґРѕРІР°С‚СЊ"
+.Caption = "Приходовать"
 .OnAction = "prZk"
 End With
 With .Controls.Add(Type:=msoControlButton)
 .Style = msoButtonIconAndCaption
 .FaceId = 21
-.Caption = "РЈРґР°Р»РёС‚СЊ РїСЂРёС…РѕРґ"
+.Caption = "Удалить приход"
 .OnAction = "prDelete"
 End With
 End With
@@ -102,9 +103,9 @@ On Error Resume Next
 With frm_Comm
 .Show
 .tb_row.Value = iRow
-.tb_mk.text = Cells(iRow - 1, 1)
-.tb_comm.text = ActiveCell.Value
-.tb_sheet.text = "pr"
+.tb_mk.Text = Cells(iRow - 1, 1)
+.tb_comm.Text = ActiveCell.Value
+.tb_sheet.Text = "pr"
 End With
 End Sub
 
@@ -114,11 +115,11 @@ iRow = ActiveCell.Row - 1
 With frm_Doc
 .Show
 .tb_row.Value = iRow
-.tb_doc.text = Cells(iRow, pzkDoc)
-.tb_docN.text = Cells(iRow, pzkDocN)
-.tb_dt1.text = Cells(iRow, pzkDt)
-.tb_mk.text = Cells(iRow, 1)
-.tb_sheet.text = "pr"
+.tb_doc.Text = Cells(iRow, pzkDoc)
+.tb_docN.Text = Cells(iRow, pzkDocN)
+.tb_dt1.Text = Cells(iRow, pzkDt)
+.tb_mk.Text = Cells(iRow, 1)
+.tb_sheet.Text = "pr"
 End With
 End Sub
 

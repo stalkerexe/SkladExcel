@@ -1,6 +1,5 @@
-' Component: Лист12  [sk_123]
+' Component: Лист1  [буфер]
 ' Type: Document (Sheet / ThisWorkbook)
 Option Explicit
-
 
 

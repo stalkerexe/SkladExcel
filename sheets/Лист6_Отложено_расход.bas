@@ -1,4 +1,4 @@
-п»ї' Component: Р›РёСЃС‚6  [РћС‚Р»РѕР¶РµРЅРѕ_СЂР°СЃС…РѕРґ]
+' Component: Лист6  [Отложено_расход]
 ' Type: Document (Sheet / ThisWorkbook)
 Option Explicit
 
@@ -30,13 +30,13 @@ With Application.CommandBars.Add(Name:="MyContextMenu", Position:=msoBarPopup, T
 With .Controls.Add(Type:=msoControlButton)
 .Style = msoButtonIconAndCaption
 .FaceId = 162
-.Caption = "Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ"
+.Caption = "Редактировать"
 .OnAction = "zv_pedactirov_"
 End With
 With .Controls.Add(Type:=msoControlButton)
 .Style = msoButtonIconAndCaption
 .FaceId = 4
-.Caption = "РџРµС‡Р°С‚СЊ"
+.Caption = "Печать"
 .OnAction = "printZk"
 End With
 
@@ -44,13 +44,13 @@ End With
 With .Controls.Add(Type:=msoControlButton)
 .Style = msoButtonIconAndCaption
 .FaceId = 3160
-.Caption = "РћС‚РіСЂСѓР·РёС‚СЊ"
+.Caption = "Отгрузить"
 .OnAction = "otgr_zk"
 End With
 With .Controls.Add(Type:=msoControlButton)
 .Style = msoButtonIconAndCaption
 .FaceId = 21
-.Caption = "РЈРґР°Р»РёС‚СЊ Р·Р°РєР°Р·"
+.Caption = "Удалить заказ"
 .OnAction = "delete_zv"
 End With
 End With
@@ -75,9 +75,9 @@ iRow = ActiveCell.Row
 With frm_Comm
 .Show
 .tb_row.Value = iRow
-.tb_mk.text = Cells(iRow - 1, 1)
-.tb_comm.text = ActiveCell.Value
-.tb_sheet.text = "rs"
+.tb_mk.Text = Cells(iRow - 1, 1)
+.tb_comm.Text = ActiveCell.Value
+.tb_sheet.Text = "rs"
 End With
 End Sub
 

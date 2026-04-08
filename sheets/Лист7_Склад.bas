@@ -1,4 +1,4 @@
-п»ї' Component: Р›РёСЃС‚7  [РЎРєР»Р°Рґ]
+' Component: Лист7  [Склад]
 ' Type: Document (Sheet / ThisWorkbook)
 Option Explicit
 
