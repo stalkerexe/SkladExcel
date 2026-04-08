@@ -1,4 +1,4 @@
-﻿VERSION 5.00
+VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} add_zkz 
    Caption         =   "Новый заказчик"
    ClientHeight    =   2775
@@ -19,12 +19,13 @@ Attribute VB_Exposed = False
 
 Private Sub OK_Click()
 On Error Resume Next
-If TextBox1.Text = "" Then
-MsgBox "Введите данные заказчика!", 64, "Данные"
+If Trim(TextBox1.Text) = "" Then
+MsgBox "Введите данные заказчика!", vbInformation, "Данные"
 TextBox1.SetFocus
 Exit Sub
 End If
-frm_msg.Show
+
+Call add_zkzz
 End Sub
 
 Private Sub add_zkzz()
@@ -41,6 +42,10 @@ sMail = tb_mail.Text
 End Sub
 
 Private Sub do_add()
+    If save_zkz_to_spr(sZkz, sAdr, sTlf, sMail) Then
+        Call refresh_vvod_forms_sources
+        Unload Me
+    End If
 End Sub
 
 Private Sub UserForm_Initialize()
