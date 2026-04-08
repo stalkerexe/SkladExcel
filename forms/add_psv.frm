@@ -1,5 +1,5 @@
-﻿VERSION 5.00
-Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} add_psv 
+VERSION 5.00
+Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} add_psv
    Caption         =   "Новый поставщик"
    ClientHeight    =   2610
    ClientLeft      =   45
@@ -31,10 +31,14 @@ End Sub
 
 
 Private Sub UserForm_Initialize()
-On Error Resume Next
+On Error GoTo ErrHandler
 Me.StartUpPosition = 0
 Me.Top = vvodPr.Top
 Me.Left = vvodPr.Left
+Exit Sub
+
+ErrHandler:
+ReportVbaError "add_psv.UserForm_Initialize", Err.Number, Err.Description, "Поставщик"
 End Sub
 Private Sub NO_Click()
 Unload Me

@@ -32,49 +32,73 @@ ActiveWindow.DisplayHeadings = False
 Application.DisplayFullScreen = True
 End Sub
 Public Sub verekr()
+On Error Resume Next
 Application.DisplayFullScreen = False
 Application.DisplayFormulaBar = True
 ActiveWindow.DisplayHeadings = True
 End Sub
 Public Sub ekr()
+On Error GoTo ErrHandler
+
 Dim skladSheet As Worksheet
 
 If Application.DisplayFullScreen = False Then
-Call polnekr
+    Call polnekr
 Else
-Call verekr
+    Call verekr
 End If
 
-Set skladSheet = GetSheetByName(SHEET_SKLAD)
-If skladSheet Is Nothing Then Exit Sub
+If Not RequireSheet(SHEET_SKLAD, skladSheet, "ekr") Then Exit Sub
 
 skladSheet.Select
+Exit Sub
+
+ErrHandler:
+ReportVbaError "ekr", Err.Number, Err.Description
 End Sub
 Public Sub AutoFilter_delete()
-On Error Resume Next
+On Error GoTo ErrHandler
+
 With ActiveSheet
-If .AutoFilterMode = True Then
-.Cells.AutoFilter
-End If
+    If .AutoFilterMode = True Then
+        .Cells.AutoFilter
+    End If
 End With
+
+Exit Sub
+ErrHandler:
+ReportVbaError "AutoFilter_delete", Err.Number, Err.Description
 End Sub
 Public Sub msg_demo()
 MsgBox "Данная функция доступна только для полной версии программы!", 64, "Демо-версия"
 End Sub
 
 Public Function nom_nk(clmn As Integer)
-On Error Resume Next
-With ThisWorkbook.Sheets("nummm")
-.Cells(2, clmn) = .Cells(2, clmn) + 1
-nomer = .Cells(2, clmn)
+On Error GoTo ErrHandler
+
+Dim ws As Worksheet
+If Not RequireSheet("nummm", ws, "nom_nk") Then Exit Function
+
+With ws
+    .Cells(2, clmn) = .Cells(2, clmn) + 1
+    nomer = .Cells(2, clmn)
 End With
+
+Exit Function
+ErrHandler:
+ReportVbaError "nom_nk", Err.Number, Err.Description
 End Function
 Public Sub clearBf()
-On Error Resume Next
-With ThisWorkbook.Sheets("буфер")
-.Cells.ClearContents
+On Error GoTo ErrHandler
+
+Dim ws As Worksheet
+If Not RequireSheet("буфер", ws, "clearBf") Then Exit Sub
+
+With ws
+    .Cells.ClearContents
 End With
+
+Exit Sub
+ErrHandler:
+ReportVbaError "clearBf", Err.Number, Err.Description
 End Sub
-
-
-
