@@ -1,5 +1,5 @@
 ﻿VERSION 5.00
-Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} Form_sklads 
+Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} Form_sklads
    Caption         =   "Склады"
    ClientHeight    =   5295
    ClientLeft      =   45
@@ -17,45 +17,25 @@ Attribute VB_Exposed = False
 
 
 Private Sub CommandButton1_Click()
-On Error Resume Next
-If ListBox1.ListIndex = -1 Then
-MsgBox "Выберите склад!", 64, "Склад"
-Exit Sub
-End If
 Call open_sklad
 End Sub
 Private Sub CommandButton2_Click()
 Call добавить_склад
 End Sub
 Private Sub CommandButton3_Click()
-If ListBox1.ListIndex = -1 Then
-MsgBox "Выберите склад!", 64, ""
-Exit Sub
-End If
 Call rename_sk
 End Sub
 Private Sub CommandButton4_Click()
-If ListBox1.ListIndex = -1 Then
-MsgBox "Выберите склад!", 64, "Склад"
-Exit Sub
-End If
 Call delete_sk
 End Sub
 
 Private Sub CommandButton5_Click()
-On Error Resume Next
-If ListBox1.ListIndex = -1 Then
-MsgBox "Выберите склад!", 64, "Склад"
-Exit Sub
-End If
-sSk = Me.ListBox1.Value
-Unload Me: DoEvents
-Call sklad_show
+Call open_sklad
 End Sub
 
 
 Private Sub CommandButton7_Click()
-frm_msg.Show
+Call добавить_склад
 End Sub
 
 Private Sub ListBox1_DblClick(ByVal Cancel As MSForms.ReturnBoolean)
