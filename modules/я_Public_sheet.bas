@@ -1,4 +1,22 @@
 ﻿Attribute VB_Name = "я_Public_sheet"
+Option Explicit
+
+Public Const SHEET_SKLAD As String = "Склад"
+
+Public Function GetSheetByName(ByVal sheetName As String, Optional ByVal showError As Boolean = True) As Worksheet
+Dim ws As Worksheet
+
+For Each ws In ThisWorkbook.Worksheets
+    If StrComp(ws.Name, sheetName, vbBinaryCompare) = 0 Then
+        Set GetSheetByName = ws
+        Exit Function
+    End If
+Next ws
+
+If showError Then
+    MsgBox "Не найден лист: " & sheetName, vbCritical, "Ошибка"
+End If
+End Function
 
 
 Public Const skGr As Integer = 2

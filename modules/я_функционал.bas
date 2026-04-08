@@ -2,6 +2,7 @@
 Option Explicit
 
 Public Sub A__999()
+Dim skladSheet As Worksheet
 
     With Sheets("Главная")
         .Shapes("cmbt_1").Visible = False
@@ -16,11 +17,13 @@ Public Sub A__999()
         .Shapes("cmbt_10").Visible = False
     End With
     
-    With Sheets("Склад")
+    Set skladSheet = GetSheetByName(SHEET_SKLAD)
+    If skladSheet Is Nothing Then Exit Sub
+
+    With skladSheet
         .Shapes("grCmbBox").Visible = False
+        .Visible = 2
     End With
-    
-    Sheets("Cклад").Visible = 2
     Sheets("Приход").Visible = 2
     Sheets("Отложено_приход").Visible = 2
     Sheets("Расход").Visible = 2
