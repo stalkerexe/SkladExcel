@@ -31,7 +31,7 @@ End Sub
 Private Sub nCol_MouseDown(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
 On Error Resume Next
 nom_Cnr = Mid(nCol.Name, 5)
-frm_Show.tb_nom.Value = nom_Cnr
+frm_Show.tb_nom.value = nom_Cnr
 frm_Show.SpinButton.Visible = True
 frm_Show.SpinButton.Top = nNm.Top - 2
 frm_Show.SpinButton.Left = nCol.Left - frm_Show.SpinButton.Width
@@ -42,7 +42,7 @@ End Sub
 Private Sub nNN_MouseDown(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
 On Error Resume Next
 nom_Cnr = Mid(nNN.Name, 4)
-frm_Show.tb_nom.Value = nom_Cnr
+frm_Show.tb_nom.value = nom_Cnr
 Call sh_ico_del
 frm_Show.SpinButton.Visible = False
 Call color_row
@@ -50,7 +50,7 @@ End Sub
 Private Sub nNm_MouseDown(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
 On Error Resume Next
 nom_Cnr = Mid(nNm.Name, 4)
-frm_Show.tb_nom.Value = nom_Cnr
+frm_Show.tb_nom.value = nom_Cnr
 Call sh_ico_del
 frm_Show.SpinButton.Visible = False
 Call color_row
@@ -58,7 +58,7 @@ End Sub
 Private Sub nCod_MouseDown(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
 On Error Resume Next
 nom_Cnr = Mid(nCod.Name, 5)
-frm_Show.tb_nom.Value = nom_Cnr
+frm_Show.tb_nom.value = nom_Cnr
 Call sh_ico_del
 frm_Show.SpinButton.Visible = False
 Call color_row
@@ -66,7 +66,7 @@ End Sub
 Private Sub nSk_MouseDown(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
 On Error Resume Next
 nom_Cnr = Mid(nSk.Name, 4)
-frm_Show.tb_nom.Value = nom_Cnr
+frm_Show.tb_nom.value = nom_Cnr
 Call sh_ico_del
 frm_Show.SpinButton.Visible = False
 Call color_row

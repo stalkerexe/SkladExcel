@@ -106,8 +106,8 @@ End Sub
 
 
 Private Sub find_nom_Cnr()
-        nom_Cnr = CInt(nNN.Value)
-        frm_ZVK.tb_nom.Value = nom_Cnr
+        nom_Cnr = CInt(nNN.value)
+        frm_ZVK.tb_nom.value = nom_Cnr
         Call visible_NO
         Call color_row
 End Sub
