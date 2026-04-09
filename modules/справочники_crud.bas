@@ -20,6 +20,10 @@ Public Sub open_dict_manager()
     open_dict_workflow "Менеджеры", Array("ФИО", "Телефон", "Email", "Комментарий")
 End Sub
 
+Public Sub open_dict_nomenclature()
+    open_dict_workflow "Номенклатура", Array("Код", "Номенклатура", "Ед. изм.", "Комментарий")
+End Sub
+
 Public Sub open_dict_warehouse()
     open_dict_workflow "Склады", Array("Склад", "Адрес", "Ответственный", "Комментарий")
 End Sub
