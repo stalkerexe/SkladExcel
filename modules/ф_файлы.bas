@@ -26,10 +26,21 @@ For i = SKLAD_FIRST_ROW To lastRow
         End If
     End If
 Next
+
+' Если пользовательский справочник складов пустой,
+' подставляем базовую номенклатуру складов для формы выбора товаров.
+If dic_sk.Count = 0 Then
+    dic_sk.Add dic_sk.Count, "Материалы"
+    dic_sk.Add dic_sk.Count, "Металлопрокат"
+    dic_sk.Add dic_sk.Count, "Спецодежда"
+End If
 Exit Sub
 
 fallback:
 Set dic_sk = CreateObject("Scripting.Dictionary")
+dic_sk.Add dic_sk.Count, "Материалы"
+dic_sk.Add dic_sk.Count, "Металлопрокат"
+dic_sk.Add dic_sk.Count, "Спецодежда"
 End Sub
 
 Private Function DictionaryContainsValue(ByVal d As Object, ByVal valueToFind As String) As Boolean

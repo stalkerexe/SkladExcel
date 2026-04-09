@@ -33,7 +33,7 @@ End Sub
 Private Sub cm_3_Click()
         On Error Resume Next
         Unload Me: DoEvents
-        open_dict_manager
+        open_dict_nomenclature
 End Sub
 
 Private Sub cm_4_Click()
