@@ -1,0 +1,13 @@
+# VBA sources: keep CRLF to minimize noisy diffs/conflicts across Excel exports
+*.bas text eol=crlf
+*.cls text eol=crlf
+*.frm text eol=crlf
+
+# Excel binary workbook must not participate in textual merge
+*.xls  binary
+*.xlsx binary
+*.xlsm binary
+*.xlsb binary
+
+# Generated dump is derivative; keep current branch version on merge
+VBA_Sklad_Dump_UTF8.txt merge=ours
