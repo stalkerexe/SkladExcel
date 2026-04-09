@@ -106,14 +106,19 @@ Private Sub ico_set_Click()
 End Sub
 
 Private Sub OK_arh_Click()
+        On Error GoTo ErrHandler
         Call unload_menu_button
-        frm_msg.Show
+        Call zvk_open_archive
+        Exit Sub
+ErrHandler:
+        ReportVbaError "frm_ZVK.OK_arh_Click", Err.Number, Err.Description, "Возврат"
 End Sub
 
 
 
 Private Sub OK_Click()
 
+        On Error GoTo ErrHandler
         SpinButton.Visible = False
         
         Call proverka_vz
@@ -122,9 +127,11 @@ Private Sub OK_Click()
             MsgBox "Не выбраны позиции для возврата!", 64, "Возврат на склад"
             Exit Sub
         End If
-        
-        frm_msg.Show
-        
+
+        Call zvk_commit_return(frm_ZVK)
+        Exit Sub
+ErrHandler:
+        ReportVbaError "frm_ZVK.OK_Click", Err.Number, Err.Description, "Возврат"
 End Sub
 
 
@@ -132,13 +139,13 @@ End Sub
 
 
 Private Sub OK_otmena_Click()
+        On Error GoTo ErrHandler
         Call unload_menu_button
-        frm_msg.Show
+        Call zvk_cancel_return(frm_ZVK)
+        Exit Sub
+ErrHandler:
+        ReportVbaError "frm_ZVK.OK_otmena_Click", Err.Number, Err.Description, "Возврат"
 End Sub
-
-
-
-
 
 Private Sub cmb_Print_Click()
         Call unload_menu_button
