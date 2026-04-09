@@ -139,6 +139,11 @@ If lb Is Nothing Then
     Exit Function
 End If
 
+If lb.ListCount = 0 Then
+    MsgBox "Список складов пуст.", 48, "Склад"
+    Exit Function
+End If
+
 If lb.ListIndex = -1 Then
     MsgBox "Выберите склад!", 64, "Склад"
     Exit Function
@@ -152,6 +157,8 @@ NormalizeSkName = Trim(Replace(Replace(value, vbCr, " "), vbLf, " "))
 End Function
 
 Private Function SkladExists(ByVal nameToFind As String) As Boolean
+If dic_sk Is Nothing Then Exit Function
+
 Dim i As Long
 For i = 0 To dic_sk.Count - 1
     If StrComp(CStr(dic_sk.Item(i)), nameToFind, vbTextCompare) = 0 Then
