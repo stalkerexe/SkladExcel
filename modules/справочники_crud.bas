@@ -8,6 +8,10 @@ Private Enum eDictAction
     daDelete = 4
 End Enum
 
+Private Const DICT_HEADER_ROW As Long = 1
+Private Const DICT_DATA_START_ROW As Long = 2
+Private Const DICT_START_COL As Long = 2
+
 Public Sub open_dict_counterparty()
     open_dict_workflow "Контрагенты", Array("Контрагент", "Адрес", "Телефон", "Email")
 End Sub
@@ -61,28 +65,49 @@ errHandler:
 End Sub
 
 Private Function ensure_dict_sheet(ByVal dictSheetName As String, ByVal headers As Variant) As Worksheet
-    On Error Resume Next
-    Set ensure_dict_sheet = ThisWorkbook.Worksheets(dictSheetName)
-    On Error GoTo 0
+    Set ensure_dict_sheet = resolve_dict_sheet(dictSheetName)
 
     If ensure_dict_sheet Is Nothing Then
         Set ensure_dict_sheet = ThisWorkbook.Worksheets.Add(After:=ThisWorkbook.Worksheets(ThisWorkbook.Worksheets.Count))
         ensure_dict_sheet.Name = dictSheetName
-        init_headers ensure_dict_sheet, headers
         MsgBox "Создан новый справочник: " & dictSheetName, vbInformation, "Справочники"
-    ElseIf Trim(CStr(ensure_dict_sheet.Cells(1, 1).Value)) = "" Then
+    End If
+
+    normalize_dict_columns ensure_dict_sheet, headers
+    If Trim(CStr(ensure_dict_sheet.Cells(DICT_HEADER_ROW, DICT_START_COL).Value)) = "" Then
         init_headers ensure_dict_sheet, headers
     End If
 End Function
 
+Private Function resolve_dict_sheet(ByVal dictSheetName As String) As Worksheet
+    On Error Resume Next
+
+    Select Case dictSheetName
+        Case "Контрагенты"
+            Set resolve_dict_sheet = get_spr_sheet(True)
+        Case "Поставщики"
+            Set resolve_dict_sheet = get_spr_sheet(False)
+        Case Else
+            Set resolve_dict_sheet = ThisWorkbook.Worksheets(dictSheetName)
+    End Select
+End Function
+
+Private Sub normalize_dict_columns(ByVal ws As Worksheet, ByVal headers As Variant)
+    If Trim(CStr(ws.Cells(DICT_HEADER_ROW, DICT_START_COL).Value)) <> "" Then Exit Sub
+    If Trim(CStr(ws.Cells(DICT_HEADER_ROW, DICT_START_COL - 1).Value)) = "" Then Exit Sub
+    If Trim$(CStr(ws.Cells(DICT_HEADER_ROW, DICT_START_COL - 1).Value)) <> CStr(headers(LBound(headers))) Then Exit Sub
+
+    ws.Columns(DICT_START_COL - 1).Insert Shift:=xlToRight
+End Sub
+
 Private Sub init_headers(ByVal ws As Worksheet, ByVal headers As Variant)
     Dim i As Long
     For i = LBound(headers) To UBound(headers)
-        ws.Cells(1, i - LBound(headers) + 1).Value = CStr(headers(i))
-        ws.Cells(1, i - LBound(headers) + 1).Font.Bold = True
-        ws.Columns(i - LBound(headers) + 1).ColumnWidth = 24
+        ws.Cells(DICT_HEADER_ROW, i - LBound(headers) + DICT_START_COL).Value = CStr(headers(i))
+        ws.Cells(DICT_HEADER_ROW, i - LBound(headers) + DICT_START_COL).Font.Bold = True
+        ws.Columns(i - LBound(headers) + DICT_START_COL).ColumnWidth = 24
     Next i
-    ws.Rows(1).Interior.Color = RGB(221, 235, 247)
+    ws.Rows(DICT_HEADER_ROW).Interior.Color = RGB(221, 235, 247)
 End Sub
 
 Private Function ask_dict_action(ByVal dictName As String) As Long
@@ -112,42 +137,42 @@ End Function
 
 Private Sub dict_add_row(ByVal ws As Worksheet)
     Dim lastRow As Long
-    lastRow = ws.Cells(ws.Rows.Count, 1).End(xlUp).Row
-    If lastRow < 1 Then lastRow = 1
+    lastRow = ws.Cells(ws.Rows.Count, DICT_START_COL).End(xlUp).Row
+    If lastRow < DICT_HEADER_ROW Then lastRow = DICT_HEADER_ROW
 
     Dim colCount As Long
-    colCount = ws.Cells(1, ws.Columns.Count).End(xlToLeft).Column
+    colCount = ws.Cells(DICT_HEADER_ROW, ws.Columns.Count).End(xlToLeft).Column
 
     Dim c As Long
-    For c = 1 To colCount
-        ws.Cells(lastRow + 1, c).Value = InputBox("Введите значение для поля '" & ws.Cells(1, c).Value & "'", "Добавление")
+    For c = DICT_START_COL To colCount
+        ws.Cells(lastRow + 1, c).Value = InputBox("Введите значение для поля '" & ws.Cells(DICT_HEADER_ROW, c).Value & "'", "Добавление")
     Next c
 
     ws.Activate
-    ws.Cells(lastRow + 1, 1).Select
+    ws.Cells(lastRow + 1, DICT_START_COL).Select
 End Sub
 
 Private Sub dict_edit_row(ByVal ws As Worksheet)
     Dim rowNo As Long
-    rowNo = CLng(Val(InputBox("Введите номер строки для редактирования", "Редактирование", "2")))
-    If rowNo < 2 Then Exit Sub
+    rowNo = CLng(Val(InputBox("Введите номер строки для редактирования", "Редактирование", CStr(DICT_DATA_START_ROW))))
+    If rowNo < DICT_DATA_START_ROW Then Exit Sub
 
     Dim colCount As Long
-    colCount = ws.Cells(1, ws.Columns.Count).End(xlToLeft).Column
+    colCount = ws.Cells(DICT_HEADER_ROW, ws.Columns.Count).End(xlToLeft).Column
 
     Dim c As Long
-    For c = 1 To colCount
-        ws.Cells(rowNo, c).Value = InputBox("Новое значение для поля '" & ws.Cells(1, c).Value & "'", "Редактирование", CStr(ws.Cells(rowNo, c).Value))
+    For c = DICT_START_COL To colCount
+        ws.Cells(rowNo, c).Value = InputBox("Новое значение для поля '" & ws.Cells(DICT_HEADER_ROW, c).Value & "'", "Редактирование", CStr(ws.Cells(rowNo, c).Value))
     Next c
 
     ws.Activate
-    ws.Cells(rowNo, 1).Select
+    ws.Cells(rowNo, DICT_START_COL).Select
 End Sub
 
 Private Sub dict_delete_row(ByVal ws As Worksheet)
     Dim rowNo As Long
-    rowNo = CLng(Val(InputBox("Введите номер строки для удаления", "Удаление", "2")))
-    If rowNo < 2 Then Exit Sub
+    rowNo = CLng(Val(InputBox("Введите номер строки для удаления", "Удаление", CStr(DICT_DATA_START_ROW))))
+    If rowNo < DICT_DATA_START_ROW Then Exit Sub
 
     If MsgBox("Удалить строку " & rowNo & "?", vbYesNo + vbQuestion, "Удаление") = vbYes Then
         ws.Rows(rowNo).Delete Shift:=xlUp
