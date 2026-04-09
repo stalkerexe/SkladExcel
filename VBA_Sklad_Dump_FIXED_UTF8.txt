@@ -1,0 +1,49 @@
+Sub Fixed_ya_Public()
+    Dim id As Variant
+    Dim opl As Variant
+    Dim skid As Variant
+    Dim sCnZ As Variant
+    Dim sCnR As Variant
+    Dim sCn As Variant
+    Dim sSm As Variant
+    Dim comm As Variant
+    Dim dic_sk As Variant
+    Dim dic As Variant
+
+    ' Your existing code goes here
+End Sub
+
+Sub Fixed_ya_ekran()
+    Dim nomer As Variant
+
+    ' Your existing code
+    Fixed_ya_ekran = nomer
+End Sub
+
+Sub Fixed_Lists()
+    Dim i As Long
+    ' Code for Лист3, Лист4, Лист6, Лист7, Лист9
+End Sub
+
+Sub Fixed_arr_all()
+    Dim nn As Variant
+    Dim nm As Variant
+    Dim cod As Variant
+    Dim ed As Variant
+    Dim cnR As Variant
+    Dim cnZ As Variant
+    Dim cn As Variant
+    Dim col As Variant
+    Dim sm As Variant
+    Dim ost As Variant
+    Dim sk As Variant
+    Dim id As Variant
+    Dim r7 As Variant
+    Dim iCol As Variant
+    ' Your existing code goes here
+End Sub
+
+Sub Fixed_rasxod_otgryska_zv()
+    Dim iVid As Variant
+    ' Your existing code goes here
+End Sub
