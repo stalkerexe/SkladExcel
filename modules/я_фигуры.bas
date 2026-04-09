@@ -1,4 +1,5 @@
 ﻿Attribute VB_Name = "я_фигуры"
+Option Explicit
 
 Const hh = 2.5
 Const iHeight = 54
@@ -76,5 +77,6 @@ End Sub
 
 
 Public Sub ertert()
+    Dim dddd As Double
     dddd = ActiveSheet.Shapes("cmbt_4").Height
 End Sub
