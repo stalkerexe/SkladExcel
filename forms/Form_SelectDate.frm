@@ -14,6 +14,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+
 Option Explicit
 
 Dim mozno As Boolean
@@ -164,7 +165,7 @@ End Sub
 Private Sub Set_TextBox_Дата(MyDate As Date)
 End Sub
 Private Sub Set_TextBox_Year(MyDate As Date)
-TextBox_Year.Value = Format(MyDate, "yyyy")
+TextBox_Year.value = Format(MyDate, "yyyy")
 End Sub
 Private Sub Set_Mоnth(MyDate As Date)
 On Error Resume Next

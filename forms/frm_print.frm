@@ -14,6 +14,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+
 Option Explicit
 
 
@@ -21,7 +22,7 @@ Private Sub OK_Click()
         On Error Resume Next
         
         sPrinter = Me.Label2.Caption
-        iCol_Print = Me.ComboBox1.Value
+        iCol_Print = Me.ComboBox1.value
 
         If Me.TextBox1.Text = 1 Then Call prnt_zv
         If Me.TextBox1.Text = 2 Then Call prnt_pr
@@ -71,12 +72,12 @@ Me.ComboBox2.AddItem .Item(nn).Name
 Next
 End With
 Label2.Caption = Application.ActivePrinter
-Me.ComboBox2.Value = Label2.Caption
+Me.ComboBox2.value = Label2.Caption
 End Sub
 
 Private Sub ComboBox2_Click()
 On Error Resume Next
-Label2.Caption = ComboBox2.Value
+Label2.Caption = ComboBox2.value
 TextBox1.SetFocus
 End Sub
 

@@ -15,6 +15,7 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 
+
 Option Explicit
 Dim cn()
 
@@ -23,7 +24,7 @@ Dim cn()
 
 Private Sub OK_Click()
 
-        If Me.tb_nm.Value = "" Then Me.tb_nm.Value = 0
+        If Me.tb_nm.value = "" Then Me.tb_nm.value = 0
 '        If Me.tb_nm.Value = "" Then
 '            MsgBox "Введите процент скидки!!", 64, "Скидка"
 '            tb_nm.SetFocus
@@ -42,13 +43,13 @@ Private Sub do_ok()
         ThisWorkbook.Activate
         Sheets("Расход").Select
         
-        iSkid = CDbl(tb_nm.Value)
+        iSkid = CDbl(tb_nm.value)
         
         Call arr_zv
 
         With ThisWorkbook.Sheets("Расход")
             r7 = .Cells(Rows.Count, zvNm).End(xlUp).Row + 2
-cn = Range(.Cells(rwZv, zvCn), .Cells(r7, zvCn)).Value
+cn = Range(.Cells(rwZv, zvCn), .Cells(r7, zvCn)).value
         End With
         
         ReDim cnR(LBound(nm) To UBound(nm), 1 To 4)
@@ -77,7 +78,7 @@ cn = Range(.Cells(rwZv, zvCn), .Cells(r7, zvCn)).Value
             .Cells(rwZv, zvCnR).Resize(UBound(sm), 1) = cnR
             .Cells(rwZv, zvSm).Resize(UBound(sm), 1) = sm
             
-            .Cells(rwZv_mj, zvOst).Value = iSkid
+            .Cells(rwZv_mj, zvOst).value = iSkid
         End With
 
 
@@ -104,7 +105,7 @@ Private Sub UserForm_Initialize()
         
         Call combo
 
-        tb_nm.Value = Cells(rwZv_mj, zvOst)
+        tb_nm.value = Cells(rwZv_mj, zvOst)
 
 End Sub
 
@@ -131,7 +132,7 @@ Private Sub tb_nm_MouseUp(ByVal Button As Integer, ByVal Shift As Integer, ByVal
 End Sub
 
 Private Sub comb_nm_Click()
-        tb_nm.Value = comb_nm.Value
+        tb_nm.value = comb_nm.value
 End Sub
 
 Private Sub NO_Click()

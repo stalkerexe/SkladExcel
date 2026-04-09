@@ -14,6 +14,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+
 Option Explicit
 
 Dim r As Long
@@ -27,11 +28,11 @@ End Sub
 Private Sub UserForm_Initialize()
 On Error Resume Next
 r = Cells(Rows.Count, pzkNm).End(xlUp).Row + 1
-nn = Range(Cells(4, 1), Cells(r, 1)).Value
-nom = Range(Cells(4, pzkNom), Cells(r, pzkNom)).Value
-nm = Range(Cells(4, pzkNm), Cells(r, pzkNm)).Value
-dt = Range(Cells(4, pzkDt), Cells(r, pzkDt)).Value
-mj = Range(Cells(4, pzkMj), Cells(r, pzkMj)).Value
+nn = Range(Cells(4, 1), Cells(r, 1)).value
+nom = Range(Cells(4, pzkNom), Cells(r, pzkNom)).value
+nm = Range(Cells(4, pzkNm), Cells(r, pzkNm)).value
+dt = Range(Cells(4, pzkDt), Cells(r, pzkDt)).value
+mj = Range(Cells(4, pzkMj), Cells(r, pzkMj)).value
 iCol = Application.CountIf(Range("a4:a" & r), "<>")
 If iCol = 0 Then Exit Sub
 ReDim c(1 To iCol, 1 To 5)

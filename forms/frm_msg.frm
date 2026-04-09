@@ -1,5 +1,5 @@
 ﻿VERSION 5.00
-Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} frm_msg
+Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} frm_msg 
    Caption         =   "Системное сообщение"
    ClientHeight    =   1710
    ClientLeft      =   45
@@ -16,6 +16,7 @@ Attribute VB_Exposed = False
 
 
 
+
 Private Sub NO_Click()
 Unload Me
 End Sub
@@ -25,5 +26,5 @@ On Error Resume Next
 Unload Me
 DoEvents
 Form_.Show
-Form_.MultiPage1.Value = 1
+Form_.MultiPage1.value = 1
 End Sub

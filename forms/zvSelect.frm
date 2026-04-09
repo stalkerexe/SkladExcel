@@ -14,6 +14,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+
 Dim sData As String
 Dim sCombData As String
 
@@ -61,26 +62,30 @@ End Sub
 
 Private Sub parse_nk()
         On Error Resume Next
-        
-        ListBox1.clear
-        
-        sMj = Me.comb_Mj.Value
-        sZkz = Me.comb_zkz.Value
-        sCombData = Me.comb_dt.Value
-        
-If (Not Not c) = 0 Then Exit Sub
-        
+
+        ListBox1.Clear
+
+        sMj = Me.comb_Mj.value
+        sZkz = Me.comb_zkz.value
+        sCombData = Me.comb_dt.value
+
+        If (Not Not c) = 0 Then Exit Sub
+
         ReDim b(LBound(c) To UBound(c), 1 To iCm)
-        
+
+        ' ИСПРАВЛЕНИЕ: сброс sData перед присваиванием.
+        ' В оригинале sData сохраняла значение предыдущего выбора
+        ' при переключении на "Все".
+        sData = ""
+        If sCombData = "Сегодня" Then sData = VBA.Format(VBA.Date, "dd.mm.yyyy")
+        If sCombData = "Вчера" Then sData = VBA.Format(VBA.Date - 1, "dd.mm.yyyy")
+
         j = 1
         For i = LBound(c) To UBound(c)
-        
+
             If sCombData = "Все" Then GoTo 11
             If sCombData = "" Then GoTo 11
-            
-            If sCombData = "Сегодня" Then sData = VBA.Format(VBA.Date, "dd.mm.yyyy")
-            If sCombData = "Вчера" Then sData = VBA.Format(VBA.Date - 1, "dd.mm.yyyy")
-            
+
             If c(i, 4) = sData Then
 11
             If sZkz = "" Then GoTo 22
@@ -90,27 +95,18 @@ If (Not Not c) = 0 Then Exit Sub
             If sMj = "" Then GoTo 33
             If sMj = "Все" Then GoTo 33
             If c(i, 5) = sMj Then
-            
-33
 
+33
                     For cm = 1 To iCm
                         b(j, cm) = c(i, cm)
                     Next
                     j = j + 1
-                
+
             End If
             End If
             End If
-            
+
         Next
-        
-        ListBox1.List = b
-        
-End Sub
-
-
-
-
 
 
 
@@ -178,10 +174,10 @@ End Sub
 Private Sub do_load_arh()
         On Error Resume Next
 
-        ListBox1.clear
+        ListBox1.Clear
         Erase c
 
-        iVid = Me.comb_vid.Value
+        iVid = Me.comb_vid.value
         Call find_path_vid
 
         Call arr_arh_all
@@ -233,7 +229,7 @@ With comb_vid
 End With
 
 With comb_year
-.Value = VBA.Year(VBA.Now)
+.value = VBA.Year(VBA.Now)
 .Enabled = False
 End With
 
@@ -269,12 +265,12 @@ Private Sub load_mj()
         
         With ThisWorkbook.Sheets("буфер")
             r7 = .Cells(Rows.Count, "c").End(xlUp).Row + 1
-            a = .Range("c1:c" & r7).Value
+            a = .Range("c1:c" & r7).value
             comb_zkz.List = a
             i = comb_zkz.ListCount - 1
             comb_zkz.List(i, 0) = "Все"
             r7 = .Cells(Rows.Count, "e").End(xlUp).Row + 1
-            a = .Range("e1:e" & r7).Value
+            a = .Range("e1:e" & r7).value
             comb_Mj.List = a
             i = comb_Mj.ListCount - 1
             comb_Mj.List(i, 0) = "Все"
@@ -314,9 +310,9 @@ End Sub
 
 Private Sub lb_dt_MouseDown(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
         On Error Resume Next
-        If comb_year.Value <> CStr(VBA.Year(VBA.Now)) Then Exit Sub
+        If comb_year.value <> CStr(VBA.Year(VBA.Now)) Then Exit Sub
         
-        If comb_year.Value = CStr(VBA.Year(VBA.Now)) Then
+        If comb_year.value = CStr(VBA.Year(VBA.Now)) Then
             If ListBox1.ListCount > 0 Then
                 comb_dt.DropDown
             End If

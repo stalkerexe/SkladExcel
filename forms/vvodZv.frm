@@ -1,4 +1,4 @@
-VERSION 5.00
+﻿VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} vvodZv 
    ClientHeight    =   2355
    ClientLeft      =   45
@@ -13,6 +13,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+
 
 Private Sub tb_zkz_MouseUp(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)
         comb_zkz.DropDown
@@ -50,7 +51,7 @@ Private Sub find_zkz()
     str_ = tb_Zkz.Text
     
     If VBA.Len(str_) = 0 Then
-        comb_find.clear
+        comb_find.Clear
         comb_find.SetFocus
         tb_Zkz.SetFocus
         Exit Sub
@@ -83,7 +84,7 @@ c = zkz
     Next
     
     If iCol = 0 Then
-        comb_find.clear
+        comb_find.Clear
         comb_find.SetFocus
         tb_Zkz.SetFocus
         DoEvents
@@ -100,7 +101,7 @@ c = zkz
     End If
     Next
     
-    comb_find.clear
+    comb_find.Clear
     comb_find.SetFocus
     tb_Zkz.SetFocus
     DoEvents
@@ -154,7 +155,7 @@ End Sub
 
 Private Sub comb_mj_Click()
         On Error Resume Next
-        tb_mj.Text = comb_Mj.Value
+        tb_mj.Text = comb_Mj.value
 End Sub
 
 
@@ -164,12 +165,12 @@ Private Sub OK_Click()
         ThisWorkbook.Activate
         Sheets("Расход").Select
         
-        Cells(rwZv_zkz, 4).Value = Me.tb_Zkz.Text
-        Cells(rwZv_adr, 4).Value = Me.tb_adr.Text
-        Cells(rwZv_tlf, 4).Value = Me.tb_tlf.Text
-        Cells(rwZv_mj, 4).Value = Me.tb_mj.Text
-        Cells(rwZv_dt, 4).Value = Me.tb_dt1.Text
-        Cells(rwZv_dt2, 4).Value = Me.tb_dt2.Text
+        Cells(rwZv_zkz, 4).value = Me.tb_Zkz.Text
+        Cells(rwZv_adr, 4).value = Me.tb_adr.Text
+        Cells(rwZv_tlf, 4).value = Me.tb_tlf.Text
+        Cells(rwZv_mj, 4).value = Me.tb_mj.Text
+        Cells(rwZv_dt, 4).value = Me.tb_dt1.Text
+        Cells(rwZv_dt2, 4).value = Me.tb_dt2.Text
         
         Unload Me
 End Sub
@@ -188,12 +189,12 @@ Private Sub load_dann()
     On Error Resume Next
 
         With ThisWorkbook.Sheets("Расход")
-            tb_Zkz.Text = .Cells(rwZv_zkz, 4).Value
-            tb_adr.Text = .Cells(rwZv_adr, 4).Value
-            tb_tlf.Text = .Cells(rwZv_tlf, 4).Value
-            tb_mj.Text = .Cells(rwZv_mj, 4).Value
-            tb_dt1.Text = .Cells(rwZv_dt, 4).Value
-            tb_dt2.Text = .Cells(rwZv_dt2, 4).Value
+            tb_Zkz.Text = .Cells(rwZv_zkz, 4).value
+            tb_adr.Text = .Cells(rwZv_adr, 4).value
+            tb_tlf.Text = .Cells(rwZv_tlf, 4).value
+            tb_mj.Text = .Cells(rwZv_mj, 4).value
+            tb_dt1.Text = .Cells(rwZv_dt, 4).value
+            tb_dt2.Text = .Cells(rwZv_dt2, 4).value
             DoEvents
         End With
         

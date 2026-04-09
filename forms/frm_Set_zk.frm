@@ -14,6 +14,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+
 Option Explicit
 
 
@@ -25,12 +26,12 @@ Private Sub OK_Click()
 
         With ThisWorkbook.Sheets("setting")
         
-            .Range("o24").Value = tb_rz.Text
+            .Range("o24").value = tb_rz.Text
             
-            .Range("o26").Value = tb_m.Text
+            .Range("o26").value = tb_m.Text
             
-            If CheckBox_rz.Value = True Then .Range("o25").Value = 1
-            If CheckBox_rz.Value = False Then .Range("o25").Value = 0
+            If CheckBox_rz.value = True Then .Range("o25").value = 1
+            If CheckBox_rz.value = False Then .Range("o25").value = 0
             
         End With
         
@@ -52,7 +53,7 @@ End Sub
 
 Private Sub setting_m()
 
-    iMsh = ThisWorkbook.Sheets("setting").Range("o26").Value
+    iMsh = ThisWorkbook.Sheets("setting").Range("o26").value
 
     Sheets("Отложено_приход").Select
     ActiveWindow.Zoom = iMsh
@@ -73,12 +74,12 @@ Private Sub load_dann()
 
         With ThisWorkbook.Sheets("setting")
         
-            tb_rz.Text = .Range("o24").Value
+            tb_rz.Text = .Range("o24").value
             
-            tb_m.Text = .Range("o26").Value
+            tb_m.Text = .Range("o26").value
             
-            If .Range("o25").Value = 1 Then CheckBox_rz.Value = True
-            If .Range("o25").Value = 0 Then CheckBox_rz.Value = False
+            If .Range("o25").value = 1 Then CheckBox_rz.value = True
+            If .Range("o25").value = 0 Then CheckBox_rz.value = False
             
         End With
 
@@ -132,11 +133,11 @@ comb_m.DropDown
 End Sub
 
 Private Sub comb_rz_Click()
-tb_rz.Text = comb_rz.Value
+tb_rz.Text = comb_rz.value
 End Sub
 
 Private Sub comb_m_Click()
-tb_m.Text = comb_m.Value
+tb_m.Text = comb_m.value
 End Sub
 
 

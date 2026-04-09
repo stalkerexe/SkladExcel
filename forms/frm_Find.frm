@@ -14,6 +14,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+
 Option Explicit
 Dim w(): Dim cc()
 Dim iCntr As Integer
@@ -48,7 +49,7 @@ If n <> iCntr Then
 Me.Controls("tb_" & n) = ""
 End If
 Next
-comb_find.clear
+comb_find.Clear
 str_ = Me.ActiveControl.Text
 If Len(str_) = 0 Then comb_find.SetFocus: Controls("tb_" & iCntr).SetFocus: Exit Sub
 If str_ = "" Then
@@ -76,7 +77,7 @@ End If
 End If
 Next
 If iCol = 0 Then
-comb_find.clear
+comb_find.Clear
 comb_find.SetFocus
 Controls("tb_" & iCntr).SetFocus
 DoEvents
@@ -92,7 +93,7 @@ w(j, 3) = cc(i, 3)
 j = j + 1
 End If
 Next
-comb_find.clear
+comb_find.Clear
 comb_find.SetFocus
 Controls("tb_" & iCntr).SetFocus
 DoEvents
@@ -104,7 +105,7 @@ ind = comb_find.ListIndex
 If ind = -1 Then Exit Sub
 Me.Caption = "   " & comb_find.List(ind, 1) & "          " & comb_find.List(ind, 2)
 tb_row.Text = comb_find.List(ind, 0)
-rw = Val(tb_row.Value)
+rw = Val(tb_row.value)
 If rw = 0 Then Exit Sub
 Range(Cells(rw, 1), Cells(rw, 33)).Select
 ActiveWindow.ScrollRow = rw - 1
@@ -157,9 +158,9 @@ Private Sub load_sk__()
 On Error Resume Next
 With ThisWorkbook.Sheets("Склад")
 r7 = .Cells(Rows.Count, skNm).End(xlUp).Row + 2
-gr = .Range(.Cells(5, skGr), .Cells(r7, skGr)).Value
-cod = .Range(.Cells(5, skCod), .Cells(r7, skCod)).Value
-nm = .Range(.Cells(5, skNm), .Cells(r7, skNm)).Value
+gr = .Range(.Cells(5, skGr), .Cells(r7, skGr)).value
+cod = .Range(.Cells(5, skCod), .Cells(r7, skCod)).value
+nm = .Range(.Cells(5, skNm), .Cells(r7, skNm)).value
 iCol = Application.CountIf(.Range(.Cells(5, skNm), .Cells(r7, skNm)), "<>")
 End With
 If iCol = 0 Then Exit Sub

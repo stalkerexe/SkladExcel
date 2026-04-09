@@ -13,6 +13,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+
 Option Explicit
 
 Dim rr As Long
@@ -48,7 +49,7 @@ End Sub
 Private Sub find_in_text()
         On Error Resume Next
         
-        ListBox1.clear
+        ListBox1.Clear
         
         If Len(str_) = 0 Then ListBox1.List = c: Exit Sub
         
@@ -113,11 +114,11 @@ End Sub
 
 Private Sub Load_from_sk()
         On Error Resume Next
-        ListBox1.clear
-        comb_gr.clear
+        ListBox1.Clear
+        comb_gr.Clear
         tbFind_Cod = ""
         tbFind_Nm = ""
-        sSk = Me.comb_sk.Value
+        sSk = Me.comb_sk.value
         
         Call arr_select_sk
         
@@ -135,8 +136,8 @@ End Sub
 Private Sub comb_sk_set_Change()
 On Error Resume Next
 With ThisWorkbook.Sheets("my_set")
-sSk = comb_sk_set.Value
-.Range("p2").Value = sSk
+sSk = comb_sk_set.value
+.Range("p2").value = sSk
 End With
 tbFind_Cod = ""
 tbFind_Nm = ""
@@ -161,7 +162,7 @@ Private Sub ListBox1_DblClick(ByVal Cancel As MSForms.ReturnBoolean)
         If ListBox1.List(ind, 2) = "---------------------------------" Then Exit Sub
         If ThisWorkbook.ActiveSheet.Name <> "Приход" And ThisWorkbook.ActiveSheet.Name <> "Расход" Then Sheets("Расход").Select
         
-        sSk = Me.comb_sk.Value
+        sSk = Me.comb_sk.value
         With ListBox1
             sID = .List(ind, 0)
             sCod = .List(ind, 2)
@@ -218,8 +219,8 @@ Cells(iRow, zvCn) = sCnR
         
         '--------------------------------
         'skid
-        If Cells(rwZv_mj, zvOst).Value = "" Then GoTo 77
-        iSkid = Cells(rwZv_mj, zvOst).Value
+        If Cells(rwZv_mj, zvOst).value = "" Then GoTo 77
+        iSkid = Cells(rwZv_mj, zvOst).value
         sCn = Cells(iRow, zvCn) 'цена_без_скидки
         sCnR = sCn - (sCn * iSkid / 100)
         Cells(iRow, zvCnR) = sCnR
@@ -295,7 +296,7 @@ Private Sub ent_Pr()
         If iRow < rwZv Then iRow = rwZv: GoTo 22
         For Each cell In Range(Cells(rwZv, 1), Cells(iRow, 1))
         If Cells(cell.Row, prSk) = sSk Then
-        If CStr(cell.Value) = sID Then
+        If CStr(cell.value) = sID Then
         rr = cell.Row
         Cells(rr, prCol) = Cells(rr, prCol) + 1
         Cells(rr, prCol).Select
@@ -345,7 +346,7 @@ Private Sub ban_input()
             .InputMessage = ""
             .ErrorMessage = "Нельзя изменять данные в этой ячейке!"
             .ShowInput = True
-            .ShowError = True
+            .showError = True
         End With
 End Sub
 
@@ -361,7 +362,7 @@ Private Sub comb_gr_Change()
 On Error Resume Next
 ind = comb_gr.ListIndex
 If ind = -1 Then Exit Sub
-ListBox1.clear
+ListBox1.Clear
 On Error GoTo 12
 row1 = comb_gr.List(ind, 0) + 1
 row2 = comb_gr.List(ind + 1, 0) - 1
@@ -398,11 +399,11 @@ Private Sub load_all()
     
     Me.comb_gr.ListRows = 25
     With ThisWorkbook.Sheets("my_set")
-        sSk = .Range("p2").Value
-        comb_sk_set.Value = sSk
+        sSk = .Range("p2").value
+        comb_sk_set.value = sSk
         
         If comb_sk.ListCount = 0 Then GoTo 11
-        If comb_sk.Value = "" Then comb_sk.ListIndex = 0
+        If comb_sk.value = "" Then comb_sk.ListIndex = 0
     End With
 11
     Me.StartUpPosition = 0
@@ -412,7 +413,7 @@ Private Sub load_all()
     Me.ListBox1.Height = Me.Height - 60
     
     With ThisWorkbook.Sheets("setting")
-    If .Range("b6").Value = 0 Then
+    If .Range("b6").value = 0 Then
     lb_cod.Width = 0
     tbFind_Cod.Width = 0
     tbFind_Nm.Left = lb_nm.Left

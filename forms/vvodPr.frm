@@ -1,4 +1,4 @@
-VERSION 5.00
+﻿VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} vvodPr 
    Caption         =   "Приход"
    ClientHeight    =   2670
@@ -14,6 +14,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+
 Option Explicit
 
 
@@ -53,7 +54,7 @@ Private Sub find_psv()
     str_ = tb_psv.Text
     
     If VBA.Len(str_) = 0 Then
-        comb_find.clear
+        comb_find.Clear
         comb_find.SetFocus
         tb_psv.SetFocus
         Exit Sub
@@ -84,7 +85,7 @@ Private Sub find_psv()
     Next
     
     If iCol = 0 Then
-        comb_find.clear
+        comb_find.Clear
         comb_find.SetFocus
         tb_psv.SetFocus
         DoEvents
@@ -100,7 +101,7 @@ Private Sub find_psv()
     End If
     Next
     
-    comb_find.clear
+    comb_find.Clear
     comb_find.SetFocus
     tb_psv.SetFocus
     DoEvents
@@ -130,7 +131,7 @@ End Sub
 
 Private Sub comb_psv_Click()
         flag = 1
-        tb_psv.Text = comb_psv.Value
+        tb_psv.Text = comb_psv.value
         flag = 0
 End Sub
 
@@ -147,15 +148,15 @@ Private Sub OK_Click()
         ThisWorkbook.Activate
         Sheets("Приход").Select
         
-        Cells(rwPr_zkz, 4).Value = tb_psv.Text
-        Cells(rwPr_mj, 4).Value = tb_mj.Text
-        Cells(rwPr_dt, 4).Value = tb_dt1.Text
+        Cells(rwPr_zkz, 4).value = tb_psv.Text
+        Cells(rwPr_mj, 4).value = tb_mj.Text
+        Cells(rwPr_dt, 4).value = tb_dt1.Text
         
-        Cells(1, prDoc).Value = tb_doc.Text
-        Cells(1, prDocN).Value = "'" & tb_docN.Text
-        Cells(1, prDocDt).Value = tb_dt2.Text
+        Cells(1, prDoc).value = tb_doc.Text
+        Cells(1, prDocN).value = "'" & tb_docN.Text
+        Cells(1, prDocDt).value = tb_dt2.Text
         
-        Cells(rwPr_doc, 4).Value = tb_doc.Text & " № " & tb_docN.Text & " от " & tb_dt2.Text
+        Cells(rwPr_doc, 4).value = tb_doc.Text & " № " & tb_docN.Text & " от " & tb_dt2.Text
         
         Unload Me
 End Sub
@@ -185,13 +186,13 @@ Private Sub forma()
         End With
         
         With ThisWorkbook.Sheets("Приход")
-            tb_psv.Text = .Cells(rwPr_zkz, 4).Value
-            tb_mj.Text = .Cells(rwPr_mj, 4).Value
-            tb_dt1.Text = .Cells(rwPr_dt, 4).Value
+            tb_psv.Text = .Cells(rwPr_zkz, 4).value
+            tb_mj.Text = .Cells(rwPr_mj, 4).value
+            tb_dt1.Text = .Cells(rwPr_dt, 4).value
             
-            tb_doc.Text = Cells(1, prDoc).Value
-            tb_docN.Text = Cells(1, prDocN).Value
-            tb_dt2.Text = Cells(1, prDocDt).Value
+            tb_doc.Text = Cells(1, prDoc).value
+            tb_docN.Text = Cells(1, prDocN).value
+            tb_dt2.Text = Cells(1, prDocDt).value
         End With
         
         OK.BackColor = RGB(58, 110, 165)
@@ -268,12 +269,12 @@ Unload Me
 End Sub
 Private Sub comb_osn_Click()
 On Error Resume Next
-tb_doc.Text = comb_osn.Value
+tb_doc.Text = comb_osn.value
 tb_docN.SetFocus
 End Sub
 Private Sub comb_mj_Click()
 On Error Resume Next
-tb_mj.Text = comb_Mj.Value
+tb_mj.Text = comb_Mj.value
 End Sub
 
 

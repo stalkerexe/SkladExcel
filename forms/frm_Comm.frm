@@ -14,6 +14,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+
 Option Explicit
 Dim iRow_mk As Long
 Dim cmNm As Integer
@@ -56,7 +57,7 @@ Private Sub dann()
         With Me
             marker = .tb_mk.Text
             sComm = .tb_comm.Text
-            iRow = .tb_row.Value
+            iRow = .tb_row.value
         End With
 End Sub
 

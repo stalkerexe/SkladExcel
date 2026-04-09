@@ -17,6 +17,7 @@ Attribute VB_Exposed = False
 
 
 
+
 Private Sub OK_Click()
 
         Call check_
@@ -33,9 +34,9 @@ Private Sub do_ok()
         ThisWorkbook.Activate
         Sheets("Расход").Select
         
-        iOpl = ListBox1.Value
+        iOpl = ListBox1.value
         
-        Cells(rwZv_mj, zvSm).Value = iOpl
+        Cells(rwZv_mj, zvSm).value = iOpl
 
 End Sub
 

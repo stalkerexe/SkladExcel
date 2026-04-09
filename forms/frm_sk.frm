@@ -20,6 +20,7 @@ Attribute VB_Exposed = False
 
 
 
+
 Private Sub OK_Click()
 
     Call check_
@@ -57,7 +58,7 @@ Private Sub CheckBox1_Click()
 
     With ListBox1
         For i = 0 To .ListCount - 1
-            If CheckBox1.Value = True Then
+            If CheckBox1.value = True Then
                 .Selected(i) = True
             Else
                 .Selected(i) = False

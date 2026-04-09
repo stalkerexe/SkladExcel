@@ -14,11 +14,12 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 
+
 Option Explicit
 
 Private Sub CheckBox_perenos_Click()
 
-        If CheckBox_perenos.Value = True Then
+        If CheckBox_perenos.value = True Then
             Call perenos_yes
             ThisWorkbook.Sheets("setting").Range("f12") = 1
         Else
@@ -53,16 +54,16 @@ Private Sub CheckBox_vz_Click()
 
         Call col_Controls
 
-        If CheckBox_vz.Value = True Then
+        If CheckBox_vz.value = True Then
                 
             For i = 1 To iColCtr
-                Controls("nCol_vz" & i).Value = Controls("nCol" & i).Value
+                Controls("nCol_vz" & i).value = Controls("nCol" & i).value
             Next
             
         Else
             
             For i = 1 To iColCtr
-                Controls("nCol_vz" & i).Value = ""
+                Controls("nCol_vz" & i).value = ""
             Next
         
         End If
@@ -72,12 +73,12 @@ End Sub
 Private Sub comb_sk_Click()
         On Error Resume Next
 
-        nom_Cnr = Val(tb_nom.Value)
+        nom_Cnr = Val(tb_nom.value)
         
         i = comb_sk.ListIndex
         If i = -1 Then Exit Sub
         
-        Controls("nSk_vz" & nom_Cnr).Value = comb_sk.Value
+        Controls("nSk_vz" & nom_Cnr).value = comb_sk.value
         
 End Sub
 
@@ -310,38 +311,38 @@ End Sub
 
 
 Private Sub ScrollBar1_Change()
-Frame_nk.Top = -ScrollBar1.Value
-Frame_nk_vz.Top = -ScrollBar1.Value
+Frame_nk.Top = -ScrollBar1.value
+Frame_nk_vz.Top = -ScrollBar1.value
 End Sub
 
 Private Sub ScrollBar1_Scroll()
-Frame_nk.Top = -ScrollBar1.Value
-Frame_nk_vz.Top = -ScrollBar1.Value
+Frame_nk.Top = -ScrollBar1.value
+Frame_nk_vz.Top = -ScrollBar1.value
 End Sub
 
 
 
 Private Sub SpinButton_SpinDown()
         On Error Resume Next
-        nom_Cnr = Val(tb_nom.Value)
-        If Controls("nCol_vz" & nom_Cnr).Value = "" Then sCol = 0: Exit Sub
-        sCol = Controls("nCol_vz" & nom_Cnr).Value
+        nom_Cnr = Val(tb_nom.value)
+        If Controls("nCol_vz" & nom_Cnr).value = "" Then sCol = 0: Exit Sub
+        sCol = Controls("nCol_vz" & nom_Cnr).value
         If sCol <= 0 Then sCol = 0: Exit Sub
 33
         sCol = sCol - 1
-        Controls("nCol_vz" & nom_Cnr).Value = sCol
+        Controls("nCol_vz" & nom_Cnr).value = sCol
 End Sub
 
 Private Sub SpinButton_SpinUp()
         On Error Resume Next
-        nom_Cnr = Val(tb_nom.Value)
-        If Controls("nCol_vz" & nom_Cnr).Value = "" Then sCol = 0: GoTo 33
-        sCol = Controls("nCol_vz" & nom_Cnr).Value
-        If sCol >= Controls("nCol" & nom_Cnr).Value Then sCol = Controls("nCol" & nom_Cnr).Value: Exit Sub
+        nom_Cnr = Val(tb_nom.value)
+        If Controls("nCol_vz" & nom_Cnr).value = "" Then sCol = 0: GoTo 33
+        sCol = Controls("nCol_vz" & nom_Cnr).value
+        If sCol >= Controls("nCol" & nom_Cnr).value Then sCol = Controls("nCol" & nom_Cnr).value: Exit Sub
 33
         sCol = sCol + 1
-        Controls("nCol_vz" & nom_Cnr).Value = sCol
-        If sCol > Controls("nCol" & nom_Cnr).Value Then Controls("nCol_vz" & nom_Cnr).Value = Controls("nCol" & nom_Cnr).Value: Exit Sub
+        Controls("nCol_vz" & nom_Cnr).value = sCol
+        If sCol > Controls("nCol" & nom_Cnr).value Then Controls("nCol_vz" & nom_Cnr).value = Controls("nCol" & nom_Cnr).value: Exit Sub
 End Sub
 
 

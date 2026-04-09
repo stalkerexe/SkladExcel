@@ -15,6 +15,7 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 
+
 Private Sub OK_Click()
         Call ent_doc
 End Sub
@@ -36,7 +37,7 @@ Private Sub dann()
             sDocN = "'" & .tb_docN.Text
             sDocDt = .tb_dt1.Text
             sOsn = sDoc & " № " & sDocN & " от " & sDocDt
-            iRow = .tb_row.Value
+            iRow = .tb_row.value
         End With
 End Sub
 
@@ -80,7 +81,7 @@ Private Sub tb_doc_MouseDown(ByVal Button As Integer, ByVal Shift As Integer, By
 comb_osn.DropDown
 End Sub
 Private Sub comb_osn_Click()
-tb_doc.Text = comb_osn.Value
+tb_doc.Text = comb_osn.value
 End Sub
 
 Private Sub tb_dt1_MouseUp(ByVal Button As Integer, ByVal Shift As Integer, ByVal X As Single, ByVal Y As Single)

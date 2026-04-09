@@ -15,6 +15,7 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 
+
 Dim r As Long
 Private Sub OK_Click()
 On Error Resume Next
@@ -50,7 +51,7 @@ Call clear_box
 Call clear_color
 SpinButton.Visible = False
 ico_del.Visible = False
-tb_sm.Value = "0"
+tb_sm.value = "0"
 End Sub
 Private Sub controls_all_delete()
 On Error Resume Next
@@ -83,7 +84,7 @@ On Error Resume Next
 
 For Each ctr In Me.Frame_nk.Controls
 If ctr.Left = lb_sk.Left Then
-If CheckBox1.Value = True Then
+If CheckBox1.value = True Then
 ctr.Width = lb_sk.Width: lb_sk.Visible = True: ThisWorkbook.Sheets("setting").Range("h4") = 1
 Else
 ctr.Width = 0: lb_sk.Visible = False: ThisWorkbook.Sheets("setting").Range("h4") = 0
@@ -94,7 +95,7 @@ Call Frame_width
 End Sub
 Private Sub ico_del_Click()
 On Error Resume Next
-nom_Cnr = Val(tb_nom.Value)
+nom_Cnr = Val(tb_nom.value)
 iRow = nom_Cnr + rwZv - 1
 ico_del.Visible = False
 SpinButton.Visible = False
@@ -104,30 +105,30 @@ Call clear_color
 End Sub
 Private Sub SpinButton_SpinDown()
 On Error Resume Next
-nom_Cnr = Val(tb_nom.Value)
+nom_Cnr = Val(tb_nom.value)
 iRow = nom_Cnr + rwZv - 1
 With ThisWorkbook.Sheets("корзина")
 .Cells(iRow, zvCol) = .Cells(iRow, zvCol) - 1
 If .Cells(iRow, zvCol) <= 0 Then .Cells(iRow, zvCol) = 0
 sCol = .Cells(iRow, zvCol)
-Controls("nCol" & nom_Cnr).Value = sCol
+Controls("nCol" & nom_Cnr).value = sCol
 End With
 End Sub
 Private Sub SpinButton_SpinUp()
 On Error Resume Next
-nom_Cnr = Val(tb_nom.Value)
+nom_Cnr = Val(tb_nom.value)
 iRow = nom_Cnr + rwZv - 1
 With ThisWorkbook.Sheets("корзина")
 .Cells(iRow, zvCol) = .Cells(iRow, zvCol) + 1
 sCol = .Cells(iRow, zvCol)
-Controls("nCol" & nom_Cnr).Value = sCol
+Controls("nCol" & nom_Cnr).value = sCol
 End With
 End Sub
 Private Sub ScrollBar1_Change()
-Frame_nk.Top = -ScrollBar1.Value
+Frame_nk.Top = -ScrollBar1.value
 End Sub
 Private Sub ScrollBar1_Scroll()
-Frame_nk.Top = -ScrollBar1.Value
+Frame_nk.Top = -ScrollBar1.value
 End Sub
 Private Sub UserForm_Click()
 ico_del.Visible = False
@@ -145,7 +146,7 @@ End If
 If ThisWorkbook.Sheets("setting").Range("b8") = 0 Then tb_sm.Visible = False
 ScrollBar1.Top = Frame_nk_all.Top
 ScrollBar1.Height = Frame_nk_all.Height
-If ThisWorkbook.Sheets("setting").Range("h4") = 1 Then CheckBox1.Value = True: lb_sk.Visible = True
+If ThisWorkbook.Sheets("setting").Range("h4") = 1 Then CheckBox1.value = True: lb_sk.Visible = True
 If ThisWorkbook.Sheets("setting").Range("h4") = 0 Then lb_sk.Visible = False
 tb_sm.Left = Frame_nk_all.Left + lb_col.Left
 End Sub

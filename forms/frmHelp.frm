@@ -18,6 +18,7 @@ Attribute VB_Exposed = False
 
 
 
+
 Private Sub lb_link1_Click()
 On Error Resume Next
 Waite.Show
@@ -69,22 +70,22 @@ For i = 1 To 6
 Me.Controls("tb_" & i).Locked = True
 Next
 
-If ActiveSheet.Name = "Главная" Then Me.MultiPage1.Value = 0
-If ActiveSheet.Name = "Расход" Then Me.MultiPage1.Value = 1
-If ActiveSheet.Name = "Отложено_расход" Then Me.MultiPage1.Value = 2
-If ActiveSheet.Name = "Приход" Then Me.MultiPage1.Value = 3
-If ActiveSheet.Name = "Отложено_приход" Then Me.MultiPage1.Value = 4
-If ActiveSheet.Name = "Склад" Then Me.MultiPage1.Value = 5
+If ActiveSheet.Name = "Главная" Then Me.MultiPage1.value = 0
+If ActiveSheet.Name = "Расход" Then Me.MultiPage1.value = 1
+If ActiveSheet.Name = "Отложено_расход" Then Me.MultiPage1.value = 2
+If ActiveSheet.Name = "Приход" Then Me.MultiPage1.value = 3
+If ActiveSheet.Name = "Отложено_приход" Then Me.MultiPage1.value = 4
+If ActiveSheet.Name = "Склад" Then Me.MultiPage1.value = 5
 End Sub
 
 Private Sub MultiPage1_Change()
 With Me.MultiPage1
-If .Value = 0 Then Sheets("Главная").Select
-If .Value = 1 Then Sheets("Расход").Select
-If .Value = 2 Then Sheets("Отложено_расход").Select
-If .Value = 3 Then Sheets("Приход").Select
-If .Value = 4 Then Sheets("Отложено_приход").Select
-If .Value = 5 Then Sheets("Склад").Select
+If .value = 0 Then Sheets("Главная").Select
+If .value = 1 Then Sheets("Расход").Select
+If .value = 2 Then Sheets("Отложено_расход").Select
+If .value = 3 Then Sheets("Приход").Select
+If .value = 4 Then Sheets("Отложено_приход").Select
+If .value = 5 Then Sheets("Склад").Select
 End With
 End Sub
 

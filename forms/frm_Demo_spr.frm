@@ -18,12 +18,13 @@ Attribute VB_Exposed = False
 
 
 
+
 Private Sub OK_Click()
 On Error Resume Next
 Unload Me
 DoEvents
 Form_.Show
-Form_.MultiPage1.Value = 1
+Form_.MultiPage1.value = 1
 End Sub
 
 Private Sub NO_Click()
