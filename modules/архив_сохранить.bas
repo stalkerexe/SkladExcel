@@ -10,21 +10,24 @@ Public Sub save_nk()
 End Sub
 
 Private Sub proverka_arh()
-        Call find_vid_arhh
+        If Trim$(CStr(shNmArh)) = "" Then Call find_vid_arhh
         Call arr_arh_proverka
 End Sub
 
 
 
 Private Sub sv_nk_to_arh()
-        Call find_vid_arhh
+        If Trim$(CStr(shNmArh)) = "" Then Call find_vid_arhh
         Call copy_to_arh
 End Sub
 
 Public Sub find_vid_arhh()
-        If iVid = "pr" Then shNmArh = "arh_prr"
-        If iVid = "ot" Then shNmArh = "arh_zkk"
-        If iVid = "vz" Then shNmArh = "arh_vzz"
+        Select Case iVid
+            Case "pr": shNmArh = "arh_prr"
+            Case "ot": shNmArh = "arh_zkk"
+            Case "vz": shNmArh = "arh_vzz"
+            Case Else: shNmArh = ""
+        End Select
 End Sub
 
 

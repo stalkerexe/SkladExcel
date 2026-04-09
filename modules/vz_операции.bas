@@ -20,8 +20,10 @@ If Trim(CStr(marker)) = "" Then marker = "vz_" & Format(Now, "yyyymmdd_hhnnss")
 If Trim(CStr(nomer)) = "" Then nomer = 0
 
 iVid = "vz"
-Call find_vid_arhh
+shNmArh = "arh_vzz"
 Call save_nk
+
+If Trim$(CStr(shNmArh)) = "" Then Err.Raise vbObjectError + 513, "zvk_commit_return", "Не удалось определить лист архива для возврата."
 
 MsgBox "Возврат сохранен в архив.", vbInformation, "Возврат"
 Unload frm
