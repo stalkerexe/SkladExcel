@@ -1,6 +1,8 @@
 ﻿﻿Attribute VB_Name = "a_demo"
 Option Explicit
 
+' Историческое имя модуля сохранено для обратной совместимости макросов.
+' В production-версии модуль содержит рабочий CRUD по складам.
 Private Const SKLAD_SHEET As String = "my_set"
 Private Const SKLAD_COLUMN As Long = 27 'Колонка AA
 Private Const SKLAD_FIRST_ROW As Long = 2
@@ -225,18 +227,23 @@ End Function
 
 Private Function CountWarehouseMoves(ByVal skName As String) As Long
 CountWarehouseMoves = 0
-CountWarehouseMoves = CountMatchesInSheetColumn("Расход", zvSk, skName)
-CountWarehouseMoves = CountWarehouseMoves + CountMatchesInSheetColumn("Приход", prSk, skName)
-CountWarehouseMoves = CountWarehouseMoves + CountMatchesInSheetColumn("arh_zkk", arhSk, skName)
-CountWarehouseMoves = CountWarehouseMoves + CountMatchesInSheetColumn("arh_prr", arhSk, skName)
-CountWarehouseMoves = CountWarehouseMoves + CountMatchesInSheetColumn("arh_vzz", arhSk, skName)
+CountWarehouseMoves = CountWarehouseMoves + CountMatchesInSheetColumn("Расход", zvSk, skName, True)
+CountWarehouseMoves = CountWarehouseMoves + CountMatchesInSheetColumn("Приход", prSk, skName, True)
+CountWarehouseMoves = CountWarehouseMoves + CountMatchesInSheetColumn("arh_zkk", arhSk, skName, False)
+CountWarehouseMoves = CountWarehouseMoves + CountMatchesInSheetColumn("arh_prr", arhSk, skName, False)
+CountWarehouseMoves = CountWarehouseMoves + CountMatchesInSheetColumn("arh_vzz", arhSk, skName, False)
 End Function
 
-Private Function CountMatchesInSheetColumn(ByVal sheetName As String, ByVal colIndex As Long, ByVal skName As String) As Long
+Private Function CountMatchesInSheetColumn(ByVal sheetName As String, ByVal colIndex As Long, ByVal skName As String, Optional ByVal requiredSheet As Boolean = True) As Long
 On Error GoTo ErrHandler
 
 Dim ws As Worksheet
-If Not RequireSheet(sheetName, ws, "CountMatchesInSheetColumn") Then Exit Function
+If requiredSheet Then
+    If Not RequireSheet(sheetName, ws, "CountMatchesInSheetColumn") Then Exit Function
+Else
+    Set ws = GetSheetByName(sheetName, False)
+    If ws Is Nothing Then Exit Function
+End If
 
 With ws
     Dim lastRow As Long
@@ -255,18 +262,23 @@ ReportVbaError "CountMatchesInSheetColumn", Err.Number, Err.Description, "Скл
 End Function
 
 Private Sub ReplaceWarehouseInDocs(ByVal oldName As String, ByVal newName As String)
-ReplaceWarehouseInSheetColumn "Расход", zvSk, oldName, newName
-ReplaceWarehouseInSheetColumn "Приход", prSk, oldName, newName
-ReplaceWarehouseInSheetColumn "arh_zkk", arhSk, oldName, newName
-ReplaceWarehouseInSheetColumn "arh_prr", arhSk, oldName, newName
-ReplaceWarehouseInSheetColumn "arh_vzz", arhSk, oldName, newName
+ReplaceWarehouseInSheetColumn "Расход", zvSk, oldName, newName, True
+ReplaceWarehouseInSheetColumn "Приход", prSk, oldName, newName, True
+ReplaceWarehouseInSheetColumn "arh_zkk", arhSk, oldName, newName, False
+ReplaceWarehouseInSheetColumn "arh_prr", arhSk, oldName, newName, False
+ReplaceWarehouseInSheetColumn "arh_vzz", arhSk, oldName, newName, False
 End Sub
 
-Private Sub ReplaceWarehouseInSheetColumn(ByVal sheetName As String, ByVal colIndex As Long, ByVal oldName As String, ByVal newName As String)
+Private Sub ReplaceWarehouseInSheetColumn(ByVal sheetName As String, ByVal colIndex As Long, ByVal oldName As String, ByVal newName As String, Optional ByVal requiredSheet As Boolean = True)
 On Error GoTo ErrHandler
 
 Dim ws As Worksheet
-If Not RequireSheet(sheetName, ws, "ReplaceWarehouseInSheetColumn") Then Exit Sub
+If requiredSheet Then
+    If Not RequireSheet(sheetName, ws, "ReplaceWarehouseInSheetColumn") Then Exit Sub
+Else
+    Set ws = GetSheetByName(sheetName, False)
+    If ws Is Nothing Then Exit Sub
+End If
 
 With ws
     Dim lastRow As Long

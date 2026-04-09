@@ -1,6 +1,6 @@
 ﻿VERSION 5.00
-Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} frm_msg 
-   Caption         =   "Демо-версия"
+Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} frm_msg
+   Caption         =   "Системное сообщение"
    ClientHeight    =   1710
    ClientLeft      =   45
    ClientTop       =   390

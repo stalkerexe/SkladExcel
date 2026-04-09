@@ -70,7 +70,7 @@ ErrHandler:
 ReportVbaError "AutoFilter_delete", Err.Number, Err.Description
 End Sub
 Public Sub msg_demo()
-MsgBox "Данная функция доступна только для полной версии программы!", 64, "Демо-версия"
+MsgBox "Функция недоступна в текущем контексте. Проверьте права пользователя или настройки документа.", vbExclamation, "Ограничение доступа"
 End Sub
 
 Public Function nom_nk(clmn As Integer)
