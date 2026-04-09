@@ -20,6 +20,7 @@ If Trim(CStr(marker)) = "" Then marker = "vz_" & Format(Now, "yyyymmdd_hhnnss")
 If Trim(CStr(nomer)) = "" Then nomer = 0
 
 iVid = "vz"
+Call find_vid_arhh
 Call save_nk
 
 MsgBox "Возврат сохранен в архив.", vbInformation, "Возврат"

@@ -24,6 +24,7 @@ End Sub
 Public Sub find_vid_arhh()
         If iVid = "pr" Then shNmArh = "arh_prr"
         If iVid = "ot" Then shNmArh = "arh_zkk"
+        If iVid = "vz" Then shNmArh = "arh_vzz"
 End Sub
 
 
