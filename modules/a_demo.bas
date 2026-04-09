@@ -4,6 +4,9 @@ Option Explicit
 Private Const SKLAD_SHEET As String = "my_set"
 Private Const SKLAD_COLUMN As Long = 27 'Колонка AA
 Private Const SKLAD_FIRST_ROW As Long = 2
+Private Const STOCK_SK_MATERIALS As String = "Материалы"
+Private Const STOCK_SK_METAL As String = "Металлопрокат"
+Private Const STOCK_SK_WORKWEAR As String = "Спецодежда"
 
 Public Sub open_sklad()
 On Error GoTo errHandler
@@ -63,6 +66,16 @@ If newName = "" Then Exit Sub
 If StrComp(oldName, newName, vbTextCompare) = 0 Then Exit Sub
 
 Call load_sk
+
+If IsSupportedStockWarehouse(oldName) And Not IsSupportedStockWarehouse(newName) Then
+    MsgBox "Нельзя переименовать склад """ & oldName & """ в """ & newName & """." & vbCrLf & _
+           "Этот склад участвует в остатках и должен оставаться одним из стандартных названий:" & vbCrLf & _
+           "- " & STOCK_SK_MATERIALS & vbCrLf & _
+           "- " & STOCK_SK_METAL & vbCrLf & _
+           "- " & STOCK_SK_WORKWEAR, 48, "Переименовать склад"
+    Exit Sub
+End If
+
 If SkladExists(newName) Then
     MsgBox "Склад с таким названием уже существует.", 48, "Переименовать склад"
     Exit Sub
@@ -216,12 +229,19 @@ With ThisWorkbook.Sheets(SKLAD_SHEET)
 
     For i = SKLAD_FIRST_ROW To lastRow
         If StrComp(NormalizeSkName(CStr(.Cells(i, SKLAD_COLUMN).Value)), oldName, vbTextCompare) = 0 Then
-            .Rows(i).Delete
+            .Cells(i, SKLAD_COLUMN).ClearContents
             DeleteSkladFromStore = True
             Exit Function
         End If
     Next
 End With
+End Function
+
+Private Function IsSupportedStockWarehouse(ByVal skladName As String) As Boolean
+    IsSupportedStockWarehouse = _
+        (StrComp(skladName, STOCK_SK_MATERIALS, vbTextCompare) = 0) Or _
+        (StrComp(skladName, STOCK_SK_METAL, vbTextCompare) = 0) Or _
+        (StrComp(skladName, STOCK_SK_WORKWEAR, vbTextCompare) = 0)
 End Function
 
 Private Function CountWarehouseMoves(ByVal skName As String) As Long
