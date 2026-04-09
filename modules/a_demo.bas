@@ -1,4 +1,4 @@
-﻿﻿Attribute VB_Name = "a_demo"
+﻿Attribute VB_Name = "a_demo"
 Option Explicit
 
 ' Историческое имя модуля сохранено для обратной совместимости макросов.
