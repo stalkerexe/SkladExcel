@@ -56,15 +56,15 @@ Private Sub copy_dann()
             .Range("a1") = marker
             .Range("d2") = nomer
             
-            .Cells(rwZv_zkz, 4).Value = sZkz
-            .Cells(rwZv_adr, 4).Value = sAdr
-            .Cells(rwZv_tlf, 4).Value = sTlf
-            .Cells(rwZv_mj, 4).Value = sMj
-            .Cells(rwZv_dt, 4).Value = sDt
-            .Cells(rwZv_dt2, 4).Value = sDt2
+            .Cells(rwZv_zkz, 4).value = sZkz
+            .Cells(rwZv_adr, 4).value = sAdr
+            .Cells(rwZv_tlf, 4).value = sTlf
+            .Cells(rwZv_mj, 4).value = sMj
+            .Cells(rwZv_dt, 4).value = sDt
+            .Cells(rwZv_dt2, 4).value = sDt2
 
-.Cells(rwZv_mj, zvSm).Value = iOpl
-.Cells(rwZv_mj, zvOst).Value = iSkid
+.Cells(rwZv_mj, zvSm).value = iOpl
+.Cells(rwZv_mj, zvOst).value = iSkid
             
             .Cells(1, zvComm) = sComm
             .Cells(rwzvSm, zvSm) = summ

@@ -49,12 +49,12 @@ End Sub
 Private Sub copy_dann()
         On Error Resume Next
         With ThisWorkbook.Sheets(nmBlank)
-            .Range("c2").Value = "Расходная накладная № " & nomer & " от " & sDt
-            .Cells(rwZv_zkz, 4).Value = sZkz
-            .Cells(rwZv_adr, 4).Value = sAdr
-            .Cells(rwZv_tlf, 4).Value = sTlf
-            .Cells(rwZv_mj, 4).Value = sMj
-            .Cells(rwZv_dt, 4).Value = sDt
+            .Range("c2").value = "Расходная накладная № " & nomer & " от " & sDt
+            .Cells(rwZv_zkz, 4).value = sZkz
+            .Cells(rwZv_adr, 4).value = sAdr
+            .Cells(rwZv_tlf, 4).value = sTlf
+            .Cells(rwZv_mj, 4).value = sMj
+            .Cells(rwZv_dt, 4).value = sDt
         End With
 End Sub
 
@@ -120,9 +120,9 @@ Private Sub podp_sm()
 
             .Cells(r7, zvSm).RowHeight = 22
 
-            .Cells(r7, zvCnR).Value = "Итого:"
+            .Cells(r7, zvCnR).value = "Итого:"
 
-            .Cells(r7, zvSm).Value = summ
+            .Cells(r7, zvSm).value = summ
             .Cells(r7, zvSm).NumberFormat = "#,##0.00"
             
             With Range(.Cells(r7, zvNN), .Cells(r7, zvSm))

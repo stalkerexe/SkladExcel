@@ -5,16 +5,16 @@ Public Sub dann_zv()
         On Error Resume Next
         With ThisWorkbook.Sheets("Расход")
             nomer = .Range("d2")
-            sZkz = .Cells(rwZv_zkz, 4).Value
-            sAdr = .Cells(rwZv_adr, 4).Value
-            sTlf = .Cells(rwZv_tlf, 4).Value
-            sMj = .Cells(rwZv_mj, 4).Value
-iOpl = .Cells(rwZv_mj, zvSm).Value
-iSkid = .Cells(rwZv_mj, zvOst).Value
-            sDt = VBA.CDate(.Cells(rwZv_dt, 4).Value)
-            sDt2 = VBA.CDate(.Cells(rwZv_dt2, 4).Value)
+            sZkz = .Cells(rwZv_zkz, 4).value
+            sAdr = .Cells(rwZv_adr, 4).value
+            sTlf = .Cells(rwZv_tlf, 4).value
+            sMj = .Cells(rwZv_mj, 4).value
+iOpl = .Cells(rwZv_mj, zvSm).value
+iSkid = .Cells(rwZv_mj, zvOst).value
+            sDt = VBA.CDate(.Cells(rwZv_dt, 4).value)
+            sDt2 = VBA.CDate(.Cells(rwZv_dt2, 4).value)
             sComm = .Cells(1, zvComm)
-            summ = .Cells(rwzvSm, zvSm).Value
+            summ = .Cells(rwzvSm, zvSm).value
         End With
 End Sub
 
@@ -22,18 +22,18 @@ Public Sub dann_pr()
         On Error Resume Next
         With ThisWorkbook.Sheets("Приход")
             nomer = .Range("d2")
-            sZkz = .Cells(rwPr_zkz, 4).Value
-            sMj = .Cells(rwPr_mj, 4).Value
-            sDt = VBA.CDate(.Cells(rwPr_dt, 4).Value)
+            sZkz = .Cells(rwPr_zkz, 4).value
+            sMj = .Cells(rwPr_mj, 4).value
+            sDt = VBA.CDate(.Cells(rwPr_dt, 4).value)
             
-            summ = .Cells(rwzvSm, prSm).Value
+            summ = .Cells(rwzvSm, prSm).value
             sComm = .Cells(1, prComm)
             
-            sDoc = Cells(1, prDoc).Value
-            sDocN = "'" & Cells(1, prDocN).Value
-            sDocDt = Cells(1, prDocDt).Value
+            sDoc = Cells(1, prDoc).value
+            sDocN = "'" & Cells(1, prDocN).value
+            sDocDt = Cells(1, prDocDt).value
             
-sOsn = .Cells(rwPr_doc, 4).Value
+sOsn = .Cells(rwPr_doc, 4).value
         End With
 End Sub
 
@@ -48,9 +48,9 @@ Public Sub dann_zk_rs()
             sAdr = .Cells(iRow, zkAdr)
             sMj = .Cells(iRow, zkMj)
 iOpl = .Cells(iRow, zkOpl)
-iSkid = .Cells(iRow, zkSkid).Value
+iSkid = .Cells(iRow, zkSkid).value
             summ = .Cells(iRow, zkSm)
-            sComm = .Cells(iRow + 1, zkComm).Value
+            sComm = .Cells(iRow + 1, zkComm).value
             sDt = VBA.CDate(.Cells(iRow, zkDt1))
             sDt2 = VBA.CDate(.Cells(iRow, zkDt2))
         End With
@@ -65,12 +65,12 @@ Public Sub dann_zk_pr()
             sDt = VBA.CDate(.Cells(iRow, pzkDt))
             summ = .Cells(iRow, pzkSm)
             
-            sComm = .Cells(iRow + 1, pzkComm).Value
+            sComm = .Cells(iRow + 1, pzkComm).value
             
-            sDoc = .Cells(iRow, pzkDoc).Value
-            sDocN = .Cells(iRow, pzkDocN).Value
-            sDocDt = .Cells(iRow, pzkDocDt).Value
-            sOsn = .Cells(iRow + 1, pzkOsn).Value
+            sDoc = .Cells(iRow, pzkDoc).value
+            sDocN = .Cells(iRow, pzkDocN).value
+            sDocDt = .Cells(iRow, pzkDocDt).value
+            sOsn = .Cells(iRow + 1, pzkOsn).value
         End With
 End Sub
 

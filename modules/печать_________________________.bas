@@ -20,7 +20,7 @@ End Function
 Public Sub hidden_clm_blank_rs()
         On Error Resume Next
 
-        If ThisWorkbook.Sheets("setting").Range("b6").Value = 1 Then
+        If ThisWorkbook.Sheets("setting").Range("b6").value = 1 Then
             flag_hidden = False
         Else
             flag_hidden = True
@@ -28,7 +28,7 @@ Public Sub hidden_clm_blank_rs()
         
         ThisWorkbook.Sheets(nmBlank).Cells(2, zvCod).EntireColumn.Hidden = flag_hidden
         
-        If ThisWorkbook.Sheets("setting").Range("b8").Value = 1 Then
+        If ThisWorkbook.Sheets("setting").Range("b8").value = 1 Then
             flag_hidden = False
         Else
             flag_hidden = True
@@ -59,7 +59,7 @@ End Sub
 Public Sub hidden_clm_blank_pr()
         On Error Resume Next
 
-        If ThisWorkbook.Sheets("setting").Range("b6").Value = 1 Then
+        If ThisWorkbook.Sheets("setting").Range("b6").value = 1 Then
             flag_hidden = False
         Else
             flag_hidden = True
@@ -67,7 +67,7 @@ Public Sub hidden_clm_blank_pr()
         
         ThisWorkbook.Sheets(nmBlank).Cells(2, prCod).EntireColumn.Hidden = flag_hidden
         
-        If ThisWorkbook.Sheets("setting").Range("b8").Value = 1 Then
+        If ThisWorkbook.Sheets("setting").Range("b8").value = 1 Then
             flag_hidden = False
         Else
             flag_hidden = True

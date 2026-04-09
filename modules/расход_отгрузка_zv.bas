@@ -14,8 +14,8 @@ Public Sub otgZv()
             End If
         End With
         
-        sZkz = Cells(rwZv_zkz, 4).Value
-        sDt = Cells(rwZv_dt, 4).Value
+        sZkz = Cells(rwZv_zkz, 4).value
+        sDt = Cells(rwZv_dt, 4).value
         
         If MsgBox("     Отгрузить накладную?               " & VBA.Chr(10) & _
         "---------------------------------------------------" & VBA.Chr(10) & _

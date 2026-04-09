@@ -15,8 +15,8 @@ Public Sub svPrihod()
         End If
         End With
         
-        sZkz = Cells(rwPr_zkz, 4).Value
-        sDt = VBA.CDate(Cells(rwPr_dt, 4).Value)
+        sZkz = Cells(rwPr_zkz, 4).value
+        sDt = VBA.CDate(Cells(rwPr_dt, 4).value)
             
         If MsgBox("     Отложить накладную?               " & VBA.Chr(10) & _
         "---------------------------------------------------" & VBA.Chr(10) & _
@@ -124,15 +124,15 @@ Private Sub clear_this()
         With ThisWorkbook.Sheets("Приход")
             r7 = .UsedRange.Rows.Count + .UsedRange.Row - 1
             .Range("a" & rwZv & ":a" & r7 + 44).EntireRow.Delete
-            .Range("a1").Value = ""
+            .Range("a1").value = ""
             
-            .Cells(rwzvSm, prSm).Value = ""
-            .Cells(rwPr_doc, 4).Value = ""
-            .Cells(rwPr_doc, prCol).Value = ""
+            .Cells(rwzvSm, prSm).value = ""
+            .Cells(rwPr_doc, 4).value = ""
+            .Cells(rwPr_doc, prCol).value = ""
             
-            .Cells(1, prDoc).Value = ""
-            .Cells(1, prDocN).Value = ""
-            .Cells(1, prComm).Value = ""
+            .Cells(1, prDoc).value = ""
+            .Cells(1, prDocN).value = ""
+            .Cells(1, prComm).value = ""
         End With
         
         Call clear_box

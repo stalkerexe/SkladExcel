@@ -37,11 +37,11 @@ Private Sub arr_box()
 On Error Resume Next
 With ThisWorkbook.Sheets("корзина")
 r7 = .Cells(Rows.Count, zvNm).End(xlUp).Row + 1
-nn = Range(.Cells(rwZv, zvNN), .Cells(r7, zvNN)).Value
-nm = Range(.Cells(rwZv, zvNm), .Cells(r7, zvNm)).Value
-cod = Range(.Cells(rwZv, zvCod), .Cells(r7, zvCod)).Value
-col = Range(.Cells(rwZv, zvCol), .Cells(r7, zvCol)).Value
-sk = Range(.Cells(rwZv, zvSk), .Cells(r7, zvSk)).Value
+nn = Range(.Cells(rwZv, zvNN), .Cells(r7, zvNN)).value
+nm = Range(.Cells(rwZv, zvNm), .Cells(r7, zvNm)).value
+cod = Range(.Cells(rwZv, zvCod), .Cells(r7, zvCod)).value
+col = Range(.Cells(rwZv, zvCol), .Cells(r7, zvCol)).value
+sk = Range(.Cells(rwZv, zvSk), .Cells(r7, zvSk)).value
 End With
 End Sub
 Private Sub cnrt_add_nk()
@@ -119,7 +119,7 @@ With frm_Show
 If .Frame_nk.Height > .Frame_nk_all.Height Then .ScrollBar1.Width = 12
 .ScrollBar1.Min = 0
 .ScrollBar1.Max = Val(.Frame_nk.Height - .Frame_nk_all.Height)
-If .ScrollBar1.Width > 0 Then .ScrollBar1.Value = .ScrollBar1.Max
+If .ScrollBar1.Width > 0 Then .ScrollBar1.value = .ScrollBar1.Max
 End With
 End Sub
 Public Sub Frame_width()
@@ -149,7 +149,7 @@ End Sub
 Public Sub sum_box()
 On Error Resume Next
 summ = ThisWorkbook.Sheets("корзина").Cells(rwzvSm, zvSm)
-frm_Show.tb_sm.Value = Format(summ, "#,##0.00")
+frm_Show.tb_sm.value = Format(summ, "#,##0.00")
 ThisWorkbook.Sheets("Склад").Cells(3, iBox2) = ThisWorkbook.Sheets("корзина").Cells(rwzvSm, zvSm)
 With ThisWorkbook.Sheets("корзина")
 r = .Cells(Rows.Count, zvNm).End(xlUp).Row

@@ -71,15 +71,15 @@ Private Sub resize_sk_bf()
 
     With wsBuffer
         r7 = .Cells(.Rows.Count, skNm).End(xlUp).Row + 2
-        gr_sk = .Range(.Cells(1, skGr), .Cells(r7, skGr)).Value
-        gr = .Range(.Cells(1, 2), .Cells(r7, 2)).Value
-        cod_sk = .Range(.Cells(1, skCod), .Cells(r7, skCod)).Value
-        nm_sk = .Range(.Cells(1, skNm), .Cells(r7, skNm)).Value
-        ed_sk = .Range(.Cells(1, skEd), .Cells(r7, skEd)).Value
-        cnZ_sk = .Range(.Cells(1, "g"), .Cells(r7, "g")).Value
-        cnR_sk = .Range(.Cells(1, "h"), .Cells(r7, "h")).Value
-        col_sk = .Range(.Cells(1, "f"), .Cells(r7, "f")).Value
-        br_sk = .Range(.Cells(1, "i"), .Cells(r7, "i")).Value
+        gr_sk = .Range(.Cells(1, skGr), .Cells(r7, skGr)).value
+        gr = .Range(.Cells(1, 2), .Cells(r7, 2)).value
+        cod_sk = .Range(.Cells(1, skCod), .Cells(r7, skCod)).value
+        nm_sk = .Range(.Cells(1, skNm), .Cells(r7, skNm)).value
+        ed_sk = .Range(.Cells(1, skEd), .Cells(r7, skEd)).value
+        cnZ_sk = .Range(.Cells(1, "g"), .Cells(r7, "g")).value
+        cnR_sk = .Range(.Cells(1, "h"), .Cells(r7, "h")).value
+        col_sk = .Range(.Cells(1, "f"), .Cells(r7, "f")).value
+        br_sk = .Range(.Cells(1, "i"), .Cells(r7, "i")).value
     End With
 
     Exit Sub
@@ -98,7 +98,7 @@ Private Sub parse_sk()
         .Cells(r7, 1) = 1
 
         With .Cells(r7, skNm)
-            .Value = sSk
+            .value = sSk
             .Font.Bold = True
             .Font.Size = 16
             .Font.ColorIndex = 3
@@ -150,7 +150,7 @@ On Error GoTo ErrHandler
         r = .Cells(.Rows.Count, skNm).End(xlUp).Row + 2: If r <= 5 Then r = 5
         .Cells(r, 1) = 1
         With .Cells(r, skNm)
-            .Value = "склад   " & sSk
+            .value = "склад   " & sSk
             .Font.Bold = True
             .Font.Size = 16
             .Font.ColorIndex = 3

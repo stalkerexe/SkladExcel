@@ -1,4 +1,4 @@
-Attribute VB_Name = "vz_операции"
+﻿Attribute VB_Name = "vz_операции"
 Option Explicit
 
 Public Sub zvk_open_archive()

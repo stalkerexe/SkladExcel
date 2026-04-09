@@ -16,8 +16,8 @@ Public Sub prihod_()
         End If
         End With
         
-        sZkz = Cells(rwPr_zkz, 4).Value
-        sDt = VBA.CDate(Cells(rwPr_dt, 4).Value)
+        sZkz = Cells(rwPr_zkz, 4).value
+        sDt = VBA.CDate(Cells(rwPr_dt, 4).value)
         
         If MsgBox("     Приходовать накладную?               " & VBA.Chr(10) & _
         "---------------------------------------------------" & VBA.Chr(10) & _

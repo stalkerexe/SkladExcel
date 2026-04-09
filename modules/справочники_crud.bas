@@ -1,4 +1,4 @@
-Attribute VB_Name = "справочники_crud"
+﻿Attribute VB_Name = "справочники_crud"
 Option Explicit
 
 Private Enum eDictAction
@@ -33,7 +33,7 @@ Public Sub open_dict_units()
 End Sub
 
 Private Sub open_dict_workflow(ByVal dictSheetName As String, ByVal headers As Variant)
-    On Error GoTo errHandler
+    On Error GoTo ErrHandler
 
     Dim ws As Worksheet
     Set ws = ensure_dict_sheet(dictSheetName, headers)
@@ -56,7 +56,7 @@ Private Sub open_dict_workflow(ByVal dictSheetName As String, ByVal headers As V
 
     Exit Sub
 
-errHandler:
+ErrHandler:
     MsgBox "Ошибка открытия справочника '" & dictSheetName & "': " & Err.Description, vbExclamation, "Справочники"
 End Sub
 
@@ -70,7 +70,7 @@ Private Function ensure_dict_sheet(ByVal dictSheetName As String, ByVal headers 
         ensure_dict_sheet.Name = dictSheetName
         init_headers ensure_dict_sheet, headers
         MsgBox "Создан новый справочник: " & dictSheetName, vbInformation, "Справочники"
-    ElseIf Trim(CStr(ensure_dict_sheet.Cells(1, 1).Value)) = "" Then
+    ElseIf Trim(CStr(ensure_dict_sheet.Cells(1, 1).value)) = "" Then
         init_headers ensure_dict_sheet, headers
     End If
 End Function
@@ -78,7 +78,7 @@ End Function
 Private Sub init_headers(ByVal ws As Worksheet, ByVal headers As Variant)
     Dim i As Long
     For i = LBound(headers) To UBound(headers)
-        ws.Cells(1, i - LBound(headers) + 1).Value = CStr(headers(i))
+        ws.Cells(1, i - LBound(headers) + 1).value = CStr(headers(i))
         ws.Cells(1, i - LBound(headers) + 1).Font.Bold = True
         ws.Columns(i - LBound(headers) + 1).ColumnWidth = 24
     Next i
@@ -120,7 +120,7 @@ Private Sub dict_add_row(ByVal ws As Worksheet)
 
     Dim c As Long
     For c = 1 To colCount
-        ws.Cells(lastRow + 1, c).Value = InputBox("Введите значение для поля '" & ws.Cells(1, c).Value & "'", "Добавление")
+        ws.Cells(lastRow + 1, c).value = InputBox("Введите значение для поля '" & ws.Cells(1, c).value & "'", "Добавление")
     Next c
 
     ws.Activate
@@ -137,7 +137,7 @@ Private Sub dict_edit_row(ByVal ws As Worksheet)
 
     Dim c As Long
     For c = 1 To colCount
-        ws.Cells(rowNo, c).Value = InputBox("Новое значение для поля '" & ws.Cells(1, c).Value & "'", "Редактирование", CStr(ws.Cells(rowNo, c).Value))
+        ws.Cells(rowNo, c).value = InputBox("Новое значение для поля '" & ws.Cells(1, c).value & "'", "Редактирование", CStr(ws.Cells(rowNo, c).value))
     Next c
 
     ws.Activate

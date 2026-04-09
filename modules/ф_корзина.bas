@@ -35,8 +35,8 @@ End Sub
 Private Sub arr_sk_sk()
 On Error Resume Next
 With ThisWorkbook.Sheets("Склад")
-    gr_sk = Range(.Cells(5, skGr), .Cells(iRow, skGr)).Value
-    nm_sk = Range(.Cells(5, skNm), .Cells(iRow, skNm)).Value
+    gr_sk = Range(.Cells(5, skGr), .Cells(iRow, skGr)).value
+    nm_sk = Range(.Cells(5, skNm), .Cells(iRow, skNm)).value
 End With
 End Sub
 
@@ -63,14 +63,14 @@ Private Sub dann()
 On Error Resume Next
 With ThisWorkbook.Sheets("Склад")
 sID = iRow
-sNm = .Cells(iRow, skNm).Value
-sCod = .Cells(iRow, skCod).Value
-sEd = .Cells(iRow, skEd).Value
-sCol = .Cells(iRow, skOst).Value
-sBr = .Cells(iRow, skBr).Value
-sCnZ = .Cells(iRow, skCnZ).Value
-sCnR = .Cells(iRow, skCnR).Value
-sSk = .Cells(iRow, skSk).Value
+sNm = .Cells(iRow, skNm).value
+sCod = .Cells(iRow, skCod).value
+sEd = .Cells(iRow, skEd).value
+sCol = .Cells(iRow, skOst).value
+sBr = .Cells(iRow, skBr).value
+sCnZ = .Cells(iRow, skCnZ).value
+sCnR = .Cells(iRow, skCnR).value
+sSk = .Cells(iRow, skSk).value
 End With
 End Sub
 

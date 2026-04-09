@@ -37,7 +37,7 @@ With ThisWorkbook.Sheets("буфер")
 r24 = .Cells(Rows.Count, 1).End(xlUp).Row + 1
 .Range("a1:a" & r24).RemoveDuplicates Columns:=1, Header:=xlNo
 r24 = .Cells(Rows.Count, 1).End(xlUp).Row + 1
-sk_2 = .Range("a1:a" & r24).Value
+sk_2 = .Range("a1:a" & r24).value
 End With
 Application.CutCopyMode = False
 End Sub
@@ -67,8 +67,8 @@ Private Sub arr_mk_zk()
         On Error Resume Next
         With ThisWorkbook.Sheets(shNm)
             r24 = .UsedRange.Rows.Count + .UsedRange.Row
-            mk = Range(.Cells(5, 1), .Cells(r24, 1)).Value
-            nm = Range(.Cells(5, zkNm), .Cells(r24, zkNm)).Value
+            mk = Range(.Cells(5, 1), .Cells(r24, 1)).value
+            nm = Range(.Cells(5, zkNm), .Cells(r24, zkNm)).value
         End With
 End Sub
 
@@ -108,7 +108,7 @@ Public Sub find_mk_zk_file()
         
         With ThisWorkbook.Sheets(shNm)
             r24 = .UsedRange.Rows.Count + .UsedRange.Row
-            mk = .Range(.Cells(3, 1), .Cells(r24, 1)).Value
+            mk = .Range(.Cells(3, 1), .Cells(r24, 1)).value
         End With
         
         row1 = 0
@@ -142,7 +142,7 @@ Public Sub find_mk_arh()
         
         With ThisWorkbook.Sheets(shNmArh)
             r24 = .UsedRange.Rows.Count + .UsedRange.Row
-            mk = .Range(.Cells(3, 1), .Cells(r24, 1)).Value
+            mk = .Range(.Cells(3, 1), .Cells(r24, 1)).value
         End With
         
         row1 = 0

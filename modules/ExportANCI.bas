@@ -151,7 +151,7 @@ Private Sub ExportDocumentModule( _
     Dim objName As String
     On Error Resume Next
     ' Для листов — имя вкладки; для ThisWorkbook — имя файла
-    objName = comp.Properties("Name").Value
+    objName = comp.Properties("Name").value
     On Error GoTo 0
     If objName = "" Then objName = comp.Name
 
@@ -163,12 +163,12 @@ Private Sub ExportDocumentModule( _
     ' (CodeModule иногда добавляет её автоматически)
     Dim startLine As Long
     startLine = 1
-    If LCase(Trim(comp.CodeModule.Lines(1, 1))) = "option explicit" Then
+    If LCase(Trim(comp.CodeModule.lines(1, 1))) = "option explicit" Then
         startLine = 2
     End If
 
     For i = startLine To comp.CodeModule.CountOfLines
-        content = content & comp.CodeModule.Lines(i, 1) & vbCrLf
+        content = content & comp.CodeModule.lines(i, 1) & vbCrLf
     Next i
 
     ' Имя файла: имя компонента + "_" + имя вкладки (если отличается)

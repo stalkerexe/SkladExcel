@@ -147,9 +147,9 @@ Public Sub dann_set()
         
         With ThisWorkbook.Sheets("setting")
         
-            iRz = .Range("o24").Value
+            iRz = .Range("o24").value
             
-            iWrapText = .Range("o25").Value
+            iWrapText = .Range("o25").value
             
         End With
 End Sub

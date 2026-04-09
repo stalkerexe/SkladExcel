@@ -60,10 +60,10 @@ Private Sub copy_dann()
             .Range("a1") = marker
             .Range("d2") = nomer
             
-            .Cells(rwPr_zkz, 4).Value = sZkz
-            .Cells(rwPr_mj, 4).Value = sMj
-            .Cells(rwPr_doc, 4).Value = sOsn
-            .Cells(rwPr_dt, 4).Value = sDt
+            .Cells(rwPr_zkz, 4).value = sZkz
+            .Cells(rwPr_mj, 4).value = sMj
+            .Cells(rwPr_doc, 4).value = sOsn
+            .Cells(rwPr_dt, 4).value = sDt
             
             .Cells(rwzvSm, prSm) = summ
             .Cells(1, prComm) = sComm

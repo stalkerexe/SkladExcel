@@ -1,4 +1,4 @@
-Attribute VB_Name = "a_spr_all"
+﻿Attribute VB_Name = "a_spr_all"
 Option Explicit
 
 Public Sub load_mjj_all()
@@ -33,7 +33,7 @@ Public Sub load_zkz_all()
     lastRow = ws.Cells(ws.Rows.Count, bzZkz).End(xlUp).Row
 
     For r = 2 To lastRow
-        If Trim(CStr(ws.Cells(r, bzZkz).Value)) <> "" Then cnt = cnt + 1
+        If Trim(CStr(ws.Cells(r, bzZkz).value)) <> "" Then cnt = cnt + 1
     Next r
 
     If cnt = 0 Then GoTo fallback_data
@@ -42,9 +42,9 @@ Public Sub load_zkz_all()
     cnt = 0
 
     For r = 2 To lastRow
-        If Trim(CStr(ws.Cells(r, bzZkz).Value)) <> "" Then
+        If Trim(CStr(ws.Cells(r, bzZkz).value)) <> "" Then
             cnt = cnt + 1
-            zkz(cnt, 1) = Trim(CStr(ws.Cells(r, bzZkz).Value))
+            zkz(cnt, 1) = Trim(CStr(ws.Cells(r, bzZkz).value))
         End If
     Next r
 
@@ -76,7 +76,7 @@ Public Sub load_zkz_contacts_all()
     lastRow = ws.Cells(ws.Rows.Count, bzZkz).End(xlUp).Row
 
     For r = 2 To lastRow
-        If Trim(CStr(ws.Cells(r, bzZkz).Value)) <> "" Then cnt = cnt + 1
+        If Trim(CStr(ws.Cells(r, bzZkz).value)) <> "" Then cnt = cnt + 1
     Next r
 
     If cnt = 0 Then GoTo no_data
@@ -87,11 +87,11 @@ Public Sub load_zkz_contacts_all()
 
     cnt = 0
     For r = 2 To lastRow
-        If Trim(CStr(ws.Cells(r, bzZkz).Value)) <> "" Then
+        If Trim(CStr(ws.Cells(r, bzZkz).value)) <> "" Then
             cnt = cnt + 1
-            zkz(cnt, 1) = Trim(CStr(ws.Cells(r, bzZkz).Value))
-            adr(cnt, 1) = Trim(CStr(ws.Cells(r, bzAdr).Value))
-            tlf(cnt, 1) = Trim(CStr(ws.Cells(r, bzTlf).Value))
+            zkz(cnt, 1) = Trim(CStr(ws.Cells(r, bzZkz).value))
+            adr(cnt, 1) = Trim(CStr(ws.Cells(r, bzAdr).value))
+            tlf(cnt, 1) = Trim(CStr(ws.Cells(r, bzTlf).value))
         End If
     Next r
 

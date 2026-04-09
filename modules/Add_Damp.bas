@@ -41,7 +41,7 @@ Public Sub ExportVBAProjectToTxt_UTF8()
             If comp.CodeModule.CountOfLines > 0 Then
                 For i = 1 To comp.CodeModule.CountOfLines
                     ' Читаем строку кода
-                    lineContent = comp.CodeModule.Lines(i, 1)
+                    lineContent = comp.CodeModule.lines(i, 1)
                     ' Записываем с номером строки
                     .WriteText Format(i, "0000") & " | " & lineContent & vbCrLf
                 Next i

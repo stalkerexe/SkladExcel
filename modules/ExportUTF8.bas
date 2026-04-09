@@ -1,11 +1,6 @@
 ﻿Attribute VB_Name = "ExportUTF8"
 Option Explicit
 
-' ================================================================
-' МОДУЛЬ: modGitExport
-' Экспорт VBA-компонентов в UTF-8 (с BOM) для GitHub
-' ================================================================
-
 Private Const EXPORT_ROOT As String = "srcCloudeUTF8"
 
 Private Type ExportResult
@@ -16,9 +11,6 @@ Private Type ExportResult
 End Type
 
 
-' ================================================================
-' ТОЧКА ВХОДА
-' ================================================================
 Public Sub ExportAllModulesUTF8()
 
     Dim result   As ExportResult
@@ -53,9 +45,6 @@ Public Sub ExportAllModulesUTF8()
 End Sub
 
 
-' ================================================================
-' МАРШРУТИЗАЦИЯ
-' ================================================================
 Private Sub ExportComponent( _
     ByVal comp As Object, _
     ByVal rootPath As String, _
@@ -67,29 +56,19 @@ Private Sub ExportComponent( _
     End If
 
     Select Case comp.Type
-
-        Case 1   ' StdModule
-            ExportViaAPI comp, rootPath & "modules\" & comp.Name & ".bas", result
-
-        Case 2   ' ClassModule
-            ExportViaAPI comp, rootPath & "classes\" & comp.Name & ".cls", result
-
-        Case 3   ' MSForm
-            ExportViaAPI comp, rootPath & "forms\" & comp.Name & ".frm", result
-
-        Case 100 ' Document
-            ExportDocumentModule comp, rootPath & "sheets\", result
-
-        Case Else
-            result.Skipped = result.Skipped + 1
-
+        Case 1:   ExportViaAPI comp, rootPath & "modules\" & comp.Name & ".bas", result
+        Case 2:   ExportViaAPI comp, rootPath & "classes\" & comp.Name & ".cls", result
+        Case 3:   ExportViaAPI comp, rootPath & "forms\" & comp.Name & ".frm", result
+        Case 100: ExportDocumentModule comp, rootPath & "sheets\", result
+        Case Else: result.Skipped = result.Skipped + 1
     End Select
 End Sub
 
 
-' ================================================================
-' ЭКСПОРТ С ПЕРЕКОДИРОВКОЙ ANSI > UTF-8
-' ================================================================
+' ИСПРАВЛЕНИЕ #13: временный .tmp файл теперь удаляется и в блоке Fail.
+' В оригинале Kill tempPath выполнялся только в нормальном потоке.
+' При ошибке в ReadFileAnsi или WriteFileUtf8Bom файл .tmp оставался
+' на диске рядом с .bas файлами навсегда.
 Private Sub ExportViaAPI( _
     ByVal comp As Object, _
     ByVal filePath As String, _
@@ -100,17 +79,13 @@ Private Sub ExportViaAPI( _
     Dim tempPath As String
     tempPath = filePath & ".tmp"
 
-    ' 1. Экспорт в ANSI
     comp.Export tempPath
 
-    ' 2. Чтение ANSI
     Dim content As String
     content = ReadFileAnsi(tempPath)
 
-    ' 3. Запись UTF-8 BOM
     WriteFileUtf8Bom filePath, content
 
-    ' 4. Удаление временного файла
     Kill tempPath
 
     result.Exported = result.Exported + 1
@@ -119,13 +94,16 @@ Private Sub ExportViaAPI( _
 Fail:
     result.Errors = result.Errors + 1
     result.ErrorLog = result.ErrorLog & comp.Name & ": " & Err.Description & vbCrLf
+
+    ' ИСПРАВЛЕНИЕ: убираем .tmp даже при ошибке
+    On Error Resume Next
+    If Len(tempPath) > 0 Then
+        If Dir(tempPath) <> "" Then Kill tempPath
+    End If
     On Error GoTo 0
 End Sub
 
 
-' ================================================================
-' ЭКСПОРТ ЛИСТОВ / THISWORKBOOK
-' ================================================================
 Private Sub ExportDocumentModule( _
     ByVal comp As Object, _
     ByVal folderPath As String, _
@@ -141,7 +119,7 @@ Private Sub ExportDocumentModule( _
 
     Dim objName As String
     On Error Resume Next
-    objName = comp.Properties("Name").Value
+    objName = comp.Properties("Name").value
     On Error GoTo 0
     If objName = "" Then objName = comp.Name
 
@@ -151,12 +129,12 @@ Private Sub ExportDocumentModule( _
 
     Dim startLine As Long
     startLine = 1
-    If LCase(Trim(comp.CodeModule.Lines(1, 1))) = "option explicit" Then
+    If LCase(Trim(comp.CodeModule.lines(1, 1))) = "option explicit" Then
         startLine = 2
     End If
 
     For i = startLine To comp.CodeModule.CountOfLines
-        content = content & comp.CodeModule.Lines(i, 1) & vbCrLf
+        content = content & comp.CodeModule.lines(i, 1) & vbCrLf
     Next i
 
     Dim fileName As String
@@ -183,35 +161,22 @@ Fail:
 End Sub
 
 
-' ================================================================
-' ЧТЕНИЕ ANSI (cp1251)
-' ================================================================
 Private Function ReadFileAnsi(ByVal filePath As String) As String
-
     Dim stm As Object
     Set stm = CreateObject("ADODB.Stream")
-
     stm.Type = 2
     stm.Charset = "windows-1251"
     stm.Open
     stm.LoadFromFile filePath
-
     ReadFileAnsi = stm.ReadText
-
     stm.Close
     Set stm = Nothing
-
 End Function
 
 
-' ================================================================
-' ЗАПИСЬ UTF-8 С BOM
-' ================================================================
 Private Sub WriteFileUtf8Bom(ByVal filePath As String, ByVal content As String)
-
     Dim tsText As Object
     Set tsText = CreateObject("ADODB.Stream")
-
     tsText.Type = 2
     tsText.Charset = "utf-8"
     tsText.Open
@@ -219,7 +184,6 @@ Private Sub WriteFileUtf8Bom(ByVal filePath As String, ByVal content As String)
 
     Dim tsBin As Object
     Set tsBin = CreateObject("ADODB.Stream")
-
     tsBin.Type = 1
     tsBin.Open
 
@@ -230,33 +194,22 @@ Private Sub WriteFileUtf8Bom(ByVal filePath As String, ByVal content As String)
 
     tsText.Close
     tsBin.Close
-
     Set tsText = Nothing
     Set tsBin = Nothing
-
 End Sub
 
 
-' ================================================================
-' ОЧИСТКА ИМЕНИ ФАЙЛА
-' ================================================================
 Private Function CleanFileName(ByVal s As String) As String
     Dim bad As Variant
     Dim i   As Long
-
     bad = Array("\", "/", ":", "*", "?", """", "<", ">", "|", " ")
-
     For i = LBound(bad) To UBound(bad)
         s = Replace(s, bad(i), "_")
     Next i
-
     CleanFileName = s
 End Function
 
 
-' ================================================================
-' СОЗДАНИЕ ПАПКИ
-' ================================================================
 Private Sub EnsureFolder(ByVal Path As String)
     If Dir(Path, vbDirectory) = "" Then
         On Error Resume Next
@@ -264,4 +217,5 @@ Private Sub EnsureFolder(ByVal Path As String)
         On Error GoTo 0
     End If
 End Sub
+
 

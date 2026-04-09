@@ -6,14 +6,14 @@ Public Sub set_otchet()
 
         With wbOt.ActiveSheet
         
-            If ThisWorkbook.Sheets("setting").Range("b6").Value = 1 Then
+            If ThisWorkbook.Sheets("setting").Range("b6").value = 1 Then
                 flag_hidden = False
             Else
                 flag_hidden = True
             End If
             .Range("e2").EntireColumn.Hidden = flag_hidden
 
-            If ThisWorkbook.Sheets("setting").Range("b8").Value = 1 Then
+            If ThisWorkbook.Sheets("setting").Range("b8").value = 1 Then
                 flag_hidden = False
             Else
                 flag_hidden = True

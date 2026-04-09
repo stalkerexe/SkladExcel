@@ -97,7 +97,7 @@ End Sub
 
 Private Sub format_otchet_zg_ot()
 
-        If ThisWorkbook.Sheets("setting").Range("b8").Value = 0 Then GoTo 33
+        If ThisWorkbook.Sheets("setting").Range("b8").value = 0 Then GoTo 33
         With wbOt.ActiveSheet
             
             r7 = .Cells(Rows.Count, vNm).End(xlUp).Row
@@ -141,7 +141,7 @@ Private Sub format_otchet_zg_ot()
         
         For cm = 1 To iCmOt + 1
             With wbOt.ActiveSheet
-                .Cells(4, cm).Value = arr_wid(cm, 2): .Cells(4, cm).ColumnWidth = 7: .Cells(4, cm).WrapText = True
+                .Cells(4, cm).value = arr_wid(cm, 2): .Cells(4, cm).ColumnWidth = 7: .Cells(4, cm).WrapText = True
                 .Cells(4, cm).ColumnWidth = CDbl(arr_wid(cm, 1))
             End With
         Next
@@ -164,7 +164,7 @@ Private Sub format_otchet_zg_ot()
         
         With wbOt.ActiveSheet
             With .Cells(2, 4)
-                .Value = sZg
+                .value = sZg
                 .Font.Name = "Times New Roman"
                 .Font.Size = 11
                 .Font.Bold = True
@@ -173,7 +173,7 @@ Private Sub format_otchet_zg_ot()
             
             str_ = VBA.Format(iMin, "dd.mm.yyyy") & " - " & VBA.Format(iMax, "dd.mm.yyyy")
             With .Cells(3, 4)
-                .Value = str_
+                .value = str_
                 .Font.Name = "Times New Roman"
                 .Font.Size = 9
                 .VerticalAlignment = xlTop
@@ -211,7 +211,7 @@ Private Sub format_otchet_zg_pr()
         For cm = 1 To iCmOt + 1
             With wbOt.ActiveSheet
                 .Cells(4, cm).ColumnWidth = CDbl(arr_wid(cm, 1))
-                .Cells(4, cm).Value = arr_wid(cm, 2)
+                .Cells(4, cm).value = arr_wid(cm, 2)
             End With
         Next
 
@@ -233,7 +233,7 @@ Private Sub format_otchet_zg_pr()
         
         With wbOt.ActiveSheet
             With .Cells(2, 4)
-                .Value = sZg
+                .value = sZg
                 .Font.Name = "Times New Roman"
                 .Font.Size = 11
                 .Font.Bold = True
@@ -241,7 +241,7 @@ Private Sub format_otchet_zg_pr()
             
             str_ = VBA.Format(iMin, "dd.mm.yyyy") & " - " & VBA.Format(iMax, "dd.mm.yyyy")
             With .Cells(3, 4)
-                .Value = str_
+                .value = str_
                 .Font.Name = "Times New Roman"
                 .Font.Size = 9
                 .VerticalAlignment = xlTop

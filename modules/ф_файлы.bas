@@ -19,7 +19,7 @@ Set ws = ThisWorkbook.Sheets(SKLAD_SHEET)
 lastRow = ws.Cells(ws.Rows.Count, SKLAD_COLUMN).End(xlUp).Row
 
 For i = SKLAD_FIRST_ROW To lastRow
-    skName = Trim(CStr(ws.Cells(i, SKLAD_COLUMN).Value))
+    skName = Trim(CStr(ws.Cells(i, SKLAD_COLUMN).value))
     If skName <> "" Then
         If Not DictionaryContainsValue(dic_sk, skName) Then
             dic_sk.Add dic_sk.Count, skName
@@ -49,7 +49,7 @@ If ctr Is Nothing Then Exit Sub
 
 Call load_sk
 
-If selectedName = "" Then selectedName = CStr(ctr.Value)
+If selectedName = "" Then selectedName = CStr(ctr.value)
 ctr.Clear
 
 Dim i As Long

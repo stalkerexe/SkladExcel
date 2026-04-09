@@ -33,6 +33,6 @@ End Sub
 
 Private Sub clm_setting()
         widCod = 1: widCn = 1
-        If ThisWorkbook.Sheets("setting").Range("b6").Value = 0 Then widCod = 0
-        If ThisWorkbook.Sheets("setting").Range("b8").Value = 0 Then widCn = 0
+        If ThisWorkbook.Sheets("setting").Range("b6").value = 0 Then widCod = 0
+        If ThisWorkbook.Sheets("setting").Range("b8").value = 0 Then widCn = 0
 End Sub

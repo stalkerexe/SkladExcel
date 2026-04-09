@@ -1,4 +1,4 @@
-Attribute VB_Name = "справочники_сохранение"
+﻿Attribute VB_Name = "справочники_сохранение"
 Option Explicit
 
 Public Function save_psv_to_spr(ByVal psvName As String) As Boolean
@@ -18,7 +18,7 @@ Public Function save_psv_to_spr(ByVal psvName As String) As Boolean
     newRow = ws.Cells(ws.Rows.Count, bzPsv).End(xlUp).Row + 1
     If newRow < 2 Then newRow = 2
 
-    ws.Cells(newRow, bzPsv).Value = psvName
+    ws.Cells(newRow, bzPsv).value = psvName
 
     save_psv_to_spr = True
     Exit Function
@@ -41,7 +41,7 @@ Public Function save_zkz_to_spr(ByVal zkzName As String, ByVal zkzAdr As String,
 
     If zkzName = "" Then Err.Raise 1101, "save_zkz_to_spr", "Не заполнено название контрагента."
 
-    If ThisWorkbook.Sheets("setting").Range("b41").Value = 1 And zkzTlf = "" Then
+    If ThisWorkbook.Sheets("setting").Range("b41").value = 1 And zkzTlf = "" Then
         Err.Raise 1102, "save_zkz_to_spr", "Не заполнен обязательный телефон контрагента."
     End If
 
@@ -53,11 +53,11 @@ Public Function save_zkz_to_spr(ByVal zkzName As String, ByVal zkzAdr As String,
     newRow = ws.Cells(ws.Rows.Count, bzZkz).End(xlUp).Row + 1
     If newRow < 2 Then newRow = 2
 
-    ws.Cells(newRow, bzZkz).Value = zkzName
-    ws.Cells(newRow, bzAdr).Value = zkzAdr
+    ws.Cells(newRow, bzZkz).value = zkzName
+    ws.Cells(newRow, bzAdr).value = zkzAdr
     ws.Cells(newRow, bzTlf).NumberFormat = "@"
-    ws.Cells(newRow, bzTlf).Value = zkzTlf
-    ws.Cells(newRow, bzMail).Value = zkzMail
+    ws.Cells(newRow, bzTlf).value = zkzTlf
+    ws.Cells(newRow, bzMail).value = zkzMail
 
     save_zkz_to_spr = True
     Exit Function
@@ -86,7 +86,7 @@ Private Function has_duplicate(ByVal ws As Worksheet, ByVal col As Long, ByVal v
     lastRow = ws.Cells(ws.Rows.Count, col).End(xlUp).Row
 
     For r = 2 To lastRow
-        v = Trim(CStr(ws.Cells(r, col).Value))
+        v = Trim(CStr(ws.Cells(r, col).value))
         If UCase(v) = UCase(valueToFind) Then
             has_duplicate = True
             Exit Function

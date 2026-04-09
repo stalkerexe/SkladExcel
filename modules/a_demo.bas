@@ -1,10 +1,8 @@
 ﻿Attribute VB_Name = "a_demo"
 Option Explicit
 
-' Историческое имя модуля сохранено для обратной совместимости макросов.
-' В production-версии модуль содержит рабочий CRUD по складам.
 Private Const SKLAD_SHEET As String = "my_set"
-Private Const SKLAD_COLUMN As Long = 27 'Колонка AA
+Private Const SKLAD_COLUMN As Long = 27
 Private Const SKLAD_FIRST_ROW As Long = 2
 
 Public Sub open_sklad()
@@ -12,7 +10,7 @@ On Error GoTo ErrHandler
 
 If Not EnsureSkladSelected(Form_sklads.ListBox1, "open_sklad") Then Exit Sub
 
-sSk = CStr(Form_sklads.ListBox1.Value)
+sSk = CStr(Form_sklads.ListBox1.value)
 Unload Form_sklads
 DoEvents
 Call sklad_show
@@ -52,7 +50,7 @@ If Not EnsureSkladSelected(Form_sklads.ListBox1, "rename_sk") Then Exit Sub
 Dim oldName As String
 Dim newName As String
 
-oldName = NormalizeSkName(CStr(Form_sklads.ListBox1.Value))
+oldName = NormalizeSkName(CStr(Form_sklads.ListBox1.value))
 newName = NormalizeSkName(InputBox("Новое имя склада:", "Переименовать склад", oldName))
 
 If newName = "" Then Exit Sub
@@ -88,7 +86,7 @@ On Error GoTo ErrHandler
 If Not EnsureSkladSelected(Form_sklads.ListBox1, "delete_sk") Then Exit Sub
 
 Dim oldName As String
-oldName = NormalizeSkName(CStr(Form_sklads.ListBox1.Value))
+oldName = NormalizeSkName(CStr(Form_sklads.ListBox1.value))
 
 Dim movesCount As Long
 movesCount = CountWarehouseMoves(oldName)
@@ -140,17 +138,10 @@ If lb Is Nothing Then
     MsgBox procName & ": список складов недоступен.", vbCritical, "Склад"
     Exit Function
 End If
-
-If lb.ListCount = 0 Then
-    MsgBox "Список складов пуст.", 48, "Склад"
-    Exit Function
-End If
-
 If lb.ListIndex = -1 Then
     MsgBox "Выберите склад!", 64, "Склад"
     Exit Function
 End If
-
 EnsureSkladSelected = True
 End Function
 
@@ -159,8 +150,6 @@ NormalizeSkName = Trim(Replace(Replace(value, vbCr, " "), vbLf, " "))
 End Function
 
 Private Function SkladExists(ByVal nameToFind As String) As Boolean
-If dic_sk Is Nothing Then Exit Function
-
 Dim i As Long
 For i = 0 To dic_sk.Count - 1
     If StrComp(CStr(dic_sk.Item(i)), nameToFind, vbTextCompare) = 0 Then
@@ -173,30 +162,25 @@ End Function
 Private Sub AppendSkladToStore(ByVal skladName As String)
 Dim ws As Worksheet
 If Not RequireSheet(SKLAD_SHEET, ws, "AppendSkladToStore") Then Exit Sub
-
 With ws
     Dim lastRow As Long
     lastRow = .Cells(.Rows.Count, SKLAD_COLUMN).End(xlUp).Row
     If lastRow < SKLAD_FIRST_ROW Then lastRow = SKLAD_FIRST_ROW - 1
-
-    .Cells(lastRow + 1, SKLAD_COLUMN).Value = skladName
+    .Cells(lastRow + 1, SKLAD_COLUMN).value = skladName
 End With
 End Sub
 
 Private Function UpdateSkladNameInStore(ByVal oldName As String, ByVal newName As String) As Boolean
 Dim ws As Worksheet
 If Not RequireSheet(SKLAD_SHEET, ws, "UpdateSkladNameInStore") Then Exit Function
-
 With ws
     Dim lastRow As Long
     Dim i As Long
-
     lastRow = .Cells(.Rows.Count, SKLAD_COLUMN).End(xlUp).Row
     If lastRow < SKLAD_FIRST_ROW Then Exit Function
-
     For i = SKLAD_FIRST_ROW To lastRow
-        If StrComp(NormalizeSkName(CStr(.Cells(i, SKLAD_COLUMN).Value)), oldName, vbTextCompare) = 0 Then
-            .Cells(i, SKLAD_COLUMN).Value = newName
+        If StrComp(NormalizeSkName(CStr(.Cells(i, SKLAD_COLUMN).value)), oldName, vbTextCompare) = 0 Then
+            .Cells(i, SKLAD_COLUMN).value = newName
             UpdateSkladNameInStore = True
             Exit Function
         End If
@@ -207,16 +191,13 @@ End Function
 Private Function DeleteSkladFromStore(ByVal oldName As String) As Boolean
 Dim ws As Worksheet
 If Not RequireSheet(SKLAD_SHEET, ws, "DeleteSkladFromStore") Then Exit Function
-
 With ws
     Dim lastRow As Long
     Dim i As Long
-
     lastRow = .Cells(.Rows.Count, SKLAD_COLUMN).End(xlUp).Row
     If lastRow < SKLAD_FIRST_ROW Then Exit Function
-
     For i = SKLAD_FIRST_ROW To lastRow
-        If StrComp(NormalizeSkName(CStr(.Cells(i, SKLAD_COLUMN).Value)), oldName, vbTextCompare) = 0 Then
+        If StrComp(NormalizeSkName(CStr(.Cells(i, SKLAD_COLUMN).value)), oldName, vbTextCompare) = 0 Then
             .Range(.Cells(i, SKLAD_COLUMN), .Cells(lastRow, SKLAD_COLUMN)).Delete Shift:=xlUp
             DeleteSkladFromStore = True
             Exit Function
@@ -227,73 +208,119 @@ End Function
 
 Private Function CountWarehouseMoves(ByVal skName As String) As Long
 CountWarehouseMoves = 0
-CountWarehouseMoves = CountWarehouseMoves + CountMatchesInSheetColumn("Расход", zvSk, skName, True)
-CountWarehouseMoves = CountWarehouseMoves + CountMatchesInSheetColumn("Приход", prSk, skName, True)
-CountWarehouseMoves = CountWarehouseMoves + CountMatchesInSheetColumn("arh_zkk", arhSk, skName, False)
-CountWarehouseMoves = CountWarehouseMoves + CountMatchesInSheetColumn("arh_prr", arhSk, skName, False)
-CountWarehouseMoves = CountWarehouseMoves + CountMatchesInSheetColumn("arh_vzz", arhSk, skName, False)
+CountWarehouseMoves = CountWarehouseMoves + CountMatchesInSheetColumn("Расход", zvSk, skName)
+CountWarehouseMoves = CountWarehouseMoves + CountMatchesInSheetColumn("Приход", prSk, skName)
+CountWarehouseMoves = CountWarehouseMoves + CountMatchesInSheetColumn("arh_zkk", arhSk, skName)
+CountWarehouseMoves = CountWarehouseMoves + CountMatchesInSheetColumn("arh_prr", arhSk, skName)
+' ИСПРАВЛЕНИЕ #14: для необязательного листа arh_vzz используем тихую проверку
+' (showError = False), чтобы при его отсутствии не показывалось несколько MsgBox подряд.
+CountWarehouseMoves = CountWarehouseMoves + CountMatchesInSheetColumnSilent("arh_vzz", arhSk, skName)
 End Function
 
-Private Function CountMatchesInSheetColumn(ByVal sheetName As String, ByVal colIndex As Long, ByVal skName As String, Optional ByVal requiredSheet As Boolean = True) As Long
+' ИСПРАВЛЕНИЕ #14: обычная версия — для обязательных листов (с сообщением об ошибке)
+Private Function CountMatchesInSheetColumn( _
+    ByVal sheetName As String, _
+    ByVal colIndex As Long, _
+    ByVal skName As String _
+) As Long
 On Error GoTo ErrHandler
 
 Dim ws As Worksheet
-If requiredSheet Then
-    If Not RequireSheet(sheetName, ws, "CountMatchesInSheetColumn") Then Exit Function
-Else
-    Set ws = GetSheetByName(sheetName, False)
-    If ws Is Nothing Then Exit Function
-End If
+If Not RequireSheet(sheetName, ws, "CountMatchesInSheetColumn") Then Exit Function
 
 With ws
     Dim lastRow As Long
     Dim i As Long
     lastRow = .Cells(.Rows.Count, colIndex).End(xlUp).Row
     For i = 1 To lastRow
-        If StrComp(NormalizeSkName(CStr(.Cells(i, colIndex).Value)), skName, vbTextCompare) = 0 Then
+        If StrComp(NormalizeSkName(CStr(.Cells(i, colIndex).value)), skName, vbTextCompare) = 0 Then
             CountMatchesInSheetColumn = CountMatchesInSheetColumn + 1
         End If
     Next
 End With
-
 Exit Function
+
 ErrHandler:
 ReportVbaError "CountMatchesInSheetColumn", Err.Number, Err.Description, "Склад"
 End Function
 
+' ИСПРАВЛЕНИЕ #14: тихая версия — для необязательных листов (без MsgBox при отсутствии).
+' Используется для arh_vzz, который может не существовать в базовой конфигурации.
+Private Function CountMatchesInSheetColumnSilent( _
+    ByVal sheetName As String, _
+    ByVal colIndex As Long, _
+    ByVal skName As String _
+) As Long
+On Error Resume Next
+
+Dim ws As Worksheet
+Set ws = GetSheetByName(sheetName, False)
+If ws Is Nothing Then Exit Function
+
+Dim lastRow As Long
+Dim i As Long
+lastRow = ws.Cells(ws.Rows.Count, colIndex).End(xlUp).Row
+For i = 1 To lastRow
+    If StrComp(NormalizeSkName(CStr(ws.Cells(i, colIndex).value)), skName, vbTextCompare) = 0 Then
+        CountMatchesInSheetColumnSilent = CountMatchesInSheetColumnSilent + 1
+    End If
+Next
+End Function
+
 Private Sub ReplaceWarehouseInDocs(ByVal oldName As String, ByVal newName As String)
-ReplaceWarehouseInSheetColumn "Расход", zvSk, oldName, newName, True
-ReplaceWarehouseInSheetColumn "Приход", prSk, oldName, newName, True
-ReplaceWarehouseInSheetColumn "arh_zkk", arhSk, oldName, newName, False
-ReplaceWarehouseInSheetColumn "arh_prr", arhSk, oldName, newName, False
-ReplaceWarehouseInSheetColumn "arh_vzz", arhSk, oldName, newName, False
+ReplaceWarehouseInSheetColumn "Расход", zvSk, oldName, newName
+ReplaceWarehouseInSheetColumn "Приход", prSk, oldName, newName
+ReplaceWarehouseInSheetColumn "arh_zkk", arhSk, oldName, newName
+ReplaceWarehouseInSheetColumn "arh_prr", arhSk, oldName, newName
+ReplaceWarehouseInSheetColumnSilent "arh_vzz", arhSk, oldName, newName
 End Sub
 
-Private Sub ReplaceWarehouseInSheetColumn(ByVal sheetName As String, ByVal colIndex As Long, ByVal oldName As String, ByVal newName As String, Optional ByVal requiredSheet As Boolean = True)
+Private Sub ReplaceWarehouseInSheetColumn( _
+    ByVal sheetName As String, _
+    ByVal colIndex As Long, _
+    ByVal oldName As String, _
+    ByVal newName As String _
+)
 On Error GoTo ErrHandler
 
 Dim ws As Worksheet
-If requiredSheet Then
-    If Not RequireSheet(sheetName, ws, "ReplaceWarehouseInSheetColumn") Then Exit Sub
-Else
-    Set ws = GetSheetByName(sheetName, False)
-    If ws Is Nothing Then Exit Sub
-End If
+If Not RequireSheet(sheetName, ws, "ReplaceWarehouseInSheetColumn") Then Exit Sub
 
 With ws
     Dim lastRow As Long
     Dim i As Long
     lastRow = .Cells(.Rows.Count, colIndex).End(xlUp).Row
     For i = 1 To lastRow
-        If StrComp(NormalizeSkName(CStr(.Cells(i, colIndex).Value)), oldName, vbTextCompare) = 0 Then
-            .Cells(i, colIndex).Value = newName
+        If StrComp(NormalizeSkName(CStr(.Cells(i, colIndex).value)), oldName, vbTextCompare) = 0 Then
+            .Cells(i, colIndex).value = newName
         End If
     Next
 End With
-
 Exit Sub
+
 ErrHandler:
 ReportVbaError "ReplaceWarehouseInSheetColumn", Err.Number, Err.Description, "Склад"
+End Sub
+
+Private Sub ReplaceWarehouseInSheetColumnSilent( _
+    ByVal sheetName As String, _
+    ByVal colIndex As Long, _
+    ByVal oldName As String, _
+    ByVal newName As String _
+)
+On Error Resume Next
+Dim ws As Worksheet
+Set ws = GetSheetByName(sheetName, False)
+If ws Is Nothing Then Exit Sub
+
+Dim lastRow As Long
+Dim i As Long
+lastRow = ws.Cells(ws.Rows.Count, colIndex).End(xlUp).Row
+For i = 1 To lastRow
+    If StrComp(NormalizeSkName(CStr(ws.Cells(i, colIndex).value)), oldName, vbTextCompare) = 0 Then
+        ws.Cells(i, colIndex).value = newName
+    End If
+Next
 End Sub
 
 Private Function AskMigrationTarget(ByVal oldName As String) As String
@@ -329,3 +356,5 @@ End If
 
 AskMigrationTarget = candidate
 End Function
+
+

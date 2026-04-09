@@ -5,7 +5,7 @@ Option Explicit
 Public Function режим_редактирования_on_pr(shNm As String)
         With ThisWorkbook.Sheets(shNm)
             .Cells(9, zvOst) = "Режим_редактирования"
-.Range("d1").Value = .Range("d2").Value
+.Range("d1").value = .Range("d2").value
         End With
 End Function
 
@@ -13,7 +13,7 @@ Public Function режим_редактирования_off_pr(shNm As String)
         With ThisWorkbook.Sheets(shNm)
             If .Cells(9, zvOst) = "Режим_редактирования" Then
                 .Cells(9, zvOst) = ""
-.Range("d2").Value = .Range("d1").Value
+.Range("d2").value = .Range("d1").value
                 .Range("d1") = ""
             End If
         End With
@@ -41,5 +41,5 @@ End Sub
 
 Public Sub zakaz_prog()
 Form_.Show
-Form_.MultiPage1.Value = 1
+Form_.MultiPage1.value = 1
 End Sub

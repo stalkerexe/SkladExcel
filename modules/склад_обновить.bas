@@ -24,8 +24,8 @@ Private Sub arr_sk_this_sheet()
         On Error Resume Next
         With ThisWorkbook.Sheets("Склад")
             r7 = .Cells(Rows.Count, skNm).End(xlUp).Row + 4
-            nn = Range(.Cells(5, 1), .Cells(r7, 1)).Value
-            nm = Range(.Cells(5, skNm), .Cells(r7, skNm)).Value
+            nn = Range(.Cells(5, 1), .Cells(r7, 1)).value
+            nm = Range(.Cells(5, skNm), .Cells(r7, skNm)).value
             iCol = Application.CountIf(Range(.Cells(5, skNm), .Cells(r7, skNm)), "<>")
         End With
 End Sub

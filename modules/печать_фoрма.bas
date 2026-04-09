@@ -32,7 +32,7 @@ Public Sub printZk()
         With frm_print
             .Show
             .TextBox1.Text = 3
-            .tb_row.Value = ActiveCell.Row
+            .tb_row.value = ActiveCell.Row
         End With
 End Sub
 
@@ -41,7 +41,7 @@ Public Sub printZk_pr()
         With frm_print
             .Show
             .TextBox1.Text = 4
-            .tb_row.Value = ActiveCell.Row
+            .tb_row.value = ActiveCell.Row
         End With
 End Sub
 

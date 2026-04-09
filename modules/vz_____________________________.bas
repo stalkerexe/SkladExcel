@@ -33,10 +33,10 @@ Public Sub proverka_vz()
         With frm_ZVK
             For i = 1 To iColCtr
             
-                str_ = .Controls("nCol_vz" & i).Value
+                str_ = .Controls("nCol_vz" & i).value
                 
-                If .Controls("nCol_vz" & i).Value <> "" Then
-                    If .Controls("nCol_vz" & i).Value <> 0 Then
+                If .Controls("nCol_vz" & i).value <> "" Then
+                    If .Controls("nCol_vz" & i).value <> 0 Then
                         iCol = iCol + 1
                     End If
                 End If

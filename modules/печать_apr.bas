@@ -48,11 +48,11 @@ End Sub
 Private Sub copy_dann()
         On Error Resume Next
         With ThisWorkbook.Sheets(nmBlank)
-            .Range("c2").Value = "Приходная накладная № " & nomer & " от " & sDt
-            .Cells(rwPr_zkz, 4).Value = sZkz
-            .Cells(rwPr_mj, 4).Value = sMj
-            .Cells(rwPr_doc, 4).Value = sOsn
-            .Cells(rwPr_dt, 4).Value = sDt
+            .Range("c2").value = "Приходная накладная № " & nomer & " от " & sDt
+            .Cells(rwPr_zkz, 4).value = sZkz
+            .Cells(rwPr_mj, 4).value = sMj
+            .Cells(rwPr_doc, 4).value = sOsn
+            .Cells(rwPr_dt, 4).value = sDt
         End With
 End Sub
 
@@ -120,9 +120,9 @@ Private Sub podp_sm()
 
             .Cells(r7, prSm).RowHeight = 22
 
-            .Cells(r7, prCnZ).Value = "Итого:"
+            .Cells(r7, prCnZ).value = "Итого:"
 
-            .Cells(r7, prSm).Value = summ
+            .Cells(r7, prSm).value = summ
             .Cells(r7, prSm).NumberFormat = "#,##0.00"
             
             With Range(.Cells(r7, prNN), .Cells(r7, prSm))

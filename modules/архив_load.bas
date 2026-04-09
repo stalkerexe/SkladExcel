@@ -22,9 +22,9 @@ End Sub
 Private Sub dann_arh()
 On Error Resume Next
         With zvSelect
-            iGod = .comb_year.Value
-            iPapka = .comb_vid.Value
-            iVid = .comb_vid.Value
+            iGod = .comb_year.value
+            iPapka = .comb_vid.value
+            iVid = .comb_vid.value
         End With
 
         With zvSelect.ListBox1
@@ -63,7 +63,7 @@ Private Sub to_form()
         Call добавить_контролы_vz
         
         If ThisWorkbook.Sheets("setting").Range("f12") = 1 Then
-            frm_ZVK.CheckBox_perenos.Value = True
+            frm_ZVK.CheckBox_perenos.value = True
         End If
         
 End Sub

@@ -9,7 +9,7 @@ Public Sub добавить_контролы_vz()
         iColCtr = iCol
         If iColCtr = 0 Then Exit Sub
         
-        iVid = zvSelect.comb_vid.Value
+        iVid = zvSelect.comb_vid.value
 
         Call контролы_накладной
         Call arr_controls_vz
@@ -207,7 +207,7 @@ Private Sub add_cntrl_nk_vz()
                 .MousePointer = 3
                 If sCol = 0 Then
                     .Enabled = False
-                    frm_ZVK.Controls("nCol_vz" & nom_Cnr).Value = 0
+                    frm_ZVK.Controls("nCol_vz" & nom_Cnr).value = 0
                     frm_ZVK.Controls("nCol_vz" & nom_Cnr).Enabled = False
                 End If
             End If
