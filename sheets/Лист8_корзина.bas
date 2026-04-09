@@ -1,5 +1,5 @@
 ﻿' Component: Лист8  [корзина]
-' Type: Document
+' Type: Document (Sheet / ThisWorkbook)
 Option Explicit
 
 Private Sub Worksheet_Change(ByVal Target As Range)
@@ -8,5 +8,4 @@ If Not Intersect(Target, Cells(rwzvSm, zvSm)) Is Nothing Then
 Call sum_box
 End If
 End Sub
-
 

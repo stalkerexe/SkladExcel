@@ -1,5 +1,5 @@
 ﻿' Component: Лист7  [Склад]
-' Type: Document
+' Type: Document (Sheet / ThisWorkbook)
 Option Explicit
 
 Dim r As Long

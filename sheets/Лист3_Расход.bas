@@ -1,5 +1,5 @@
 ﻿' Component: Лист3  [Расход]
-' Type: Document
+' Type: Document (Sheet / ThisWorkbook)
 Option Explicit
 
 Dim r As Long
@@ -86,5 +86,4 @@ Private Sub Worksheet_SelectionChange(ByVal Target As Range)
         End If
 99
 End Sub
-
 

@@ -1,5 +1,4 @@
 ﻿' Component: Лист1  [буфер]
-' Type: Document
+' Type: Document (Sheet / ThisWorkbook)
 Option Explicit
-
 

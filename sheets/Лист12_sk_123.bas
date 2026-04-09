@@ -1,6 +1,5 @@
 ﻿' Component: Лист12  [sk_123]
-' Type: Document
+' Type: Document (Sheet / ThisWorkbook)
 Option Explicit
-
 
 

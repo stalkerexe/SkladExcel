@@ -1,5 +1,5 @@
 ﻿' Component: Лист9  [Отложено_приход]
-' Type: Document
+' Type: Document (Sheet / ThisWorkbook)
 Option Explicit
 
 
@@ -102,9 +102,9 @@ Private Sub sh_frm_Comm()
 On Error Resume Next
 With frm_Comm
 .Show
-.tb_row.Value = iRow
+.tb_row.value = iRow
 .tb_mk.Text = Cells(iRow - 1, 1)
-.tb_comm.Text = ActiveCell.Value
+.tb_comm.Text = ActiveCell.value
 .tb_sheet.Text = "pr"
 End With
 End Sub
@@ -114,7 +114,7 @@ On Error Resume Next
 iRow = ActiveCell.Row - 1
 With frm_Doc
 .Show
-.tb_row.Value = iRow
+.tb_row.value = iRow
 .tb_doc.Text = Cells(iRow, pzkDoc)
 .tb_docN.Text = Cells(iRow, pzkDocN)
 .tb_dt1.Text = Cells(iRow, pzkDt)
@@ -122,4 +122,3 @@ With frm_Doc
 .tb_sheet.Text = "pr"
 End With
 End Sub
-

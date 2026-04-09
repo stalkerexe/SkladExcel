@@ -1,5 +1,5 @@
 ﻿' Component: Лист4  [Приход]
-' Type: Document
+' Type: Document (Sheet / ThisWorkbook)
 Option Explicit
 
 Dim r As Long
@@ -32,7 +32,7 @@ Private Sub sh_gr()
 On Error Resume Next
         With frm_Gr
             .Show
-            .CheckBox1.Value = False
+            .CheckBox1.value = False
         End With
 End Sub
 
@@ -80,4 +80,3 @@ On Error Resume Next
 Call unload_mn_mn
 If ThisWorkbook.ActiveSheet.Shapes("mn_vid_pr").Visible = True Then Call unload_mn_vid_pr
 End Sub
-

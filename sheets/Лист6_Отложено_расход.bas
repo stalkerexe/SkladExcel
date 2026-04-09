@@ -1,5 +1,5 @@
 ﻿' Component: Лист6  [Отложено_расход]
-' Type: Document
+' Type: Document (Sheet / ThisWorkbook)
 Option Explicit
 
 Dim r As Long
@@ -74,13 +74,12 @@ On Error Resume Next
 iRow = ActiveCell.Row
 With frm_Comm
 .Show
-.tb_row.Value = iRow
+.tb_row.value = iRow
 .tb_mk.Text = Cells(iRow - 1, 1)
-.tb_comm.Text = ActiveCell.Value
+.tb_comm.Text = ActiveCell.value
 .tb_sheet.Text = "rs"
 End With
 End Sub
-
 
 
 
